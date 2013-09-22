@@ -1,4 +1,4 @@
-    <?php
+<?php
     /**
     * Holding an instance of CSiteshop to enable use of $this in subclasses.
     *
