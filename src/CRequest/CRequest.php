@@ -37,16 +37,26 @@ class CRequest {
    * Create a url in the way it should be created.
    *
    */
-	public function CreateUrl($url=null) {
-		$prepend = $this->base_url;
-		if($this->cleanUrl) {
-			;
-		} elseif ($this->querystringUrl) {
-			$prepend .= 'index.php?q=';
-		} else {
-			$prepend .= 'index.php/';
-		}
-    return $prepend . rtrim($url, '/');
+public function CreateUrl($url=null, $method=null) {
+    // If fully qualified just leave it.
+    if(!empty($url) && (strpos($url, '://') || $url[0] == '/')){
+        return $url;
+    }
+    //Get current controller if empty and method choosen
+    if(empty($url) && !empty($method)){
+        $url = $this->controller;
+    }
+    // Create url according to configured style
+    $prepend = $this->base_url;
+    if($this->cleanUrl) {
+      ;
+    } elseif ($this->querystringUrl) {
+      $prepend .= 'index.php?q=';
+    } else {
+      $prepend .= 'index.php/';
+    }
+    return $prepend . rtrim("$url/$method", '/');
+    
 	}
 
 
@@ -64,15 +74,25 @@ class CRequest {
        */
 
         // Take current url and divide it in controller, method and arguments
-        $requestUri = $_SERVER['REQUEST_URI'];
-        $scriptPart = $scriptName = $_SERVER['SCRIPT_NAME']; 	
+        $requestUri = $_SERVER['REQUEST_URI'];	//t.ex.  /siteshop/guestbook
+        $scriptPart = $scriptName = $_SERVER['SCRIPT_NAME'];	//: /siteshop/index.php		
 
         // Check if url is in format controller/method/arg1/arg2/arg3
-        if(substr_compare($requestUri, $scriptName, 0, strlen($scriptName))) {
+        if(substr_compare($requestUri, $scriptName, 0)) {
           $scriptPart = dirname($scriptName);
+		  //echo $scriptPart;	// mitt ex. /siteshop
         }
        
-        $query = trim(substr($requestUri, strlen(rtrim($scriptPart, '/'))), '/');   
+        //Set query to be everything after base_url, except the optional querystring
+        $query = trim(substr($requestUri, strlen(rtrim($scriptPart, '/'))), '/'); 
+		// echo $query;		// guestbook
+        $pos = strcspn($query, '?');
+		//echo $pos;	//9 mitt exempel
+        if ($pos){
+            $query = substr($query, 0, $pos);
+			//echo $query;	// guestbook
+        }
+        
         // Check if this looks like a querystring approach link
         if(substr($query, 0, 1) === '?' && isset($_GET['q'])) {
           $query = trim($_GET['q']);
@@ -87,19 +107,28 @@ class CRequest {
        
         // Prepare to create current_url and base_url
         $currentUrl = $this->GetCurrentUrl();
-        $parts       = parse_url($currentUrl);
+        $parts       = parse_url($currentUrl); // Array ( [scheme] => http [host] => localhost [path] => /siteshop/guestbook )
         $baseUrl     = !empty($baseUrl) ? $baseUrl : "{$parts['scheme']}://{$parts['host']}" . (isset($parts['port']) ? ":{$parts['port']}" : '') . rtrim(dirname($scriptName), '/');
-       
+
         // Store it
         $this->base_url     = rtrim($baseUrl, '/') . '/';
+		//echo $this->base_url . '<br />';	// http://localhost/siteshop/
         $this->current_url  = $currentUrl;
+		//echo $this->current_url . '<br />';	// http://localhost/siteshop/guestbook
         $this->request_uri  = $requestUri;
+		//echo $this->request_uri . '<br />';	//	/siteshop/guestbook
         $this->script_name  = $scriptName;
+		//echo $this->script_name . '<br />';	//	/siteshop/index.php
         $this->query        = $query;
+		//echo $this->query . '<br />';		// guestbook	
         $this->splits        = $splits;
+		//print_r($this->splits) . '<br />';	// Array ( [0] => guestbook ) 
         $this->controller    = $controller;
+		//echo $this->controller;	//guestbook
         $this->method        = $method;
+		//echo $this->method . '<br />';	// index
         $this->arguments    = $arguments;
+		//print_r($this->arguments) . '<br />';	// Array ( ) 
     }
 	  
 	/**

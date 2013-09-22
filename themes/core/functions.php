@@ -1,10 +1,16 @@
 <?php
     /**
     * Helpers for the template file.
+     * Add static entries for use in the template file.
     */
-    $ss->data['header'] = '<h1>Header: Siteshop</h1>';
+    $this->data['header'] = 'Siteshop';
+    $ss->data['slogan'] = 'A PHP-based MVC-inspired CMF';
+    $ss->data['favicon'] = theme_url('pig.jpg');
+    $ss->data['logo'] = theme_url('pig.jpg');
+    $ss->data['logo_width'] = 98;
+    $ss->data['logo_height'] = 98;
     $ss->data['footer'] = <<<EOD
-	<p>Footer: &copy; Siteshop by Gunvor Nilsson (guni12)</p>
+	<p>Siteshop &copy; by Gunvor Nilsson (guni12)</p>
 	
 	<p>Tools: 
 <a href="http://validator.w3.org/check/referer">html5</a>
@@ -30,5 +36,4 @@
 <a href="http://www.sqlite.org/lang.html">sqlite</a>
 <a href="http://www.blueprintcss.org/">blueprint</a>
 </p>
-
 EOD;

@@ -2,10 +2,10 @@
 //
 // PHASE: BOOTSTRAP
 //
-define('SITESHOP_INSTALL_PATH', dirname(__FILE__));
-define('SITESHOP_APPLICATION_PATH', SITESHOP_INSTALL_PATH . '/site');
+define('SITESHOP_INSTALL_PATH', dirname(__FILE__));	// C:\wamp\www\siteshop
+define('SITESHOP_APPLICATION_PATH', SITESHOP_INSTALL_PATH . '/application');
 
-require(SITESHOP_INSTALL_PATH.'/src/CSiteshop/bootstrap.php');
+require(SITESHOP_INSTALL_PATH.'/src/bootstrap.php');
 
 $ss = CSiteshop::Instance();
 
