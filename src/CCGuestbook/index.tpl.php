@@ -1,5 +1,5 @@
 <h1>Guestbook Example</h1>
-<p>Showing off how to implement a guestbook in Lydia. Now saving to database.</p>
+<p>Showing off how to implement a guestbook in Siteshop. Now saving to database.</p>
 
 <form action="<?=$form_action?>" method='post'>
   <p>
