@@ -25,7 +25,7 @@
   public function Index() {
     //echo $this->config['database'][0]['dsn']; // sqlite:C:\wamp\www\siteshop\application\data\.ht.sqlite 
     $this->views->SetTitle('Siteshop Guestbook Example');
-    $this->views->AddInclude(__DIR__ . '\index.tpl.php', array(
+    $this->views->AddInclude(__DIR__ . '/index.tpl.php', array(
       'entries'=>$this->guestbookModel->ReadAll(),
       'form_action'=>$this->request->CreateUrl('', 'handler')	//lägger till handler efter guestbook, händer med klick
     ));
