@@ -32,7 +32,7 @@ $ss->config['debug']['db-queries'] = true;
 /**
 * Set database(s).
 */
-$ss->config['database'][0]['dsn'] = 'sqlite:' . SITESHOP_APPLICATION_PATH . '\data\.ht.sqlite';
+$ss->config['database'][0]['dsn'] = 'sqlite:' . SITESHOP_APPLICATION_PATH . '/data/.ht.sqlite';
 
 /**
  * Set a base_url to use another than the default calculated

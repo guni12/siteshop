@@ -25,7 +25,7 @@ class CSiteshop implements ISingleton {
       
     // include the site specific config.php and create a ref to $ss to be used by config.php
     $ss = &$this;
-    require(SITESHOP_APPLICATION_PATH.'\config.php');
+    require(SITESHOP_APPLICATION_PATH.'/config.php');
     
     // Start a named session
       session_name($this->config['session_name']);	// localhost	  
