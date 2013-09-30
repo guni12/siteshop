@@ -34,10 +34,8 @@
             /**
        * Handle posts from the form and take appropriate action.
        */
-      public function Handler() {
-          
-        if(($_POST['email']) === ''){  
-            if(isset($_POST['doAdd'])) {
+      public function Handler() {  
+            if(isset($_POST['doAdd']) && empty($_POST['email'])) {
                 $this->guestbookModel->Add(strip_tags($_POST['newEntry']));
             }
             elseif(isset($_POST['doClear'])) {
@@ -47,6 +45,5 @@
                 $this->guestbookModel->Init();
             }           
             $this->RedirectTo($this->request->CreateUrl($this->request->controller));
-        }
       }
 } 

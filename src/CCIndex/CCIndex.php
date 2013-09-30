@@ -1,43 +1,46 @@
 <?php
-    /**
-    * Standard controller layout.
-    *
-    * @package SiteshopCore
-    */
-class CCIndex extends CObject implements IController {
-    
-    public function __construct() {
-        parent::__construct();
-}
-
-    /**
-* Implementing interface IController. All controllers must have an index action.
-*/
-public function Index() {	
-    $this->Menu();
-}
-
-
 /**
-* Create a method that shows the menu, same for all methods
-*/
-private function Menu() {	
+ * Standard controller layout.
+ * 
+ * @package SiteshopCore
+ */
+class CCIndex extends CObject implements IController {
 
-$menu = array('index', 'index/index', 'developer', 'developer/index', 'developer/links', 
-    'developer/display-object', 'guestbook');
-$html = null;
-foreach($menu as $val) {
-$html .= "<li><a href='" . $this->request->CreateUrl($val) . "'>$val</a>";
-}
+  /**
+   * Constructor
+   */
+  public function __construct() {
+    parent::__construct();
+  }
+  
 
-$this->data['title'] = "The Index Controller";
-$this->data['main'] = <<<EOD
-<h1>The Index Controller</h1>
-<p>This is what you can do for now:</p>
-<ul>
-$html
-</ul>
-EOD;
+  /**
+   * Implementing interface IController. All controllers must have an index action.
+   */
+  public function Index() {			
+    $this->views->SetTitle('Index Controller');
+    $this->views->AddInclude(__DIR__ . '/index.tpl.php', array('menu'=>$this->Menu()));
+  }
+
+
+  /**
+   * A menu that shows all available controllers/methods
+   */
+  private function Menu() {	
+    $items = array();
+    foreach($this->config['controllers'] as $key => $val) {
+      if($val['enabled']) {
+        $rc = new ReflectionClass($val['class']);
+        $items[] = $key;    // t.ex. user
+        $methods = $rc->getMethods(ReflectionMethod::IS_PUBLIC);
+        foreach($methods as $method) {
+          if($method->name != '__construct' && $method->name != '__destruct' && $method->name != 'Index') {
+            $items[] = "$key/" . mb_strtolower($method->name);
+          }
+        }
+      }
+    }
+    return $items;
   }
   
 } 

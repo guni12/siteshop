@@ -1,18 +1,21 @@
 <?php
-    /**
-    * Helpers for the template file.
-     * Add static entries for use in the template file.
-    */
-    $this->data['header'] = 'Siteshop';
-    $ss->data['slogan'] = 'A PHP-based MVC-inspired CMF';
-    $ss->data['favicon'] = theme_url('pig.jpg');
-    $ss->data['logo'] = theme_url('pig.jpg');
-    $ss->data['logo_width'] = 98;
-    $ss->data['logo_height'] = 98;
-    $ss->data['footer'] = <<<EOD
-	<p>Siteshop &copy; by Gunvor Nilsson (guni12)</p>
-	
-	<p>Tools: 
+/**
+ * Helpers for the template file.
+ */
+
+/**
+ * Add static entries for use in the template file. 
+ */
+$this->data['header'] = 'Siteshop';
+$ss->data['slogan'] = 'A PHP-based MVC-inspired CMF';
+$ss->data['favicon'] = theme_url('icopig.ico');//string 'http://localhost/bth/siteshop/themes/core/pig.jpg' (length=49)
+$ss->data['logo'] = theme_url('pig.jpg');
+$ss->data['logo_width'] = 98;
+$ss->data['logo_height'] = 98;
+$ss->data['footer'] = <<<EOD
+<p>Siteshop &copy; by Gunvor Nilsson (guni12)</p>
+
+<p>Tools: 
 <a href="http://validator.w3.org/check/referer">html5</a>
 <a href="http://jigsaw.w3.org/css-validator/check/referer?profile=css3">css3</a>
 <a href="http://jigsaw.w3.org/css-validator/check/referer?profile=css21">css21</a>
@@ -36,4 +39,5 @@
 <a href="http://www.sqlite.org/lang.html">sqlite</a>
 <a href="http://www.blueprintcss.org/">blueprint</a>
 </p>
+
 EOD;
