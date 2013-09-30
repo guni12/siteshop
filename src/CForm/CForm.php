@@ -291,6 +291,7 @@ EOD;
             }
           }
           if(isset($element['callback']) && $validates) {
+			//print_r($element['callback']);
              call_user_func($element['callback'], $this);
           }
         }
