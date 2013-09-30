@@ -1,5 +1,5 @@
 <IfModule mod_rewrite.c>
-  RewriteEngine on
+  RewriteEngine on 
   # Must use RewriteBase on www.student.bth.se, Rewritebase for url /~mos/test is /~mos/test/
   RewriteBase /~guni12/phpmvc/siteshop/
   RewriteCond %{REQUEST_FILENAME} !-f
