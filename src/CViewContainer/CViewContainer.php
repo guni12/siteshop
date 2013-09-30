@@ -53,11 +53,7 @@ class CViewContainer {
 	 * @param vars array containing the variables that should be avilable for the included file.
 	 */
 	public function AddInclude($file, $variables=array()) {
-		//var_dump($variables);//array (size=3)'login_form' => object(CFormUserLogin)[11]public 'form' => array (size=0)empty public 'elements' => array (size=3)
-        //  'acronym' => object(CFormElementText)[12]... 'password' => object(CFormElementPassword)[13] ... 'login' => object(CFormElementSubmit)[14]
-        // ... 'allow_create_user' => boolean true 'create_user_url' => string 'http://localhost/bth/siteshop/user/create' (length=41)
 	  $this->views[] = array('type' => 'include', 'file' => $file, 'variables' => $variables);
-	  //var_dump($this);
 	  return $this;
   }
 

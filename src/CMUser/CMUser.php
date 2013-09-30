@@ -18,11 +18,6 @@ class CMUser extends CObject implements IHasSQL, ArrayAccess {
   public function __construct($ss=null) {
     parent::__construct($ss);
     $profile = $this->session->GetAuthenticatedUser();
-    // print_r($profile);   // Array ( [id] => 1 [acronym] => root [name] => The Administrator [email] => root@dbwebb.se 
-    // [created] => 2013-09-26 12:34:40 [updated] => [isAuthenticated] => 1 [groups] => Array 
-    // ( [0] => Array ( [id] => 1 [acronym] => admin [name] => The Administrator Group [created] => 2013-09-26 12:34:40 [updated] => [idUser] => 1 [idGroups] => 1 ) 
-    // [1] => Array ( [id] => 2 [acronym] => user [name] => The User Group [created] => 2013-09-26 12:34:40 [updated] => 
-    // [idUser] => 1 [idGroups] => 2 ) ) [hasRoleAdmin] => 1 [hasRoleUser] => 1 ) 
     $this->profile = is_null($profile) ? array() : $profile;
     $this['isAuthenticated'] = is_null($profile) ? false : true;
   }

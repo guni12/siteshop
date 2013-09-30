@@ -128,7 +128,6 @@ class CSiteshop implements ISingleton {
     
     // Get the paths and settings for the theme
     $themeName 	= $this->config['theme']['name'];
-	//echo $themeName;// core
     $themePath 	= SITESHOP_INSTALL_PATH . "/themes/{$themeName}";
     $themeUrl		= $this->request->base_url . "themes/{$themeName}";
     
@@ -144,14 +143,8 @@ class CSiteshop implements ISingleton {
     }
 
     // Extract $ss->data to own variables and handover to the template file
-    extract($this->data);
-//print_r($this->data);//Array ( [stylesheet] => http://localhost/bth/siteshop/themes/core/style.css [header] => Siteshop 
-//[slogan] => A PHP-based MVC-inspired CMF [favicon] => http://localhost/bth/siteshop/themes/core/pig.jpg 
-//[logo] => http://localhost/bth/siteshop/themes/core/pig.jpg [logo_width] => 98 [logo_height] => 98 [footer] =>
-// Siteshop © by Gunvor Nilsson (guni12) Tools: html5 css3 css21 unicorn links i18n css-lint js-lint js-perf colors style
-// Docs: cheatsheet html5 css2 css3 php sqlite blueprint) 	
-    extract($this->views->GetData()); 
-//print_r($this->views->GetData());//Array ( [title] => Index Controller ) 	
+    extract($this->data);	
+    extract($this->views->GetData()); 	
     include("{$themePath}/default.tpl.php");
   }
 }

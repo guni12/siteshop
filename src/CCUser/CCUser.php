@@ -19,8 +19,6 @@ class CCUser extends CObject implements IController {
    * Show profile information of the user.
    */
   public function Index() {
-    //print_r($this->user); //lång lista med all data för CCUser
-    //print_r($this);   // ännu längre lista med all data för alla objekt
     $this->views->SetTitle('User Controller')
                 ->AddInclude(__DIR__ . '/index.tpl.php', array(
                   'is_authenticated'=>$this->user['isAuthenticated'], 
@@ -78,9 +76,7 @@ class CCUser extends CObject implements IController {
    * Authenticate and login a user.
    */
   public function Login() {
-  //echo __DIR__;//C:\wamp\www\bth\siteshop\src\CCUser
     $form = new CFormUserLogin($this);
-	//var_dump($this);
     if($form->Check() === false) {
       $this->AddMessage('notice', 'You must fill in acronym and password.');
       $this->RedirectToController('login');
@@ -91,9 +87,6 @@ class CCUser extends CObject implements IController {
                   'allow_create_user' => CSiteshop::Instance()->config['create_new_users'],
                   'create_user_url' => $this->CreateUrl(null, 'create'),
                 ));
-	//var_dump($this);
-        $s = $this->CreateUrl(null, 'create');
-        //var_dump($s);   // string 'http://localhost/bth/siteshop/user/create' (length=41)
   }
   
 

@@ -8,7 +8,7 @@
  */
 $this->data['header'] = 'Siteshop';
 $ss->data['slogan'] = 'A PHP-based MVC-inspired CMF';
-$ss->data['favicon'] = theme_url('icopig.ico');//string 'http://localhost/bth/siteshop/themes/core/pig.jpg' (length=49)
+$ss->data['favicon'] = theme_url('icopig.ico');
 $ss->data['logo'] = theme_url('pig.jpg');
 $ss->data['logo_width'] = 98;
 $ss->data['logo_height'] = 98;

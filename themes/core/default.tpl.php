@@ -14,16 +14,16 @@
     </div>
     <div id='banner'>
         <a href='<?=base_url()?>'><img class='site-logo' src='<?=$logo?>' alt='logo' width='<?=$logo_width?>' height='<?=$logo_height?>' /></a>
-        <p class='site-title'><a href='<?=base_url()?>'><?=$header?></a></p><!--basurl från requestfilen-->
+        <p class='site-title'><a href='<?=base_url()?>'><?=$header?></a></p>
         <p class='site-slogan'><?=$slogan?></p>
     </div>
     </div>
     </div>
     <div id='wrap-main'>
     <div id='main' role='main'>
-        <?=get_messages_from_session()?><!--dessa funktioner från functions under themes-->
+        <?=get_messages_from_session()?>
             <?=@$main?>
-        <?=render_views()?><!--views har renderfunktionen, vi får den via functions under themes-->
+        <?=render_views()?>
     </div>
     </div>
     <div id='wrap-footer'>
