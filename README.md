@@ -1,4 +1,4 @@
-Chef, a PHP-based, MVC-inspired Content Management Framework
+Siteshop, a PHP-based, MVC-inspired Content Management Framework
 =============================================================
 
 This is my first tryout in creating a site with som MVC patterns. It is part of
@@ -25,6 +25,10 @@ v0.1.0 (2013-09-22)
 * CM is a model class.
 * C is a ordinary class without any specific category.
 * I is interface classes
+
+v0.1.6 (2013-10-07)
+
+* Now we have forms, login, validation, filters, various content by blogs, guestbook and pages
 
 Todo
 ----------------
