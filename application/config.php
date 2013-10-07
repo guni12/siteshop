@@ -86,13 +86,16 @@ $ss->config['language'] = 'en';
  * The array-key is matched against the url, for example: 
  * the url 'developer/dump' would instantiate the controller with the key "developer", that is 
  * CCDeveloper and call the method "dump" in that class. This process is managed in:
- * $ly->FrontControllerRoute();
+ * $ss->FrontControllerRoute();
  * which is called in the frontcontroller phase from index.php.
  */
 $ss->config['controllers'] = array(
   'index'     => array('enabled' => true,'class' => 'CCIndex'),
   'developer' => array('enabled' => true,'class' => 'CCDeveloper'),
   'guestbook' => array('enabled' => true,'class' => 'CCGuestbook'),
+  'content'   => array('enabled' => true,'class' => 'CCContent'),
+  'blog'      => array('enabled' => true,'class' => 'CCBlog'),
+  'page'      => array('enabled' => true,'class' => 'CCPage'),
   'user'      => array('enabled' => true,'class' => 'CCUser'),
   'acp'       => array('enabled' => true,'class' => 'CCAdminControlPanel'),
 );
