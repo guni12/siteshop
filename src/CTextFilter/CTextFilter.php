@@ -100,7 +100,7 @@ public function __construct() {
 * @returns string the formatted text.
 */
     public static function Typographer($text) {
-        require_once(__DIR__.'/PHP_Smartypants_Typographer_1.0.1/smartypants.php');
+        require_once(__DIR__.'/PHP_SmartyPants_Typographer_1.0.1/smartypants.php');
         return SmartyPants($text);
     }
 
