@@ -1,7 +1,7 @@
 <?php
 function makeMenu(){
     $url = current_url();
-    $menuitems = array('Index'=> base_url() . 'index',
+    $menuitems = array('Index'=> base_url(),
         'Guestbook'=> base_url() . 'guestbook',
         'Blog'=> base_url() . 'blog',
         'Content'=> base_url() . 'content',
