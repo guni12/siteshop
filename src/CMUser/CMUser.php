@@ -9,18 +9,22 @@ class CMUser extends CObject implements IHasSQL, ArrayAccess {
   /**
    * Properties
    */
-  public $profile = array();
+public $profile;
 
 
   /**
    * Constructor
    */
-  public function __construct($ss=null) {
+public function __construct($ss=null) {
     parent::__construct($ss);
-    $profile = $this->session->GetAuthenticatedUser();
+    $profile = $this->session->GetAuthenticatedUser(); 
     $this->profile = is_null($profile) ? array() : $profile;
     $this['isAuthenticated'] = is_null($profile) ? false : true;
-  }
+    if(!$this['isAuthenticated']) {
+        $this['id'] = 1;
+        $this['acronym'] = 'anonomous';
+    }
+ }
 
 
   /**
@@ -42,9 +46,9 @@ class CMUser extends CObject implements IHasSQL, ArrayAccess {
       'drop table user'         => "DROP TABLE IF EXISTS User;",
       'drop table group'        => "DROP TABLE IF EXISTS Groups;",
       'drop table user2group'   => "DROP TABLE IF EXISTS User2Groups;",
-      'create table user'       => "CREATE TABLE IF NOT EXISTS User (id INTEGER PRIMARY KEY, acronym TEXT KEY, name TEXT, email TEXT, algorithm TEXT, salt TEXT, password TEXT, created DATETIME default (datetime('now')), updated DATETIME default NULL);",
-      'create table group'      => "CREATE TABLE IF NOT EXISTS Groups (id INTEGER PRIMARY KEY, acronym TEXT KEY, name TEXT, created DATETIME default (datetime('now')), updated DATETIME default NULL);",
-      'create table user2group' => "CREATE TABLE IF NOT EXISTS User2Groups (idUser INTEGER, idGroups INTEGER, created DATETIME default (datetime('now')), PRIMARY KEY(idUser, idGroups));",
+      'create table user'       => "CREATE TABLE IF NOT EXISTS User (id INTEGER PRIMARY KEY, acronym TEXT KEY, name TEXT, email TEXT, algorithm TEXT, salt TEXT, password TEXT, created DATETIME default (datetime('now', 'localtime')), updated DATETIME default NULL);",
+      'create table group'      => "CREATE TABLE IF NOT EXISTS Groups (id INTEGER PRIMARY KEY, acronym TEXT KEY, name TEXT, created DATETIME default (datetime('now', 'localtime')), updated DATETIME default NULL);",
+      'create table user2group' => "CREATE TABLE IF NOT EXISTS User2Groups (idUser INTEGER, idGroups INTEGER, created DATETIME default (datetime('now', 'localtime')), PRIMARY KEY(idUser, idGroups));",
       'insert into user'        => 'INSERT INTO User (acronym,name,email,algorithm,salt,password) VALUES (?,?,?,?,?,?);',
       'insert into group'       => 'INSERT INTO Groups (acronym,name) VALUES (?,?);',
       'insert into user2group'  => 'INSERT INTO User2Groups (idUser,idGroups) VALUES (?,?);',
@@ -71,6 +75,7 @@ class CMUser extends CObject implements IHasSQL, ArrayAccess {
       $this->db->ExecuteQuery(self::SQL('create table user'));
       $this->db->ExecuteQuery(self::SQL('create table group'));
       $this->db->ExecuteQuery(self::SQL('create table user2group'));
+      $this->db->ExecuteQuery(self::SQL('insert into user'), array('anonomous', 'Anonomous, not authenticated', null, 'plain', null, null)); 
       $password = $this->CreatePassword('root');
       $this->db->ExecuteQuery(self::SQL('insert into user'), array('root', 'The Administrator', 'root@dbwebb.se', $password['algorithm'], $password['salt'], $password['password']));
       $idRootUser = $this->db->LastInsertId();
@@ -211,6 +216,7 @@ class CMUser extends CObject implements IHasSQL, ArrayAccess {
    * @returns boolean true if success else false.
    */
   public function Save() {
+      echo $this['id'];
     $this->db->ExecuteQuery(self::SQL('update profile'), array($this['name'], $this['email'], $this['id']));
     $this->session->SetAuthenticatedUser($this->profile);
     return $this->db->RowCount() === 1;

@@ -4,6 +4,39 @@
  * This file is included right before the themes own functions.php
  */
  
+/**
+* Get list of tools.
+*/
+function get_tools() {
+  global $ss;
+  return <<<EOD
+<p>Tools:
+<a href="http://validator.w3.org/check/referer">html5</a>
+<a href="http://jigsaw.w3.org/css-validator/check/referer?profile=css3">css3</a>
+<a href="http://jigsaw.w3.org/css-validator/check/referer?profile=css21">css21</a>
+<a href="http://validator.w3.org/unicorn/check?ucn_uri=referer&amp;ucn_task=conformance">unicorn</a>
+<a href="http://validator.w3.org/checklink?uri={$ss->request->current_url}">links</a>
+<a href="http://qa-dev.w3.org/i18n-checker/index?async=false&amp;docAddr={$ss->request->current_url}">i18n</a>
+<!-- <a href="link?">http-header</a> -->
+<a href="http://csslint.net/">css-lint</a>
+<a href="http://jslint.com/">js-lint</a>
+<a href="http://jsperf.com/">js-perf</a>
+<a href="http://www.workwithcolor.com/hsl-color-schemer-01.htm">colors</a>
+<a href="http://dbwebb.se/style">style</a>
+</p>
+
+<p>Docs:
+<a href="http://www.w3.org/2009/cheatsheet">cheatsheet</a>
+<a href="http://dev.w3.org/html5/spec/spec.html">html5</a>
+<a href="http://www.w3.org/TR/CSS2">css2</a>
+<a href="http://www.w3.org/Style/CSS/current-work#CSS3">css3</a>
+<a href="http://php.net/manual/en/index.php">php</a>
+<a href="http://www.sqlite.org/lang.html">sqlite</a>
+<a href="http://www.blueprintcss.org/">blueprint</a>
+</p>
+EOD;
+}
+
 
 /**
  * Print debuginformation from the framework.
@@ -66,14 +99,16 @@ function get_messages_from_session() {
  */
 function login_menu() {
   $ss = CSiteshop::Instance();
+  
   if($ss->user['isAuthenticated']) {
-    $items = "<a href='" . create_url('user/profile') . "'><img class='gravatar' src='" . get_gravatar(20) . "' alt=''> " . $ss->user['acronym'] . "</a> ";
-    if($ss->user['hasRoleAdministrator']) {
-      $items .= "<a href='" . create_url('acp') . "'>acp</a> ";
+    $items = "<a href='" . create_url('user/profile') . "'><img class='gravatar' src='" . get_gravatar(20) . "' alt=''></a>&#160;";
+    $items .= "<a href='" . create_url('user/profile') . "'>" . $ss->user['acronym'] . "</a>&#160;";
+    if($ss->user['hasRoleAdmin']) {
+      $items .= "<a href='" . create_url('acp') . "'>acp</a>&#160;";
     }
-    $items .= "<a href='" . create_url('user/logout') . "'>logout</a> ";
+    $items .= "<a href='" . create_url('user/logout') . "'>logout</a>&#160;";
   } else {
-    $items = "<a href='" . create_url('user/login') . "'>login</a> ";
+    $items = "<a href='" . create_url('user/login') . "'>login</a>&#160;";
   }
   return "<nav id='login-menu'>$items</nav>";
 }
@@ -113,7 +148,7 @@ function filter_data($data, $filter) {
 * @returns string
 */
 function time_diff($start) {
-  return formatDateTimeDiff($start);
+    return formatDateTimeDiff($start);
 }
 
 
@@ -123,7 +158,7 @@ function time_diff($start) {
  * Prepend the base_url.
  */
 function base_url($url=null) {
-  return CSiteshop::Instance()->request->base_url . trim($url, '/');
+    return CSiteshop::Instance()->request->base_url . trim($url, '/');
 }
 
 
@@ -135,7 +170,7 @@ function base_url($url=null) {
  * @param string the extra arguments to the method, leave empty if not using method.
  */
 function create_url($urlOrController=null, $method=null, $arguments=null) {
-  return CSiteshop::Instance()->request->CreateUrl($urlOrController, $method, $arguments);
+    return CSiteshop::Instance()->request->CreateUrl($urlOrController, $method, $arguments);
 }
 
 
@@ -143,8 +178,8 @@ function create_url($urlOrController=null, $method=null, $arguments=null) {
  * Prepend the theme_url, which is the url to the current theme directory.
  */
 function theme_url($url) {
-  $ss = CSiteshop::Instance();
-  return "{$ss->request->base_url}themes/{$ss->config['theme']['name']}/{$url}";
+    $ss = CSiteshop::Instance();
+    return "{$ss->request->base_url}themes/{$ss->config['theme']['name']}/{$url}";
 }
 
 
@@ -152,13 +187,24 @@ function theme_url($url) {
  * Return the current url.
  */
 function current_url() {
-  return CSiteshop::Instance()->request->current_url;
+    return CSiteshop::Instance()->request->current_url;
 }
 
 
 /**
- * Render all views.
- */
-function render_views() {
-  return CSiteshop::Instance()->views->Render();
+* Render all views.
+*
+* @param $region string the region to draw the content in.
+*/
+function render_views($region='default') {
+    return CSiteshop::Instance()->views->Render($region);
+}
+
+/**
+* Check if region has views. Accepts variable amount of arguments as regions.
+*
+* @param $region string the region to draw the content in.
+*/
+function region_has_content($region='default' /*...*/) {
+    return CSiteshop::Instance()->views->RegionHasView(func_get_args());
 }

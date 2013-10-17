@@ -126,15 +126,20 @@ class CSiteshop implements ISingleton {
     if(!isset($this->config['theme'])) {
       return;
     }
+
+    if(isset($this->config['theme']['data'])) {
+        extract($this->config['theme']['data']);
+    }
     
     // Get the paths and settings for the theme
     $themeName 	= $this->config['theme']['name'];
 	//echo $themeName;// core
     $themePath 	= SITESHOP_INSTALL_PATH . "/themes/{$themeName}";
-    $themeUrl		= $this->request->base_url . "themes/{$themeName}";
+    $themeUrl	= $this->request->base_url . "themes/{$themeName}";
     
     // Add stylesheet path to the $ss->data array
-    $this->data['stylesheet'] = "{$themeUrl}/style.css";
+    //$this->data['stylesheet'] = "{$themeUrl}/style.css";
+    $this->data['stylesheet'] = "{$themeUrl}/".$this->config['theme']['stylesheet'];
 
     // Include the global functions.php and the functions.php that are part of the theme
     $ss = &$this;
@@ -145,14 +150,9 @@ class CSiteshop implements ISingleton {
     }
 
     // Extract $ss->data to own variables and handover to the template file
-    extract($this->data);
-//print_r($this->data);//Array ( [stylesheet] => http://localhost/bth/siteshop/themes/core/style.css [header] => Siteshop 
-//[slogan] => A PHP-based MVC-inspired CMF [favicon] => http://localhost/bth/siteshop/themes/core/pig.jpg 
-//[logo] => http://localhost/bth/siteshop/themes/core/pig.jpg [logo_width] => 98 [logo_height] => 98 [footer] =>
-// Siteshop © by Gunvor Nilsson (guni12) Tools: html5 css3 css21 unicorn links i18n css-lint js-lint js-perf colors style
-// Docs: cheatsheet html5 css2 css3 php sqlite blueprint) 	
-    extract($this->views->GetData()); 
-//print_r($this->views->GetData());//Array ( [title] => Index Controller ) 	
-    include("{$themePath}/default.tpl.php");
+    extract($this->data);	
+    extract($this->views->GetData());  
+    $templateFile = (isset($this->config['theme']['template_file'])) ? $this->config['theme']['template_file'] : 'default.tpl.php';
+    include("{$themePath}/{$templateFile}");
   }
 }
