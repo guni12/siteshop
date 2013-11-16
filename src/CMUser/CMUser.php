@@ -141,6 +141,7 @@ class CMUser extends CObject implements IHasSQL, ArrayAccess, IModule {
             'update names' => "UPDATE User SET acronym=?, name=?, email=?, updated=datetime('now', 'localtime') WHERE id=?;",
              'update groups' => "UPDATE Groups SET acronym=?, name=?, updated=datetime('now', 'localtime') WHERE id=?;",
             'delete member' => "DELETE FROM User WHERE id=?;",
+            'delete membergroups' => "DELETE FROM User2Groups WHERE idUser=?;",
             'delete group' => "DELETE FROM Groups WHERE id=?;",
             'delete from join' => "DELETE FROM User2Groups WHERE idUser=? AND idGroups=?;",
             );
@@ -510,8 +511,8 @@ class CMUser extends CObject implements IHasSQL, ArrayAccess, IModule {
         }
         
         if ($id) {
-            $this->db->ExecuteQuery(self::SQL('delete member from join'), array($id));
-            $msg = 'deleted from user2group';
+            $this->db->ExecuteQuery(self::SQL('delete membergroups'), array($id));
+            $msg .= 'deleted from user2group';
         } 
         $rowcount2 = $this->db->RowCount();
         if ($rowcount2) {
@@ -671,7 +672,7 @@ class CMUser extends CObject implements IHasSQL, ArrayAccess, IModule {
     public function GetUserbyId($id) {
         try {
             $res = $this->db->ExecuteSelectQueryAndFetchAll(self::SQL('select user by id'), array($id));
-            //$res[0]['meta'] = unserialize($res[0]['meta']);
+
         } catch (Exception $e) {
             echo $e;
             return false;
@@ -689,8 +690,7 @@ class CMUser extends CObject implements IHasSQL, ArrayAccess, IModule {
         try {
 
             $res = $this->db->ExecuteSelectQueryAndFetchAll(self::SQL('select all users', array($args)));
-            //$res[0]['meta'] = unserialize($res[0]['meta']);
-            //var_dump($res);
+
             return $res;
         } catch (Exception $e) {
             echo $e;
@@ -709,8 +709,6 @@ class CMUser extends CObject implements IHasSQL, ArrayAccess, IModule {
         try {
 
             $res = $this->db->ExecuteSelectQueryAndFetchAll(self::SQL('select all groups', array($args)));
-            //$res[0]['meta'] = unserialize($res[0]['meta']);
-            //var_dump($res);
             return $res;
         } catch (Exception $e) {
             echo $e;
@@ -727,7 +725,6 @@ class CMUser extends CObject implements IHasSQL, ArrayAccess, IModule {
     public function GetUserbyAcronym($acronym) {
         try {
             $res = $this->db->ExecuteSelectQueryAndFetchAll(self::SQL('select user by acronym'), array($acronym));
-            //$res[0]['meta'] = unserialize($res[0]['meta']);
         } catch (Exception $e) {
             return false;
         }
@@ -735,3 +732,4 @@ class CMUser extends CObject implements IHasSQL, ArrayAccess, IModule {
     }
 
 }
+
