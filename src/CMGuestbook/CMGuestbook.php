@@ -113,7 +113,7 @@ class CMGuestbook extends CObject implements IHasSQL, ArrayAccess, IModule {
         switch ($action) {
             case 'install':
                 try {
-				$this->db->ExecuteQuery(self::SQL('create table guestbook'));
+				$this->db->ExecuteQuery(self::SQL('drop table guestbook'));
                     $this->db->ExecuteQuery(self::SQL('create table guestbook'));
                     return array('success', 'Successfully created the database tables (or left them untouched if they already existed).');
                 } catch (Exception$e) {
