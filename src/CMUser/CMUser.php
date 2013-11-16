@@ -140,10 +140,11 @@ class CMUser extends CObject implements IHasSQL, ArrayAccess, IModule {
             'update adminpassword' => "UPDATE User SET algorithm=?, salt=?, password=?, updated=datetime('now', 'localtime') WHERE id=?;",
             'update names' => "UPDATE User SET acronym=?, name=?, email=?, updated=datetime('now', 'localtime') WHERE id=?;",
              'update groups' => "UPDATE Groups SET acronym=?, name=?, updated=datetime('now', 'localtime') WHERE id=?;",
-            'delete member' => "DELETE FROM User WHERE id=?;",
-            'delete membergroups' => "DELETE FROM User2Groups WHERE idUser=?;",
+            'delete member' => "DELETE FROM User WHERE id=?;",            
             'delete group' => "DELETE FROM Groups WHERE id=?;",
             'delete from join' => "DELETE FROM User2Groups WHERE idUser=? AND idGroups=?;",
+            'delete group from join' => "DELETE FROM User2Groups WHERE idGroups=?;",
+            'delete membergroups' => "DELETE FROM User2Groups WHERE idUser=?;",
             );
         if (!isset($queries[$key])) {
             throw new Exception("No such SQL query, key '$key' was not found.");
