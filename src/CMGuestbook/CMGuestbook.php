@@ -90,8 +90,8 @@ class CMGuestbook extends CObject implements IHasSQL, ArrayAccess, IModule {
      */
     public static function SQL($key = null) {
         $queries = array(
-		'drop table guestbook' => "DROP TABLE IF EXISTS Guestbook;",
-            'create table guestbook' => "CREATE TABLE Guestbook (id INTEGER PRIMARY KEY, entry TEXT, created DATETIME default (datetime('now', 'localtime')), updated DATETIME default NULL, deleted DATETIME default NULL);",
+			'drop table guestbook' => "DROP TABLE IF EXISTS Guestbook;",
+            'create table guestbook' => "CREATE TABLE IF NOT EXISTS Guestbook (id INTEGER PRIMARY KEY, entry TEXT, created DATETIME default (datetime('now', 'localtime')), updated DATETIME default NULL, deleted DATETIME default NULL);",
             'insert into guestbook' => 'INSERT INTO Guestbook (entry) VALUES (?);',
             'select guestbook * by id' => 'SELECT * FROM Guestbook WHERE id=? AND deleted IS NULL;',
             'select * from guestbook' => 'SELECT * FROM Guestbook WHERE deleted IS NULL ORDER BY id DESC;',  
@@ -113,7 +113,6 @@ class CMGuestbook extends CObject implements IHasSQL, ArrayAccess, IModule {
         switch ($action) {
             case 'install':
                 try {
-				$this->db->ExecuteQuery(self::SQL('drop table guestbook'));
                     $this->db->ExecuteQuery(self::SQL('create table guestbook'));
                     return array('success', 'Successfully created the database tables (or left them untouched if they already existed).');
                 } catch (Exception$e) {
