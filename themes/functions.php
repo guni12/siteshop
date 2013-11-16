@@ -15,8 +15,8 @@ function get_tools() {
 <a href="http://jigsaw.w3.org/css-validator/check/referer?profile=css3">css3</a>
 <a href="http://jigsaw.w3.org/css-validator/check/referer?profile=css21">css21</a>
 <a href="http://validator.w3.org/unicorn/check?ucn_uri=referer&amp;ucn_task=conformance">unicorn</a>
-<a href="http://validator.w3.org/checklink?uri={$ss->request->current_url}">links</a>
-<a href="http://qa-dev.w3.org/i18n-checker/index?async=false&amp;docAddr={$ss->request->current_url}">i18n</a>
+<a href="http://validator.w3.org/checklink?uri={CSiteshop::Instance()->request->current_url}">links</a>
+<a href="http://qa-dev.w3.org/i18n-checker/index?async=false&amp;docAddr={CSiteshop::Instance()->request->current_url}">i18n</a>
 <!-- <a href="link?">http-header</a> -->
 <a href="http://csslint.net/">css-lint</a>
 <a href="http://jslint.com/">js-lint</a>
@@ -42,8 +42,10 @@ EOD;
  * Print debuginformation from the framework.
  */
 function get_debug() {
+ 
+  $ss = CSiteshop::Instance(); 
+  $ss->log->Timestamp('theme/functions.php', __FUNCTION__, 'End of template file'); 
   // Only if debug is wanted.
-  $ss = CSiteshop::Instance();  
   if(empty($ss->config['debug'])) {
     return;
   }
@@ -64,16 +66,35 @@ function get_debug() {
     $html .= "<p>Database made the following queries.</p><pre>" . implode('<br/><br/>', $queries) . "</pre>";
   }    
   if(isset($ss->config['debug']['timer']) && $ss->config['debug']['timer']) {
-    $html .= "<p>Page was loaded in " . round(microtime(true) - $ss->timer['first'], 5)*1000 . " msecs.</p>";
-  }    
+    $now = microtime(true);
+    //echo 'now: ' . $now . '<br />';
+    $flash = $ss->session->GetFlash('timer');
+    //echo 'flash: ' . $flash . '<br />';
+    if($flash){
+    $redirect = $flash ? round($flash['redirect'] - $flash['first'], 3) . ' secs + x + ' : null;
+    echo 'redirect: ' . $redirect . '<br />';
+    $total = $flash ? round($now - $flash['first'], 3) . ' secs. Per page: ' : null;
+    echo 'total: ' . $total . '<br />';
+    $html .= "<p>Page was loaded in {$total}{$redirect}" . round($now - $ss->timer['first'], 3) . " secs.</p>";
+  }}
+  if(isset($ss->config['debug']['memory']) && $ss->config['debug']['memory']) {
+    $flash = $ss->session->GetFlash('memory');
+    $flash = $flash ? round($flash/1024/1024, 2) . ' Mbytes + ' : null;
+    $html .= "<p>Peek memory consumption was $flash" . round(memory_get_peak_usage(true)/1024/1024, 2) . " Mbytes.</p>";
+  } 
   if(isset($ss->config['debug']['siteshop']) && $ss->config['debug']['siteshop']) {
     $html .= "<hr><h3>Debuginformation</h3><p>The content of CSiteshop:</p><pre>" . htmlent(print_r($ss, true)) . "</pre>";
   }    
   if(isset($ss->config['debug']['session']) && $ss->config['debug']['session']) {
     $html .= "<hr><h3>SESSION</h3><p>The content of CSiteshop->session:</p><pre>" . htmlent(print_r($ss->session, true)) . "</pre>";
     $html .= "<p>The content of \$_SESSION:</p><pre>" . htmlent(print_r($_SESSION, true)) . "</pre>";
-  }    
-  return $html;
+  }
+   if(isset($ss->config['debug']['timestamp']) && $ss->config['debug']['timestamp']) {
+    $html .= $ss->log->TimestampAsTable();
+    $html .= $ss->log->PageLoadTime();
+    $html .= $ss->log->MemoryPeak();
+  } 
+  return "<div class='debug'>$html</div>";
 }
 
 
@@ -96,22 +117,66 @@ function get_messages_from_session() {
 
 /**
  * Login menu. Creates a menu which reflects if user is logged in or not.
- */
+
 function login_menu() {
   $ss = CSiteshop::Instance();
+
+  if(!isset($ss->config['menus']['login'])) {
+    return null;
+  }
+  $menu = $ss->config['menus']['login'];
+
   
   if($ss->user['isAuthenticated']) {
-    $items = "<a href='" . create_url('user/profile') . "'><img class='gravatar' src='" . get_gravatar(20) . "' alt=''></a>&#160;";
-    $items .= "<a href='" . create_url('user/profile') . "'>" . $ss->user['acronym'] . "</a>&#160;";
+    $item = $menu['items']['ucp'];
+    //$items = "<a href='" . create_url('user/profile') . "'><img class='gravatar' src='" . get_gravatar(20) . "' alt=''></a>&#160;";
+    //$items .= "<a href='" . create_url('user/profile') . "'>" . $ss->user['acronym'] . "</a>&#160;";
+    $items = "<a href='" . create_url($item['url']) . "' title='{$item['title']}'>" . $ss->user['acronym'] . " <img class='gravatar' src='" . get_gravatar(20) . "' alt='[avatar]'></a>";
     if($ss->user['hasRoleAdmin']) {
-      $items .= "<a href='" . create_url('acp') . "'>acp</a>&#160;";
+        $item = $menu['items']['acp'];
+      //$items .= "<a href='" . create_url('acp') . "'>acp</a>&#160;";
+        $items .= "<a href='" . create_url($item['url']) . "' title='{$item['title']}'>{$item['label']}</a> ";
     }
-    $items .= "<a href='" . create_url('user/logout') . "'>logout</a>&#160;";
+    //$item = $menu['items']['logout'];
+    //$items .= "<a href='" . create_url('user/logout') . "'>logout</a>&#160;";
   } else {
-    $items = "<a href='" . create_url('user/login') . "'>login</a>&#160;";
+    //$items = "<a href='" . create_url('user/login') . "'>login</a>&#160;";
+      $item = $menu['items']['login'];
+    $items = "<a href='" . create_url($item['url']) . "' title='{$item['title']}' rel='nofollow'>{$item['label']}</a>";
   }
-  return "<nav id='login-menu'>$items</nav>";
+  //return "<nav id='login-menu'>$items</nav>";
+  $id    = isset($menu['id'])    ? " id='{$menu['id']}'" : null;
+  $class = isset($menu['class']) ? " class='{$menu['class']}'" : null;
+  return "<nav{$id}{$class}>$items</nav>";
 }
+*/
+
+function login_menu() {
+  $ss = CSiteshop::Instance();
+  if(isset($ss->config['menus']['login'])) {
+    if($ss->user->isAuthenticated()) {
+      $item = $ss->config['menus']['login']['items']['ucp'];
+      $items = "<a href='" . create_url($item['url']) . "' title='{$item['title']}'><img class='gravatar' src='" . get_gravatar(20) . "' alt=''> " . $ss->user['acronym'] . "</a> ";
+      if($ss->user['hasRoleAdmin']) {
+        $item = $ss->config['menus']['login']['items']['acp'];
+        $items .= "<a href='" . create_url($item['url']) . "' title='{$item['title']}'>{$item['label']}</a> ";
+      }
+      $item = $ss->config['menus']['login']['items']['logout'];
+      $items .= "<a href='" . create_url($item['url']) . "' title='{$item['title']}'>{$item['label']}</a> ";
+    } else {
+      $item = $ss->config['menus']['login']['items']['login'];
+      $items = "<a href='" . create_url($item['url']) . "' title='{$item['title']}'>{$item['label']}</a> ";
+    }
+    return "<nav>$items</nav>";
+  }
+  return null;
+}
+
+function navbar_ucp() {
+    $ss = CSiteshop::Instance();
+    $item = $ss->config['menus']['navbar-ucp']['items']['profile']['mail']['groups']['password'];
+}
+
 
 
 /**
@@ -122,8 +187,11 @@ function get_gravatar($size=null) {
 }
 
 /**
-* Escape data to make it safe to write in the browser.
-*/
+ * Escape data to make it safe to write in the browser.
+ *
+ * @param $str string to escape.
+ * @returns string the escaped string.
+ */
 function esc($str) {
   return htmlEnt($str);
 }
@@ -170,16 +238,27 @@ function base_url($url=null) {
  * @param string the extra arguments to the method, leave empty if not using method.
  */
 function create_url($urlOrController=null, $method=null, $arguments=null) {
-    return CSiteshop::Instance()->request->CreateUrl($urlOrController, $method, $arguments);
+    return CSiteshop::Instance()->CreateUrl($urlOrController, $method, $arguments);
 }
-
 
 /**
  * Prepend the theme_url, which is the url to the current theme directory.
+ *
+ * @param $url string the url-part to prepend.
+ * @returns string the absolute url.
  */
 function theme_url($url) {
-    $ss = CSiteshop::Instance();
-    return "{$ss->request->base_url}themes/{$ss->config['theme']['name']}/{$url}";
+    return create_url(CSiteshop::Instance()->themeUrl . "/{$url}");
+}
+
+/**
+ * Prepend the theme_parent_url, which is the url to the parent theme directory.
+*
+* @param $url string the url-part to prepend.
+* @returns string the absolute url.
+*/
+function theme_parent_url($url) {
+    return create_url(CSiteshop::Instance()->themeParentUrl . "/{$url}"); 
 }
 
 
@@ -201,10 +280,21 @@ function render_views($region='default') {
 }
 
 /**
-* Check if region has views. Accepts variable amount of arguments as regions.
-*
-* @param $region string the region to draw the content in.
-*/
-function region_has_content($region='default' /*...*/) {
+ * Check if region has views. Accepts variable amount of arguments as regions.
+ *
+ * @param $region string the region to draw the content in.
+ */
+function region_has_content($region = 'default' /* ... */) {
     return CSiteshop::Instance()->views->RegionHasView(func_get_args());
 }
+
+/**
+ * Create menu.
+ *
+ * @param array $menu array with details to generate menu.
+ * @return string with formatted HTML for menu.
+ */
+function create_menu($menu) {
+  return CLydia::Instance()->CreateMenu($menu);
+}
+

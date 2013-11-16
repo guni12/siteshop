@@ -185,3 +185,34 @@ function formatDateTimeDiff($start, $startTimeZone=null, $end=null, $endTimeZone
   // Prepend 'since ' or whatever you like
   return $interval->format($format);
 }
+
+/**
+ * i18n, internationalization, send all strings though this function to enable i18n.
+ * Inspired by Drupal´s t()-function.
+ *
+ * @param string $str the string to check up for translation.
+ * @param array $args associative array with arguments to be replaced in the $str.
+ *   - !variable: Inserted as is. Use this for text that has already been
+ *     sanitized.
+ *   - @variable: Escaped to HTML using htmlEnt(). Use this for anything
+ *     displayed on a page on the site.
+ * @return string the translated string.
+ */
+function t($str, $args = array()) {
+  if(CSiteshop::Instance()->config['i18n']) {  
+   $str = gettext($str);
+  }
+
+  // santitize and replace arguments
+  if(!empty($args)) {
+    foreach($args as $key => $val) {
+      switch($key[0]) {
+        case '@': $args[$key] = htmlEnt($val); break;
+        case '!': 
+        default: /* pass through */ break;
+      }
+    }
+    return strtr($str, $args);
+  }
+  return $str;
+}

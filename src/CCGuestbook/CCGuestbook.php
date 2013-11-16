@@ -2,7 +2,7 @@
 /**
  * A guestbook controller as an example to show off some basic controller and model-stuff.
  * 
- * @package LydiaCore
+ * @package SiteshopCore
  */
 class CCGuestbook extends CObject implements IController {
 
@@ -24,17 +24,12 @@ class CCGuestbook extends CObject implements IController {
    */
 public function Index() {
     $this->views->SetTitle('Siteshop Guestbook Example');
-    if ($this->config['theme']['name']==='bootwitter'){
-        $this->views->AddInclude(__DIR__ . '/bootwitter.tpl.php', array(
-        'entries'=>$this->guestbookModel->ReadAll(), 
-        'form_action'=>$this->request->CreateUrl('', 'handler')));
-    } else {
-        
+    
         $this->views->AddInclude(__DIR__ . '/index.tpl.php', array(
         'entries'=>$this->guestbookModel->ReadAll(), 
         'form_action'=>$this->request->CreateUrl('', 'handler')
     ));
-  }
+
 }
   
 

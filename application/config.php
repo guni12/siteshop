@@ -16,9 +16,11 @@ ini_set('display_errors', 1);
  */
 $ss->config['debug']['siteshop'] = false;
 $ss->config['debug']['session'] = false;
-$ss->config['debug']['timer'] = true;
-$ss->config['debug']['db-num-queries'] = true;
-$ss->config['debug']['db-queries'] = true;
+$ss->config['debug']['timer'] = false;
+$ss->config['debug']['db-num-queries'] = false;
+$ss->config['debug']['db-queries'] = false;
+$ss->config['debug']['memory'] = false;
+$ss->config['debug']['timestamp'] = true;
 
 
 /**
@@ -60,8 +62,7 @@ $ss->config['create_new_users'] = true;
  */
 $ss->config['session_name'] = preg_replace('/[:\.\/-_]/', '', __DIR__);
 $ss->config['session_key']  = 'siteshop';
-
-
+    
 /**
  * Define server timezone
  */
@@ -76,8 +77,13 @@ $ss->config['character_encoding'] = 'UTF-8';
 
 /**
  * Define language
+ *
+ * langugage: the language of the webpage and locale, settings for i18n, 
+ *            internationalization supporting multilanguage.
+ * i18n: enable internationalization through gettext.
  */
 $ss->config['language'] = 'en';
+$ss->config['i18n'] = function_exists('gettext');
 
 
 /**
@@ -90,90 +96,111 @@ $ss->config['language'] = 'en';
  * which is called in the frontcontroller phase from index.php.
  */
 $ss->config['controllers'] = array(
-  'index'     => array('enabled' => true,'class' => 'CCIndex'),
-  'developer' => array('enabled' => true,'class' => 'CCDeveloper'),
-  'guestbook' => array('enabled' => true,'class' => 'CCGuestbook'),
-  'theme'     => array('enabled' => true, 'class' => 'CCTheme'),
-  'content'   => array('enabled' => true,'class' => 'CCContent'),
-  'blog'      => array('enabled' => true,'class' => 'CCBlog'),
-  'page'      => array('enabled' => true,'class' => 'CCPage'),
-  'user'      => array('enabled' => true,'class' => 'CCUser'),
-  'acp'       => array('enabled' => true,'class' => 'CCAdminControlPanel'),
+    'acp'       => array('enabled' => true,'class' => 'CCAdminControlPanel'),
+    'blog'      => array('enabled' => true,'class' => 'CCBlog'),
+    'content'   => array('enabled' => true,'class' => 'CCContent'),
+    'developer' => array('enabled' => true,'class' => 'CCDeveloper'),
+    'guestbook' => array('enabled' => true,'class' => 'CCGuestbook'),
+    'index'     => array('enabled' => true,'class' => 'CCIndex'),
+    'modules'   => array('enabled' => true, 'class' => 'CCModules'),
+    'my'        => array('enabled' => true,'class' => 'CCMycontroller'),   
+    'page'      => array('enabled' => true,'class' => 'CCPage'),
+    'theme'     => array('enabled' => true, 'class' => 'CCTheme'),
+    'user'      => array('enabled' => true,'class' => 'CCUser'),  
 );
 
 /**
-* Settings for the theme.
+* Define a routing table for urls.
+*
+* Route custom urls to a defined controller/method/arguments
+*/
+$ss->config['routing'] = array(
+    'home' => array('enabled' => true, 'url' => 'index/index'),
+);
+    
+    
 
-$ss->config['theme'] = array(
-'name'        => 'core',        // The name of the theme in the theme directory
-'stylesheet'  => 'style.php',   // Main stylesheet to include in template files
-'template_file'   => 'index.tpl.php',   // Default template file, else use default.tpl.php
-// A list of valid theme regions
-'regions' => array('flash','featured-first','featured-middle','featured-last',
-'primary','sidebar','triptych-first','triptych-middle','triptych-last',
-'footer-column-one','footer-column-two','footer-column-three','footer-column-four',
-'footer',
-),
-// Add static entries for use in the template file.
-'data' => array(
-'header' => 'Siteshop',
-'slogan' => 'A PHP-based MVC-inspired CMF',
-'favicon' => 'icopig.ico',
-'logo' => 'pig.jpg',
-'logo_width'  => 98,
-'logo_height' => 98,
-'footer' => '<p>Lydia &copy; by Mikael Roos (mos@dbwebb.se)</p>',
-),
+  /**
+ * Define menus.
+ *
+ * Create hardcoded menus and map them to a theme region through $ss->config['theme'].
+ */
+$ss->config['menus'] = array(
+    'navbar' => array(
+        'home' => array('label' => 'Home', 'url' => 'home'),
+        'modules' => array('label' => 'Modules', 'url' => 'modules'),
+        'content' => array('label' => 'Content', 'url' => 'content'),
+    ),
+    'my-navbar' => array(
+        'home' => array('label' => 'About Me', 'url' => 'my'),
+        'blog' => array('label' => 'My blog', 'url' => 'my/blog'),
+        'guestbook' => array('label' => 'Guestbook', 'url' => 'my/guestbook'),
+    ),
+    'login' => array(
+        'id' => 'login-menu',
+        'class' => '',
+        'items' => array(
+            'login' => array('label' => 'login', 'url' => 'user/login', 'title' => 'Login'),
+            'logout' => array('label' => 'logout', 'url' => 'user/logout', 'title' => 'Logout'),
+            'ucp' => array('label' => 'ucp', 'url' => 'user', 'title' => 'User control panel'),
+            'acp' => array('label' => 'acp', 'url' => 'acp', 'title' => 'Admin control panel'),
+        ),
+    ),
+    'navbar-ucp' => array(
+    'id'    => 'navbar-ucp',
+    'class' => 'nb-tab',
+    'items' => array(
+      'overview'  => array('label'=>t('Overview'),  'url'=>'user/overview'),
+      'profile'   => array('label'=>t('Profile'),   'url'=>'user/profile'),
+      'mail'      => array('label'=>t('Groups'),    'url'=>'user/groups'),
+      'groups'    => array('label'=>t('Mail'),      'url'=>'user/email'),
+      'password'  => array('label'=>t('Password'),  'url'=>'user/change-password'),
+    ),
+        ),
 );
-*/
-/**
-* Settings for the theme.
 
-$ss->config['theme'] = array(
-'name'        => 'grid',        // The name of the theme in the theme directory
-'stylesheet'  => 'style.php',   // Main stylesheet to include in template files
-'template_file'   => 'index.tpl.php',   // Default template file, else use default.tpl.php
-// A list of valid theme regions
-'regions' => array('flash','featured-first','featured-middle','featured-last',
-'primary','sidebar','triptych-first','triptych-middle','triptych-last',
-'footer-column-one','footer-column-two','footer-column-three','footer-column-four',
-'footer',
-),
-// Add static entries for use in the template file.
-'data' => array(
-'header' => 'Siteshop',
-'slogan' => 'A PHP-based MVC-inspired CMF',
-'favicon' => 'icopig.ico',
-'logo' => 'pig.jpg',
-'logo_width'  => 98,
-'logo_height' => 98,
-'footer' => '<p>Lydia &copy; by Mikael Roos (mos@dbwebb.se)</p>',
-),
-);
-*/
 /**
-* Settings for the theme.
-*/
+ * Settings for the theme. The theme may have a parent theme.
+ *
+ * When a parent theme is used the parent's functions.php will be included before the current
+ * theme's functions.php. The parent stylesheet can be included in the current stylesheet
+ * by an @import clause. See application/themes/mytheme for an example of a child/parent theme.
+ * Template files can reside in the parent or current theme, the CSiteshop::ThemeEngineRender()
+ * looks for the template-file in the current theme first, then it looks in the parent theme.
+ *
+ * There are two useful theme helpers defined in themes/functions.php.
+ *  theme_url($url): Prepends the current theme url to $url to make an absolute url.
+ *  theme_parent_url($url): Prepends the parent theme url to $url to make an absolute url.
+ *
+ * path: Path to current theme, relativly SITESHOP_INSTALL_PATH, for example themes/grid or site/themes/mytheme.
+ * parent: Path to parent theme, same structure as 'path'. Can be left out or set to null.
+ * stylesheet: The stylesheet to include, always part of the current theme, use @import to include the parent stylesheet.
+ * template_file: Set the default template file, defaults to default.tpl.php.
+ * regions: Array with all regions that the theme supports.
+ * data: Array with data that is made available to the template file as variables.
+ *
+ * The name of the stylesheet is also appended to the data-array, as 'stylesheet' and made
+ * available to the template files.
+ */
 $ss->config['theme'] = array(
-'name'        => 'bootwitter',        // The name of the theme in the theme directory
-'stylesheet'  => 'bootstrap/css/',              // Main stylesheet to include in template files
-'javascript'    => 'bootstrap/js/',
-'template_file'   => 'index.tpl.php',   // Default template file, else use default.tpl.php
-// A list of valid theme regions
-'regions' => array('flash','featured-first','featured-middle','featured-last',
-'primary','sidebar','triptych-first','triptych-middle','triptych-last',
-'footer-column-one','footer-column-two','footer-column-three','footer-column-four',
-'footer',
-),
-// Add static entries for use in the template file.
-'data' => array(
-'header' => 'Siteshop',
-'slogan' => 'A PHP-based MVC-inspired CMF',
-'favicon' => 'icopig.ico',
-'logo' => 'pig.jpg',
-'logo_width'  => 98,
-'logo_height' => 98,
-'footer' => '<p>Lydia &copy; by Mikael Roos (mos@dbwebb.se)</p>',
-),
+    'path' => 'application/themes/mytheme',
+    //'path' => 'themes/grid',
+    'parent' => 'themes/grid',
+    'stylesheet' => 'style.css',
+    'template_file' => 'index.tpl.php',
+    'regions' => array('navbar', 'my-navbar', 'flash', 'featured-first', 'featured-middle', 'featured-last',
+        'primary', 'custom', 'sidebar', 'triptych-first', 'triptych-middle', 'triptych-last',
+        'footer-column-one', 'footer-column-two', 'footer-column-three', 'footer-column-four',
+        'footer',
+    ),
+    'menu_to_region' => array('navbar' => 'navbar', 'my-navbar'=>'my-navbar'),
+    'data' => array(
+        'header' => 'Siteshop',
+        'slogan' => 'A PHP-based MVC-inspired CMF',
+        'favicon' => 'icopig.ico',
+        'logo' => 'pig.jpg',
+        'logo_width' => 88,
+        'logo_height' => 88,
+        'footer' => '<p>Siteshop &copy; by Gunvor Nilsson (student at BTH)</p>',
+    ),
 );
- 

@@ -15,18 +15,18 @@ define('SITESHOP_APPLICATION_PATH', SITESHOP_INSTALL_PATH . '/application');
 
 require(SITESHOP_INSTALL_PATH.'/src/bootstrap.php');
 
-$ss = CSiteshop::Instance();
+$ss = CSiteshop::Instance()->Init();
 
 
 // ---------------------------------------------------------------------------------------
 //
 // PHASE: FRONTCONTROLLER ROUTE
 //
-$ss->FrontControllerRoute();
+CSiteshop::Instance()->FrontControllerRoute();
 
 
 // ---------------------------------------------------------------------------------------
 //
 // PHASE: THEME ENGINE RENDER
 //
-$ss->ThemeEngineRender();
+CSiteshop::Instance()->ThemeEngineRender();

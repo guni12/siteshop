@@ -1,158 +1,571 @@
 <?php
+
 /**
  * Main class for Siteshop, holds everything.
  *
  * @package SiteshopCore
  */
-class CSiteshop implements ISingleton {
+class CSiteshop implements ISingleton /* , IModule */ {
 
-	/**
-	 * Members
-	 */
-	private static $instance = null;
-	public $config = array();
-	public $request;
-	public $data;
-	public $db;
-	public $views;
-	public $session;
-	public $user;
-	public $timer = array();
-	
-	
-	/**
-	 * Constructor
-	 */
-	protected function __construct() {
-		// time page generation
-		$this->timer['first'] = microtime(true); 
+    /**
+     * Members
+     */
+    private static $instance = null;
+    public $config = array();
+    public $request;
+    public $data;
+    public $db;
+    public $views;
+    public $session;
+    public $user;
+    //public $timer = array();// obsolete from Summer 2013 by mos when adding CLog
+    public $log;
 
-		// include the site specific config.php and create a ref to $ss to be used by config.php
-		$ss = &$this;
-                require(SITESHOP_APPLICATION_PATH.'/config.php');
-
-		// Start a named session
-		session_name($this->config['session_name']);
-		session_start();
-		$this->session = new CSession($this->config['session_key']);
-		$this->session->PopulateFromSession();
-		
-		// Set default date/time-zone
-                date_default_timezone_set('UTC');
-		//date_default_timezone_set($this->config['timezone']);
-		
-		// Create a database object.
-		if(isset($this->config['database'][0]['dsn'])) {
-  		$this->db = new CDatabase($this->config['database'][0]['dsn']);
-  	}
-  	
-  	// Create a container for all views and theme data
-  	$this->views = new CViewContainer();
-
-  	// Create a object for the user
-  	$this->user = new CMUser($this);
-  }
-  
-  
-  /**
-	 * Singleton pattern. Get the instance of the latest created object or create a new one. 
-	 * @return CLydia The instance of this class.
-	 */
-	public static function Instance() {
-		if(self::$instance == null) {
-			self::$instance = new CSiteshop();
-		}
-		return self::$instance;
-	}
-	
-
-	/**
-	 * Frontcontroller, check url and route to controllers.
-	 */
-  public function FrontControllerRoute() {
-    // Take current url and divide it in controller, method and parameters
-    $this->request = new CRequest($this->config['url_type']);
-    $this->request->Init($this->config['base_url']);
-    $controller = $this->request->controller;
-    $method     = $this->request->method;
-    $arguments  = $this->request->arguments;
-    
-    // Is the controller enabled in config.php?
-    $controllerExists 	= isset($this->config['controllers'][$controller]);
-    $controllerEnabled 	= false;
-    $className			    = false;
-    $classExists 		    = false;
-
-    if($controllerExists) {
-      $controllerEnabled 	= ($this->config['controllers'][$controller]['enabled'] == true);
-      $className			= $this->config['controllers'][$controller]['class'];
-      $classExists 		    = class_exists($className);
+    /**
+     * Constructor
+     */
+    protected function __construct() {
+        
     }
-    
-    // Check if controller has a callable method in the controller class, if then call it
-    if($controllerExists && $controllerEnabled && $classExists) {
-      $rc = new ReflectionClass($className);
-      if($rc->implementsInterface('IController')) {
-         $formattedMethod = str_replace(array('_', '-'), '', $method);
-        if($rc->hasMethod($formattedMethod)) {
-          $controllerObj = $rc->newInstance();
-          $methodObj = $rc->getMethod($formattedMethod);
-          if($methodObj->isPublic()) {
-            $methodObj->invokeArgs($controllerObj, $arguments);
-          } else {
-            die("404. " . get_class() . ' error: Controller method not public.');          
+
+    /**
+     * Init the class, can not do init in constructor since the class itself is used during Init-process.
+     */
+    public function Init() {
+        // time page generation
+        //$this->timer['first'] = microtime(true);
+        $this->log = new CLog();
+        $this->log->Timestamp(__CLASS__, __METHOD__, 'Init Siteshop');
+        //echo $this->log->MemoryPeak();
+        // include the site specific config.php and create a ref to $ss to be used by config.php
+        $ss = &$this;
+        require(SITESHOP_APPLICATION_PATH . '/config.php');
+
+        // Setup i18n, internationalization and multi-language support
+        $this->SetLocale();
+
+        // Start a named session
+        session_name($this->config['session_name']);
+        session_start();
+        $this->session = new CSession($this->config['session_key']);
+        $this->session->PopulateFromSession();
+
+        // Set default date/time-zone
+        date_default_timezone_set('UTC');
+        //date_default_timezone_set($this->config['timezone']);
+        // Create a database object.
+        /*
+          if(isset($this->config['database'][0]['dsn'])) {
+          try {
+          $this->db = new CDatabase($this->config['database'][0]['dsn']);
           }
-        } else {
-          die("404. " . get_class() . ' error: Controller does not contain method.');
+          catch(Exception $e) {
+          if(!$this->config['controllers']['install']['enabled']) {
+          throw $e;
+          }
+          }
+          } */
+        // Create a database object.
+        if (isset($this->config['database'][0]['dsn'])) {
+            $this->db = new CDatabase($this->config['database'][0]['dsn']);
         }
-      } else {
-        die('404. ' . get_class() . ' error: Controller does not implement interface IController.');
+
+        // Create a container for all views and theme data
+        $this->views = new CViewContainer();
+
+        // Create a object for the user
+        $this->user = new CMUser($this);
+
+        return $this;
+    }
+
+    /**
+     * Singleton pattern. Get the instance of the latest created object or create a new one. 
+     * @return CSiteshop The instance of this class.
+     */
+    public static function Instance() {
+        if (self::$instance == null) {
+            self::$instance = new CSiteshop();
+        }
+        return self::$instance;
+    }
+
+    /**
+     * Set up i18n.
+     * 
+     * @return CSiteshop The instance of this class.
+     */
+    public function SetLocale() {
+        // Setup i18n, internationalization and multi-language support
+        @putenv('LC_ALL=' . $this->config['language']); // Will not work in safe_mode, ignore warning.
+        setlocale(LC_ALL, $this->config['language']);
+        if ($this->config['i18n']) {
+            bindtextdomain('siteshop', SITESHOP_INSTALL_PATH . '/language');
+            bind_textdomain_codeset('siteshop', 'UTF-8');
+            textdomain('siteshop');
+        }
+    }
+
+    /**
+     * Implementing interface IModule. Manage install/update/deinstall and equal actions.
+     */
+    /* public function Manage($action=null) {
+      switch($action) {
+      case 'preinstall':
+      // Check gettext
+      // Check safe_mode (putenv)
+      // Check pdo & sqlite
+      // Disable magic quotes
+      // check memory limit
+      // check writable data-directory
+      break;
+
+      case 'install':
+      break;
+
+      default:
+      throw new Exception('Unsupported action for this module.');
+      break;
       }
-    } 
-    else { 
-      die('404. Page is not found.');
+      } */
+
+    /**
+     * Frontcontroller, check url and route to controllers.
+     */
+    public function FrontControllerRoute() {
+        $this->log->Timestamp(__CLASS__, __METHOD__, 'Frontcontroller phase starts');
+
+        // Take current url and divide it in controller, method and parameters
+        $this->request = new CRequest(isset($this->config['url_type']) ? $this->config['url_type'] : null);
+        $this->request->Init($this->config['base_url'], $this->config['routing']);
+        $controller = $this->request->controller;
+        $method = $this->request->method;
+        $arguments = $this->request->arguments;
+
+        // Is the controller enabled in config.php?
+        $controllerExists = isset($this->config['controllers'][$controller]);
+        $controllerEnabled = $controllerExists ? $this->config['controllers'][$controller]['enabled'] : false;
+        $className = $controllerExists ? $this->config['controllers'][$controller]['class'] : false;
+        $classExists = $controllerExists ? class_exists($className) : false;
+
+        if ($controllerExists) {
+            $controllerEnabled = ($this->config['controllers'][$controller]['enabled'] == true);
+            $className = $this->config['controllers'][$controller]['class'];
+            $classExists = class_exists($className);
+        }
+
+        // Check if controller has a callable method in the controller class, if then call it
+        if ($controllerExists && $controllerEnabled && $classExists) {
+            $rc = new ReflectionClass($className);
+            if ($rc->implementsInterface('IController')) {
+                $formattedMethod = str_replace(array('_', '-'), '', $method);
+                if ($rc->hasMethod($formattedMethod)) {
+                    $controllerObj = $rc->newInstance();
+                    $methodObj = $rc->getMethod($formattedMethod);
+                    if ($methodObj->isPublic()) {
+                        $this->log->Timestamp(__CLASS__, __METHOD__, 'To Controller');
+                        $methodObj->invokeArgs($controllerObj, $arguments);
+                    } else {
+                        $this->ShowErrorPage(404, 'Controller method not public.');
+                    }
+                } else if ($rc->hasMethod('CatchAll')) {
+                    $controllerObj = $rc->newInstance();
+                    $methodObj = $rc->getMethod('CatchAll');
+                    if ($methodObj->isPublic()) {
+                        $this->log->Timestamp(__CLASS__, __METHOD__, 'To Controller CatchAll');
+                        $methodObj->invokeArgs($controllerObj, array_merge(array($method), $arguments));
+                    } else {
+                        $this->ShowErrorPage(404, 'Controller default method not public.');
+                    }
+                } else {
+                    $this->ShowErrorPage(404, 'Controller does not contain method nor implements a default method.');
+                }
+            } else {
+                $this->ShowErrorPage(404, 'Controller does not implement interface IController.');
+            }
+        }
+        // Use content associated url to load page
+        else if ($this->config['pageloader'] && CPageLoader::UrlHasContent($this->request->request)) {
+            $this->log->Timestamp(__CLASS__, __METHOD__, 'To Controller PageLoader');
+            CPageLoader::Factory($this->config['pageloader_class'])->DisplayContentByUrl($this->request->request);
+        } else {
+            $this->ShowErrorPage(404, t('Page is not found.'));
+        }
     }
-  }
-  
-  
-	/**
-	 * ThemeEngineRender, renders the reply of the request to HTML or whatever.
+    
+    	/**
+	 * Display a custom error page.
+   *
+	 * @param $code integer the code, for example 403 or 404.
+	 * @param $message string a message to be displayed on the page.
 	 */
-  public function ThemeEngineRender() {
-    // Save to session before output anything
-    $this->session->StoreInSession();
-  
-    // Is theme enabled?
-    if(!isset($this->config['theme'])) {
-      return;
-    }
-
-    if(isset($this->config['theme']['data'])) {
-        extract($this->config['theme']['data']);
-    }
+	public function ShowErrorPage($code, $message=null) {
+	  $errors = array(
+	    '403' => array('header' => 'HTTP/1.0 403 Restricted Content', 'title' => t('403, restricted content')),
+	    '404' => array('header' => 'HTTP/1.0 404 Not Found', 'title' => t('404, page not found')),
+	  );	  
+	  if(!array_key_exists($code, $errors)) { throw new Exception(t('Header code is not valid.')); }
     
-    // Get the paths and settings for the theme
-    $themeName 	= $this->config['theme']['name'];
-	//echo $themeName;// core
-    $themePath 	= SITESHOP_INSTALL_PATH . "/themes/{$themeName}";
-    $themeUrl	= $this->request->base_url . "themes/{$themeName}";
-    
-    // Add stylesheet path to the $ss->data array
-    //$this->data['stylesheet'] = "{$themeUrl}/style.css";
-    $this->data['stylesheet'] = "{$themeUrl}/".$this->config['theme']['stylesheet'];
+    $this->views->SetTitle($errors[$code]['title'])
+                //->AddIncludeToRegion('primary', $this->LoadView(null, "{$code}.tpl.php"), array('message'=>$message))
+                //->AddIncludeToRegion('sidebar', $this->LoadView(null, "{$code}_sidebar.tpl.php"), array('message'=>$message));
+                ->AddIncludeToRegion('primary', (__DIR__ . '/' . "{$code}.tpl.php"), array('message'=>$message))
+                ->AddIncludeToRegion('sidebar', (__DIR__ . '/' . "{$code}_sidebar.tpl.php"), array('message'=>$message));
 
-    // Include the global functions.php and the functions.php that are part of the theme
-    $ss = &$this;
-    include(SITESHOP_INSTALL_PATH . '/themes/functions.php');
-    $functionsPath = "{$themePath}/functions.php";
-    if(is_file($functionsPath)) {
-      include $functionsPath;
-    }
-
-    // Extract $ss->data to own variables and handover to the template file
-    extract($this->data);	
-    extract($this->views->GetData());  
-    $templateFile = (isset($this->config['theme']['template_file'])) ? $this->config['theme']['template_file'] : 'default.tpl.php';
-    include("{$themePath}/{$templateFile}");
+                $this->log->Timestamp(__CLASS__, __METHOD__); 
+    header($errors[$code]['header']);
+    $this->ThemeEngineRender();
+    exit();
   }
+
+    /**
+     * ThemeEngineRender, renders the reply of the request to HTML or whatever.
+     */
+    public function ThemeEngineRender() {
+        $this->log->Timestamp(__CLASS__, __METHOD__, 'Theme rendering phase starts');
+
+        // Save to session before output anything
+        $this->session->StoreInSession();
+
+        // Is theme enabled?
+        if (!isset($this->config['theme'])) { {
+                throw new Exception(t('Theme not enabled.'));
+            }
+        }
+
+        // Get the paths and settings for the theme, look in the application dir first
+        $themePath = SITESHOP_INSTALL_PATH . '/' . $this->config['theme']['path'];
+        $themeUrl = $this->request->base_url . $this->config['theme']['path'];
+
+        // Is there a parent theme?
+        $parentPath = null;
+        $parentUrl = null;
+        if (isset($this->config['theme']['parent'])) {
+            $parentPath = SITESHOP_INSTALL_PATH . '/' . $this->config['theme']['parent'];
+            $parentUrl = $this->request->base_url . $this->config['theme']['parent'];
+        }
+
+        // Add stylesheet name to the $ss->data array
+        $this->data['stylesheet'] = $this->config['theme']['stylesheet'];
+
+        // Make the theme urls available as part of $ss
+        $this->themeUrl = $themeUrl;
+        $this->themeParentUrl = $parentUrl;
+
+        // Map menu to region if defined
+        if (is_array($this->config['theme']['menu_to_region'])) {
+            foreach ($this->config['theme']['menu_to_region'] as $key => $val) {
+                $this->views->AddString($this->DrawMenu($key), null, $val);
+                //$this->views->AddString($this->CreateMenu($key), null, $val);
+            }
+        }
+
+        // Include the global functions.php and the functions.php that are part of the theme
+        $ss = &$this;
+        // First the default Siteshop themes/functions.php
+        include(SITESHOP_INSTALL_PATH . '/themes/functions.php');
+        // Then the functions.php from the parent theme
+        if ($parentPath) {
+            if (is_file("{$parentPath}/functions.php")) {
+                include "{$parentPath}/functions.php";
+            }
+        }
+        // And last the current theme functions.php
+        if (is_file("{$themePath}/functions.php")) {
+            include "{$themePath}/functions.php";
+        }
+
+        // Extract $ss->data to own variables and handover to the template file
+        extract($this->data);  // OBSOLETE, use $this->views->GetData() to set variables
+        extract($this->views->GetData());
+        if (isset($this->config['theme']['data'])) {
+            extract($this->config['theme']['data']);
+        }
+
+        // Execute the template file
+        $this->log->Timestamp(__CLASS__, __METHOD__, 'Including template file');
+        $templateFile = (isset($this->config['theme']['template_file'])) ? $this->config['theme']['template_file'] : 'default.tpl.php';
+        if (is_file("{$themePath}/{$templateFile}")) {
+            include("{$themePath}/{$templateFile}");
+        } else if (is_file("{$parentPath}/{$templateFile}")) {
+            include("{$parentPath}/{$templateFile}");
+        } else {
+            throw new Exception('No such template file.');
+        }
+    }
+
+    /**
+     * Redirect to another url and store the session
+     * 
+     * @param $url string the relative url or the controller
+     * @param $method string the method to use, $url is then the controller or empty for current controller
+     * @param $arguments string the extra arguments to send to the method
+     */
+    public function RedirectTo($urlOrController = null, $method = null, $arguments = null) {
+        if (isset($this->config['debug']['db-num-queries']) && $this->config['debug']['db-num-queries'] && isset($this->db)) {
+            $this->session->SetFlash('database_numQueries', $this->db->GetNumQueries());
+        }
+        if (isset($this->config['debug']['db-queries']) && $this->config['debug']['db-queries'] && isset($this->db)) {
+            $this->session->SetFlash('database_queries', $this->db->GetQueries());
+        }
+        if (isset($this->config['debug']['memory']) && $this->config['debug']['memory']) {
+            $this->session->SetFlash('memory', memory_get_peak_usage(true));
+        }
+        if (isset($this->config['debug']['timer']) && $this->config['debug']['timer']) {
+            $this->session->SetFlash('timer', $ss->timer);
+        }
+        $this->session->StoreInSession();
+        header('Location: ' . $this->request->CreateUrl($urlOrController, $method, $arguments));
+        exit;
+    }
+
+    /**
+     * Redirect to the current url. Uses RedirectTo().
+     *
+     */
+    public function RedirectToCurrent() {
+        $this->RedirectTo($this->request->controller, $this->request->method, $this->request->arguments);
+    }
+
+    /**
+     * Redirect to a method within the current controller. Defaults to index-method. Uses RedirectTo().
+     *
+     * @param string method name the method, default is index method.
+     * @param $arguments string the extra arguments to send to the method
+     */
+    public function RedirectToController($method = null, $arguments = null) {
+        $this->RedirectTo($this->request->controller, $method, $arguments);
+    }
+
+    /**
+     * Redirect to a controller and method. Uses RedirectTo().
+     *
+     * @param string controller name the controller or null for current controller.
+     * @param string method name the method, default is current method.
+     * @param $arguments string the extra arguments to send to the method
+     */
+    public function RedirectToControllerMethod($controller = null, $method = null, $arguments = null) {
+        $controller = is_null($controller) ? $this->request->controller : null;
+        $method = is_null($method) ? $this->request->method : null;
+        $this->RedirectTo($this->request->CreateUrl($controller, $method, $arguments));
+    }
+
+    /**
+     * Redirect to current controller and method. Uses RedirectTo().
+     *
+     * @param $arguments string the extra arguments to send to the method
+     */
+    public function RedirectToCurrentControllerMethod($arguments = null) {
+        $this->RedirectTo($this->request->CreateUrl($this->request->controller, $this->request->method, $arguments));
+    }
+
+    /**
+     * Save a message in the session. Uses $this->session->AddMessage()
+     *
+     * @param $type string the type of message, for example: notice, info, success, warning, error.
+     * @param $message string the message.
+     * @param $alternative string the message if the $type is set to false, defaults to null.
+     */
+    public function AddMessage($type, $message, $alternative = null) {
+        if ($type === false) {
+            $type = 'error';
+            $message = $alternative;
+        } else if ($type === true) {
+            $type = 'success';
+        }
+        $this->session->AddMessage($type, $message);
+    }
+
+    /**
+     * Create an url. Uses $this->request->CreateUrl()
+     *
+     * @param $urlOrController string the relative url or the controller
+     * @param $method string the method to use, $url is then the controller or empty for current
+     * @param $arguments string the extra arguments to send to the method
+     */
+    public function CreateUrl($urlOrController = null, $method = null, $arguments = null) {
+        return $this->request->CreateUrl($urlOrController, $method, $arguments);
+    }
+
+    /**
+     * Create a clean url, wrapper and shorter method for $this->request->CreateCleanUrl()
+     *
+     * @param $urlOrController string the relative url or the controller
+     * @param $method string the method to use, $url is then the controller or empty for current
+     * @param $arguments string the extra arguments to send to the method
+     * @return string as the url.
+     */
+    public function CreateCleanUrl($urlOrController = null, $method = null, $arguments = null) {
+        return $this->request->CreateCleanUrl($urlOrController, $method, $arguments);
+    }
+
+    /**
+     * Create an url to current controller, wrapper for CreateUrl().
+     *
+     * @param $method string the method to use, $url is then the controller or empty for current
+     * @param $arguments string the extra arguments to send to the method
+     * @return string as the url.
+     */
+    public function CreateUrlToController($method = null, $arguments = null) {
+        return $this->request->CreateUrl($this->request->controller, $method, $arguments);
+    }
+
+    /**
+     * Create an url to current controller and current method, wrapper for CreateUrl().
+     *
+     * @param $arguments string the extra arguments to send to the method
+     * @return string as the url.
+     */
+    public function CreateUrlToControllerMethod($arguments = null) {
+        return $this->request->CreateUrl($this->request->controller, $this->request->method, $arguments);
+    }
+
+    /**
+     * Create an url to current controller, method with existing arguments, wrapper for CreateUrl().
+     *
+     * @return string as the url.
+     */
+    public function CreateUrlToControllerMethodArguments() {
+        return $this->request->CreateUrl($this->request->controller, $this->request->method, $this->request->arguments);
+    }
+
+    /**
+     * Draw HTML for a menu defined in $ss->config['menus'].
+     *
+     * @param $menu string then key to the menu in the config-array.
+     * @returns string with the HTML representing the menu.
+     */
+    public function DrawMenu($menu) {
+        $items = null;
+        if (isset($this->config['menus'][$menu])) {
+            foreach ($this->config['menus'][$menu] as $val) {
+                $selected = null;
+                if ($val['url'] == $this->request->request || $val['url'] == $this->request->routed_from) {
+                    $selected = " class='selected'";
+                }
+                $items .= "<li><a {$selected} href='" . $this->CreateUrl($val['url']) . "'>{$val['label']}</a></li>\n";
+            }
+        } else {
+            throw new Exception('No such menu.');
+        }
+        return "<ul class='menu {$menu}'>\n{$items}</ul>\n";
+    }
+
+    /**
+     * Create a menu from an array or use a predefined array from $ss->config['menus'].
+     * 'items' => array(
+     *    array('label'=>'visible label', 'url'=>'url/to', 'title'=> 'display when hovering'),
+     * );
+     *
+     * @param  array $options array with details from which the menu is constructed.
+     * @return string with the HTML representing the menu.
+     *
+     */
+    public function CreateMenu($options) {
+        $default = array(
+            'id' => null,
+            'class' => null,
+            'items' => array(),
+        );
+
+        // If not an array, check if the menu is predefined in config.
+        if (!is_array($options) && isset($this->config['menus'][$options])) {
+            $options = $this->config['menus'][$options];
+        }
+        $options = array_merge($default, $options);
+
+        // Walkthrough all items
+        $items = null;
+        foreach ($options['items'] as $val) {
+            $selected = null;
+
+            // Has submenu?
+            $submenu = null;
+            if (isset($val['items'])) {
+                $subitems = null;
+
+                foreach ($val['items'] as $subitem) {
+                    $subSelected = null;
+
+                    // Current item selected?
+                    if (in_array($subitem['url'], array($this->request->request, $this->request->routed_from)) ||
+                            substr_compare($subitem['url'], $this->request->controller, 0) == 0 ||
+                            strncmp($this->request->routed_from, $subitem['url'], strlen($subitem['url'])) == 0) {
+                        $subSelected = " class='selected'";
+                        $selected = " class='selected'";
+                    }
+
+                    $title = isset($subitem['title']) ? " title='{$subitem['title']}'" : null;
+                    $link = "<a{$title} href='" . $this->CreateUrl($subitem['url']) . "'>{$subitem['label']}</a>";
+                    $subitems .= "<li{$subSelected}>{$link}</li>\n";
+                }
+
+                $submenu = "<ul>\n{$subitems}</ul>\n";
+            }
+
+            // Current item selected?
+            if (!empty($val['url'])) {
+                if ($selected ||
+                        in_array($val['url'], array($this->request->request, $this->request->routed_from)) ||
+                        substr_compare($val['url'], $this->request->controller, 0) == 0 ||
+                        strncmp($this->request->routed_from, $val['url'], strlen($val['url'])) == 0) {
+                    $selected = " class='selected'";
+                }
+            }
+
+            $title = isset($val['title']) ? " title='{$val['title']}'" : null;
+            $link = "<a{$title} href='" . $this->CreateUrl($val['url']) . "'>{$val['label']}</a>";
+            $items .= "<li{$selected}>{$link}{$submenu}</li>\n";
+        }
+
+        $id = isset($options['id']) ? " id='{$options['id']}'" : null;
+        $class = isset($options['class']) ? " class='{$options['class']}'" : null;
+        return "<ul{$id}{$class}>\n{$items}</ul>\n";
+    }
+
+    /**
+     * Create a breadcrumb from an array.
+     *
+     * @param array $items to use in breadcrumb.
+     * @param string $separator to use as separator.
+     * @param array $options to use when creating the breadcrumb.
+     * @return string with the HTML representing the breadcrumb.
+     */
+    public function CreateBreadcrumb($items = array(), $separator = '&raquo;', $options = array()) {
+        $default = array(
+            'items' => $items,
+            'separator' => $separator,
+        );
+        $options = array_merge($default, $options);
+        $crumbs = null;
+        foreach ($options['items'] as $item) {
+            if (isset($item['url'])) {
+                $crumbs .= "<li><a href='" . $this->CreateUrl($item['url']) . "'>{$item['label']}</a> {$options['separator']}</li>\n";
+            } else {
+                $crumbs .= "<li>{$item['label']}</li>\n";
+            }
+        }
+        return "<ul class='breadcrumb'>\n{$crumbs}</ul>\n";
+    }
+    
+    /**
+   * Load a view, looks for the file in SITESHOP_SITE_PATH/views/$module and then in 
+   * SITESHOP_INSTALL_PATH/views/$module.
+   *
+   * @param string $module name of the module owning the view.
+   * @param string $view filename of the view.
+   * @param boolean $original set to true to override the site-version of the view, default is false.
+   * @return string with the absolute filename or false if no filename exists.
+   */
+  public function LoadView($module, $view, $original=false) {
+    $path1 = SITESHOP_APPLICATION_PATH . "/views/$module/$view";
+    $path2 = SITESHOP_INSTALL_PATH . "/views/$module/$view";
+    if(!$original && is_file($path1)) {
+      return $path1;
+    } else if(is_file($path2)) {
+      return $path2;
+    }
+    return false;
+  }
+
 }

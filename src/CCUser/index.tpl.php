@@ -1,6 +1,5 @@
+<?php include($header); ?>
 <h1>User Controller Index</h1>
-<p>One controller to manage the user actions, mainly login, logout, view and edit profile. Use the menu in 
-the upper right corner to interact with these controller.</p>
-<ul class='unstyled'>
-  <li><a href='<?=create_url('user/init')?>'>Init database, create tables and create default admin user</a>
-</ul>
+<p><?=t('Hi ')?><?=$user['name']?>.</p>
+<p>Check the menu in the upper right corner to logout or to admin if you are authorised.</p>
+

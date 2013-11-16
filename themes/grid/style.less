@@ -2,6 +2,31 @@
     * Description: Grid theme for Lydia based on less, lessphp and semantic.gs.
     */
 
+ /** --------------------------------------------------------------
+    * Reset. http://meyerweb.com/eric/tools/css/reset/ v2.0 | 20110126
+    *
+    */
+    html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,
+    a,abbr,acronym,address,big,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,
+    small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,
+    table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,embed,
+    figure,figcaption,footer,header,hgroup,menu,nav,output,ruby,section,summary,
+    time,mark,audio,video{margin:0;padding:0;border:0;font-size:100.01%;font:inherit;vertical-align:baseline;}
+    body{line-height:1;}
+    ol,ul{list-style: none;}
+    blockquote,q{quotes:none;}
+    blockquote:before,blockquote:after,q:before,q:after{content:'';content:none;}
+    table{border-collapse:collapse;border-spacing:0;}
+
+    /** --------------------------------------------------------------
+    * HTML5 elements.
+    *
+    */
+    article,aside,details,figcaption,figure,footer,header,hgroup,nav,section{display:block;}
+    audio,canvas,video{display:inline-block;*display:inline;*zoom:1;}
+    audio:not([controls]){display:none;}
+    [hidden]{display:none;}
+
     /** --------------------------------------------------------------
     * semantic.gs
     */
@@ -15,20 +40,100 @@
     @bgcolor2: #fff;
     @bgtest: hsla(0,0%,90%,0.5);
     @color: #333;
-    @font: 1em Verdana, Arial, Helvetica, sans-serif;
+    //@font: 1em Verdana, Arial, Helvetica, sans-serif;
 
     /* Wrap elements to site width in grid layout*/
     .wrap() {width:@total-width;margin:0 auto;.clearfix();}
+.alwaysShowScrollbar() {overflow:-moz-scrollbars-vertical;overflow-y:scroll;}
 
-    @magic-number:22px;
+    //@magic-number:22px;
 
+/** --------------------------------------------------------------
+ * Typography.
+ *
+ * http://www.sitepoint.com/eight-definitive-font-stacks/
+ * Times new roman: font-family: Cambria, "Hoefler Text", Utopia, "Liberation Serif", "Nimbus Roman No9 L Regular", Times, "Times New Roman", serif;
+ * Georgia: font-family: Constantia, "Lucida Bright", Lucidabright, "Lucida Serif", Lucida, "DejaVu Serif", "Bitstream Vera Serif", "Liberation Serif", Georgia, serif;
+ * Garamond: font-family: "Palatino Linotype", Palatino, Palladio, "URW Palladio L", "Book Antiqua", Baskerville, "Bookman Old Style", "Bitstream Charter", "Nimbus Roman No9 L", Garamond, "Apple Garamond", "ITC Garamond Narrow", "New Century Schoolbook", "Century Schoolbook", "Century Schoolbook L", Georgia, serif;
+ * Helvetica/Arial: font-family: Frutiger, "Frutiger Linotype", Univers, Calibri, "Gill Sans", "Gill Sans MT", "Myriad Pro", Myriad, "DejaVu Sans Condensed", "Liberation Sans", "Nimbus Sans L", Tahoma, Geneva, "Helvetica Neue", Helvetica, Arial, sans-serif;
+ * Verdana: font-family: Corbel, "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", "DejaVu Sans", "Bitstream Vera Sans", "Liberation Sans", Verdana, "Verdana Ref", sans-serif;
+ * Trebuchet: font-family: "Segoe UI", Candara, "Bitstream Vera Sans", "DejaVu Sans", "Bitstream Vera Sans", "Trebuchet MS", Verdana, "Verdana Ref", sans-serif;
+ * Impact font-family: Impact, Haettenschweiler, "Franklin Gothic Bold", Charcoal, "Helvetica Inserat", "Bitstream Vera Sans Bold", "Arial Black", sans-serif;
+ * monospace: font-family: Consolas, "Andale Mono WT", "Andale Mono", "Lucida Console", "Lucida Sans Typewriter", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Liberation Mono", "Nimbus Mono L", Monaco, "Courier New", Courier, monospace;
+ * smallstack: font:100%/1.4  'Helvetica Neue',Arial,Helvetica,sans-serif;
+ *
+ * cambria: Cambria, Georgia, Times, 'Times New Roman', serif
+ *
+ * 100%/1.375 makes magic 22px;
+ * 100%/1.5 makes magic 24px;
+ */
+/* Base font. The font-size percentage is of 16px. */
+//@font-family-cambria    = Cambria, Georgia, Times, 'Times New Roman', serif;
+//@font-family-monospace  = "Courier New", Courier, monospace;
+//@font-family-helvetica  = Frutiger, "Frutiger Linotype", Univers, Calibri, "Gill Sans", "Gill Sans MT", "Myriad Pro", Myriad, "DejaVu Sans Condensed", "Liberation Sans", "Nimbus Sans L", Tahoma, Geneva, "Helvetica Neue", Helvetica, Arial, sans-serif;
+    @font-family-cambria    = Cambria, Georgia, Times, 'Times New Roman', serif;
+    @font-family-helvetica  = Frutiger, "Frutiger Linotype", Univers, Calibri, "Gill Sans", "Gill Sans MT", "Myriad Pro", Myriad, "DejaVu Sans Condensed", "Liberation Sans", "Nimbus Sans L", Tahoma, Geneva, "Helvetica Neue", Helvetica, Arial, sans-serif;
+    @font-family-monospace  = "Consolas", "Bitstream Vera Sans Mono", "Courier New", Courier, monospace;
+@magic-number: 22px; /* 16px - 100%/1.375 */
+@link-color: #600;
 
-    /** --------------------------------------------------------------
-    * Typography
-    */
-    h1{border-bottom:3px double #ccc;padding-bottom:4px;}
-    h2{border-bottom:1px solid #ccc;padding-bottom:4px;}
+body{color:#222;font:100.01%/1.375 @font-family-helvetica;}
 
+/* Headings */
+/* 2.75em * 16px = 44 => line-height: 1*/
+/* 2.375em * 16px = 38 => line-height: 44/38 = 1.1579*/
+/* 2.25em * 16px = 36 => line-height: 44/36 = 1.2222*/
+/* 2em * 16px = 32 => line-height: 44/32 = 1.375*/
+/* 1.875em * 16px = 30 => line-height: 44/30 = 1.4667*/
+/* 1.75em * 16px = 28 => line-height: 44/28 = 1.5714*/
+/* 1.375em * 16px = 22 => line-height: 22 = 1*/
+/* 1.25em * 16px = 20 => line-height: 22/20 = 1.1*/
+
+.headings-general() {font-weight:normal;color:#111;margin-bottom:@magic-number;font-family:@font-family-cambria}
+h1{.headings-general();font-size:2.375em;line-height:1.1579;border-bottom:1px solid #ccc;margin-bottom:@magic-number - 1px;}
+h2{.headings-general();font-size:1.875em;line-height:1.4667;}
+h3{.headings-general();font-size:1.375em;line-height:1;}
+h4{.headings-general();font-size:1.25em;line-height:1.1;}
+h5{.headings-general();font-size:1em;font-weight:bold;}
+h6{.headings-general();font-size:1em;font-weight:bold;margin-bottom:0;}
+h1 img,h2 img,h3 img,h4 img,h5 img,h6 img{margin:0;}
+
+@link-color: #600;
+
+/* Text elements */
+p{margin-bottom:1.375em;}
+a{color:@link-color;text-decoration:underline;
+  &:focus,&:hover{color:lighten(@link-color, 10%);text-decoration:none;}
+}
+blockquote{margin-left:1em;margin-bottom:1.375em;}
+strong,dfn{font-weight:bold;}
+em,dfn{font-style:italic;}
+pre{margin-bottom:1.375em;white-space:pre;}
+pre,code,tt,.code{font:1em/1.375 @font-family-monospace;}
+
+/* Lists */
+li ul,li ol{margin:0;}
+ul,ol{margin:0.6875em 1.5em 1.375em 0;padding-left:1.5em;}
+ul{list-style-type:disc;}
+ol{list-style-type:decimal;}
+dl{margin:0 0 1.375em 0;}
+dl dt{font-weight:bold;}
+dd{margin-left:1.5em;}
+
+/* Tables. Because of the need for padding on TH and TD, the vertical rhythm
+  on table cells has to be 33px, instead of the standard 22px or 44px
+  of other elements. */
+table{margin-bottom:1.375em;width:100%;}
+caption{text-align:left;font-style:italic;}
+thead{border-bottom:2px solid #222;}
+th{vertical-align:bottom;font-weight:bold;text-align:left;}
+th,td{padding:5px 10px 5px 5px;}
+th.groups, td.groups {padding:5px 130px 5px 5px;;}
+tbody tr:nth-child(even) td, tbody tr.even td {}
+tbody tr{border-bottom:1px solid #eee;
+  &:hover{color:red;}
+}
+tfoot{font-style:italic;}
 
     /** --------------------------------------------------------------
     * Forms
@@ -39,11 +144,18 @@
     .validation-failed{border:2px solid red;}
     .validation-message{color:red;font-size:smaller;}
     .form-action-link{font-size:smaller;}
+textarea{width:100%;height:8em;}
 
-    .content-edit{
-      input[type=text]{width:30em;}
-      textarea{width:40em;height:15em;}
-    }
+.content-edit{
+input[type=text]{width:30em;}
+textarea{width:40em;height:15em;}
+}
+
+.admin-edit{
+input[type=text]{width:40em;}
+input[type=password]{width:40em;}
+
+}
 
 
     /** --------------------------------------------------------------
@@ -60,7 +172,7 @@
     *
     */
     .tablecell() {display:table-cell;vertical-align:middle;text-align:center;}
-    #outer-wrap-header{height:@magic-number*4;margin-top:@magic-number/2;margin-bottom:@magic-number/2;}
+    #outer-wrap-header{height:@magic-number*4;margin-top:@magic-number/8;margin-bottom:@magic-number/2;}
     #inner-wrap-header{.wrap();}
     #header{.column(12);}
 
@@ -68,7 +180,7 @@
     /** --------------------------------------------------------------
     * Login menu
     */
-    #login-menu{float:right;font-size:smaller;
+    #login-menu{float:right;font-size:0.95em;
       img.gravatar{vertical-align:middle;}
       a{text-decoration:none;}
       a:hover{text-decoration:underline;}
@@ -80,11 +192,153 @@
     */
     #banner {display:table;margin-bottom:@magic-number/2;
       #site-logo{.tablecell();}
-      #site-title{.tablecell();font-size:2.5em;padding-left:0.2em;text-shadow:#ccc 2px -2px 2px;
+      #site-title{.tablecell();font-size:3em;padding-left:0.2em;text-shadow:#ccc 2px -2px 2px;
         a{text-decoration:none;}
       }
-      #site-slogan{.tablecell();font-size:1.5em;padding-left:10px;}
+      #site-slogan{.tablecell();font-size:1.5em;padding-left:20px;}
     }
+
+
+
+/** --------------------------------------------------------------
+ * Navbar
+ */
+#outer-wrap-navbar{}
+#inner-wrap-navbar{.wrap;height:@magic-number*1;margin-bottom:@magic-number;}
+#navbar{
+  ul.menu{list-style-type:none;padding:2px 8px;margin:0;
+    li{padding:0;margin:0;display:inline;
+      a{padding:6px 8px;text-decoration:none;border:2px solid transparent;
+        &:hover{background:#ddd;border:2px solid #999;}
+        &.selected{background:#ccc;border:2px solid #999;}
+      }
+    }
+  }
+}
+
+/** --------------------------------------------------------------
+ * My Navbar
+ */
+
+#my-navbar{
+
+  ul.menu{list-style-type:none; padding:2px 8px; margin:0; 
+    li{padding:0;margin:0;display:inline;
+      a{padding:6px 8px;text-decoration:none;border:2px solid;
+        &:hover{background:#ddd;border:2px solid #333;}
+        &.selected{background:#ccc;border:2px solid #333;}
+      }
+    }
+  }
+}
+
+/**------------------------------------------------------------------
+* Ucp-Navbar
+*/
+
+#ucp-navbar {
+  margin-bottom: @magicNumber;
+    ul.menu{list-style-type:none; padding:2px 8px; margin:0; 
+        li{padding:0;margin:0;display:inline;
+            a{padding:6px 8px;text-decoration:none;border:2px solid;
+                &:hover{background:#ddd;border:2px solid #333;}
+                &.selected{background:#ccc;border:2px solid #333;}
+            }
+        }
+    }
+}
+
+ul.nb-plain{
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  
+  li {
+    padding: 0 1em 0 0;
+    margin: 0;
+    display: inline;
+
+    &:last-child {
+      padding-right: 0;
+    }
+
+    &.selected a, 
+    &.current-menu-item a {
+      color: @anchorColor;
+      text-decoration: underline;
+    }    
+  }
+  
+  a {
+    text-decoration: none;
+    text-transform: uppercase;
+    color: @colorBody;
+  
+    &:hover {
+      color: @anchorColorHover;
+      text-decoration: underline;
+    }
+  }
+}
+
+ul.nb-tab{
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  border-bottom: 1px solid @colorBorderTabBottom;
+  
+  li {
+    padding: 0;
+    margin: 0 0.3em;
+    display: inline-block;
+    background-color: @anchorTabBgColor;
+    border-top: 1px solid @colorBorderTabElement;
+    border-left: 1px solid @colorBorderTabElement;
+    border-right: 1px solid @colorBorderTabElement;
+    .border-radius();
+
+    &:first-child {
+      margin-left: 0.5em;
+    }
+
+    &:last-child {
+      margin-right: 0;
+    }
+
+    &:hover {
+      background-color: @anchorTabBgColorHover;
+      border-color: @colorBorderTabElementHover;
+    }
+
+    &.selected, 
+    &.current-menu-item {
+      background-color: @anchorTabBgColorSelected;
+      border-color: @colorBorderTabElementSelected;
+    
+      a {
+        color: @colorBody;
+        padding-bottom: 2px;
+        background-color: @anchorTabBgColorSelected;
+      }
+    }
+  }
+  
+  a {
+    text-decoration: none;
+    color: @colorBodyLighter;
+    padding: 0 1em;
+  
+    &:hover {
+      color: @anchorColorHover;
+    }
+
+    &:active {
+      color: @anchorColorActive;
+      background-color: @anchorTabBgColorActive;
+    }
+  }
+}
+
 
 
     /** --------------------------------------------------------------
@@ -118,8 +372,11 @@
     #main{}
 
     #primary{.column(8);}
-    #sidebar{.column(4);}
-
+    #sidebar{.column(4);
+        .box{border-top:4px double #ccc;padding-top:@magic-number/2;margin-bottom:@magic-number*2.5-4px;
+        h4{}
+        }
+    }
 
     /** --------------------------------------------------------------
     * The triptych area.
@@ -193,82 +450,6 @@
     */
     .smaller-text{font-size:smaller;}
     .silent{color:#999;}  
-
-    /** --------------------------------------------------------------
-    * Reset. http://meyerweb.com/eric/tools/css/reset/ v2.0 | 20110126
-    *
-    */
-    html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,
-    a,abbr,acronym,address,big,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,
-    small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,
-    table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,embed,
-    figure,figcaption,footer,header,hgroup,menu,nav,output,ruby,section,summary,
-    time,mark,audio,video{margin:0;padding:0;border:0;font-size:100.01%;font:inherit;vertical-align:baseline;}
-    body{line-height:1;}
-    ol,ul{list-style: none;}
-    blockquote,q{quotes:none;}
-    blockquote:before,blockquote:after,q:before,q:after{content:'';content:none;}
-    table{border-collapse:collapse;border-spacing:0;}
-
-    /** --------------------------------------------------------------
-    * HTML5 elements.
-    *
-    */
-    article,aside,details,figcaption,figure,footer,header,hgroup,nav,section{display:block;}
-    audio,canvas,video{display:inline-block;*display:inline;*zoom:1;}
-    audio:not([controls]){display:none;}
-    [hidden]{display:none;}
-
-
-    @font-family-cambria    = Cambria, Georgia, Times, 'Times New Roman', serif;
-    @font-family-helvetica  = Frutiger, "Frutiger Linotype", Univers, Calibri, "Gill Sans", "Gill Sans MT", "Myriad Pro", Myriad, "DejaVu Sans Condensed", "Liberation Sans", "Nimbus Sans L", Tahoma, Geneva, "Helvetica Neue", Helvetica, Arial, sans-serif;
-    @font-family-monospace  = "Consolas", "Bitstream Vera Sans Mono", "Courier New", Courier, monospace;
-
-    body{color:#222;font:100.01%/1.375 @font-family-helvetica;}
-
-    .headings-general() {font-weight:normal;color:#111;margin-bottom:@magic-number;font-family:@font-family-cambria}
-    h1{.headings-general;font-size:2.375em;line-height:1.1579;border-bottom:1px solid #ccc;margin-bottom:@magic-number - 1px;}
-    h2{.headings-general;font-size:1.875em;line-height:1.4667;}
-    h3{.headings-general;font-size:1.375em;line-height:1;}
-    h4{.headings-general;font-size:1.25em;line-height:1.1;}
-    h5{.headings-general;font-size:1em;font-weight:bold;}
-    h6{.headings-general;font-size:1em;font-weight:bold;margin-bottom:0;}
-    h1 img,h2 img,h3 img,h4 img,h5 img,h6 img{margin:0;}
-
-    @link-color: #600;
-    /* Text elements */
-    p{margin-bottom:1.375em;}
-    a{color:@link-color;text-decoration:underline;
-      &:focus,&:hover{color:lighten(@link-color, 10%);text-decoration:none;}
-    }
-    blockquote{margin-left:1em;margin-bottom:1.375em;}
-    strong,dfn{font-weight:bold;}
-    em,dfn{font-style:italic;}
-    pre{margin-bottom:1.375em;white-space:pre;}
-    pre,code,tt,.code{font:1em/1.375 @font-family-monospace;}
-
-    /* Lists */
-    li ul,li ol{margin:0;}
-    ul,ol{margin:0.6875em 1.5em 1.375em 0;padding-left:1.5em;}
-    ul{list-style-type:disc;}
-    ol{list-style-type:decimal;}
-    dl{margin:0 0 1.375em 0;}
-    dl dt{font-weight:bold;}
-    dd{margin-left:1.5em;}
-
-    /* Tables. Because of the need for padding on TH and TD, the vertical rhythm
-      on table cells has to be 33px, instead of the standard 22px or 44px
-      of other elements. */
-    table{margin-bottom:1.375em;width:100%;}
-    caption{text-align:left;font-style:italic;}
-    thead{border-bottom:2px solid #222;}
-    th{vertical-align:bottom;font-weight:bold;text-align:left;}
-    th,td{padding:5px 10px 5px 5px;}
-    tbody tr:nth-child(even) td, tbody tr.even td {}
-    tbody tr{border-bottom:1px solid #eee;
-      &:hover{color:#000;}
-    }
-    tfoot{font-style:italic;}
 
 .well{background-color:#f6f6f6;border:1px solid #ccc;margin-bottom:1em;padding:1em;}
 .layout{display: inline-block;
