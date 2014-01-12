@@ -190,7 +190,7 @@ class CCAdminControlPanel extends CObject implements IController {
         $if->AdminOrForbidden();
 
         $filter = array('plain' => 'plain', 'bbcode' => 'bbcode', 'htmlpurify' => 'htmlpurify', 'markdown' => 'markdown', 'markdown_x' => 'markdown_x', 'markdown_x_smart' => 'markdown_x_smart');
-        $type = array('page' => 'page', 'home' => 'home', 'post' => 'post');
+        $type = array('page' => 'page', 'home' => 'home', 'post' => 'post', 'footer' => 'footer', 'byline' => 'byline', 'secret1' => 'secret1', 'secret2' => 'secret2');
 
         $thispost = $this->content->AdminLoad($id);
 
