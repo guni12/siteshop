@@ -2,7 +2,7 @@
     <p><span class = 'bold'><?= $bold1 ?>:</span> <?= $text1 ?>
 <br /><span class = 'bold'><?= $bold2 ?>:</span> <?= $text2 ?>
 <br /><span class = 'bold'><?= $bold3 ?>:</span> <?= $text3 ?>
-<br /><span class = 'bold'><?= $bold4 ?>:</span><br /><?= $text4 ?><br /><?= $text5 ?><br /><?= $text6 ?>
+<br /><span class = 'bold'><?= $bold4 ?>:</span><br /><?= $text4 ?><br /><?= $text5 ?><br /><?= $text21 ?><br /><?= $text6 ?><br /><?= $text22 ?><br /><?= $text23 ?><br /><?= $text24 ?>
 <br /><span class = 'bold'>Filter:</span>
 <br /><span class = 'bold'>plain</span> <?= $text7 ?>
 <br /><span class = 'bold'>bbcode</span> <?= $text8 ?> <span class = 'smaller-text'><code>[i][/i], [b][/b], [url=http://][/url], [img]http://[/img]</code></span><br /><?= $text9  ?> 
