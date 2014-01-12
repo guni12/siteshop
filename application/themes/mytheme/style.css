@@ -1,22 +1,30 @@
 /**
-* Description: Sample theme for site which extends the Lydia grid-theme.
+* Description: Sample theme for site which extends the Siteshop bb-theme.
 */
+
+@import url(../../../themes/bb/style.php);
+
+
+#outer-wrap-header{background-image:url('heaven.jpg');border-bottom:3px solid #A04646;}
+#outer-wrap-footer{background-color:lightskyblue;}
+.guestbook{background-color:#BFEFFF; border:1px solid #ccc;margin-bottom:1em;padding:1em;}
+
+
+/*
+* Use the following code if you want to change into the grid theme
+*
+
 @import url(../../../themes/grid/style.php);
 
-/*html{background-color:#FFE2B3;}*/
 html{background-color:purple;}
-/*body{background-color:#D0DCE1;}*/
 body{background-color:lightcyan;}
-/*#outer-wrap-header{background-color:#FFE2B3;border-bottom:2px solid #FFCE80}
-#outer-wrap-footer{background-color:#FFE2B3}*/
 #outer-wrap-header{background-color:blueviolet;border-bottom:3px solid purple}
 #outer-wrap-footer{background-color:lightskyblue}
-/*a{color:#436370}*/
 a{color:orange}
-/*#navbar ul.menu li a.selected{background-color:#D0DCE1;border-bottom:none;}*/
 #navbar ul.menu li a:hover{background-color:purple; color: orange;}
 #my-navbar ul.menu li a:hover{background-color:purple; color: orange;}
 #navbar ul.menu li a.selected{background-color:blueviolet;}
 #my-navbar ul.menu li a.selected{background-color:blueviolet;}
 
 .guestbook{background-color:#f6f6f6;border:1px solid #ccc;margin-bottom:1em;padding:1em;}
+*/

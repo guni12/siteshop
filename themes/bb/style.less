@@ -1,0 +1,455 @@
+        /**
+    * Description: Bb theme for Siteshop based on less, lessphp and semantic.gs.
+    */
+
+/** --------------------------------------------------------------
+    * Reset. http://meyerweb.com/eric/tools/css/reset/ v2.0 | 20110126
+    *
+    */
+    html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,
+    a,abbr,acronym,address,big,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,
+    small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,
+    table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,embed,
+    figure,figcaption,footer,header,hgroup,menu,nav,output,ruby,section,summary,
+    time,mark,audio,video{margin:0;padding:0;border:0;font-size:100.01%;font:inherit;vertical-align:baseline;}
+    body{line-height:1;}
+    ol,ul{list-style: none;}
+    blockquote,q{quotes:none;}
+    blockquote:before,blockquote:after,q:before,q:after{content:'';content:none;}
+    table{border-collapse:collapse;border-spacing:0;}
+
+    /** --------------------------------------------------------------
+    * HTML5 elements.
+    *
+    */
+    article,aside,details,figcaption,figure,footer,header,hgroup,nav,section{display:block;}
+    audio,canvas,video{display:inline-block;*display:inline;*zoom:1;}
+    audio:not([controls]){display:none;}
+    [hidden]{display:none;}
+
+ /** --------------------------------------------------------------
+    * semantic.gs
+    */
+    @import url(semantic.gs/stylesheets/less/grid.less);
+
+ /** --------------------------------------------------------------
+    * Settings
+    */
+    @bgcolor1: #2e4361;
+    @bgcolor2: #6ca428;
+    @bgtest: hsla(0,0%,80%,0.5);
+    @color: #333;
+    @anchorColor: @bgcolor1;
+    @colorBody: @bgcolor1;
+    @color-lighter: #666;
+    @color-light: #999;
+    @anchorColorHover: red;
+    @colorBorderTabBottom: #ff0000;
+    @anchorTabBgColor: #518cdc;
+    @colorBorderTabElement: @bgcolor1;
+    @anchorTabBgColorHover: #f6f6f6;
+    @colorBorderTabElementHover :red;
+    @anchorTabBgColorSelected: lightblue;
+    @anchorTabBgColorActive: @bgcolor2;
+    @colorBorderTabElementSelected: @bgcolor1;
+    @anchorColorActive: pink;
+    @colorBodyLighter: @bgcolor1;
+    @lightColor: fade(lightskyblue,70%);
+
+
+   /* Wrap elements to site width in grid layout*/
+    .wrap() {width:@total-width;margin:0 auto;.clearfix();}
+    .alwaysShowScrollbar() {overflow:-moz-scrollbars-vertical;overflow-y:scroll;}
+
+
+/** --------------------------------------------------------------
+ * Typography.
+ */
+    @font-family-cambria    = Cambria, Georgia, Times, 'Times New Roman', serif;
+    @font-family-helvetica  = Calibri, Frutiger, "Frutiger Linotype", Univers, "Gill Sans", "Gill Sans MT", "Myriad Pro", Myriad, "DejaVu Sans Condensed", "Liberation Sans", "Nimbus Sans L", Tahoma, Geneva, "Helvetica Neue", Helvetica, Arial, sans-serif;
+    @font-family-monospace  = "Consolas", "Bitstream Vera Sans Mono", "Courier New", Courier, monospace;
+    @magic-number: 22px; /* 16px - 100%/1.375 */
+    @link-color: #600;
+    @width: 960px;
+
+    body{width:@width;color:#222;font:100.01%/1.375 @font-family-helvetica;}
+
+.headings-general() {font-weight:normal;color:#111;margin-bottom:@magic-number;font-family:@font-family-helvetica}
+h1{.headings-general();font-size:2.375em;line-height:1.1579;border-bottom:1px solid #ccc;margin-bottom:@magic-number - 1px;}
+h2{.headings-general();font-size:1.875em;line-height:1.4667;}
+h3{.headings-general();font-size:1.375em;line-height:1;}
+h4{.headings-general();font-size:1.25em;line-height:1.1;}
+h5{.headings-general();font-size:1em;font-weight:bold;}
+h6{.headings-general();font-size:1em;font-weight:bold;margin-bottom:0;}
+h1 img,h2 img,h3 img,h4 img,h5 img,h6 img{margin:0;}
+
+@link-color: #600;
+
+/* Text elements */
+p{margin-bottom:1.375em;}
+a{color:@link-color;text-decoration:underline;
+  &:focus,&:hover{color:lighten(@link-color, 10%);text-decoration:none;}
+}
+blockquote{margin-left:1em;margin-bottom:1.375em;}
+strong,dfn{font-weight:bold;}
+em,dfn{font-style:italic;}
+pre{margin-bottom:1.375em;white-space:pre;}
+pre,code,tt,.code{font:1em/1.375 @font-family-monospace;}
+
+/* Lists */
+li ul,li ol{margin:0;}
+ul,ol{margin:0.6875em 1.5em 1.375em 0;padding-left:1.5em;}
+ul{list-style-type:disc;}
+ol{list-style-type:decimal;}
+dl{margin:0 0 1.375em 0;}
+dl dt{font-weight:bold;}
+dd{margin-left:1.5em;}
+ul.noBullet{list-style-type:none; }
+ul.noStyle{padding:0;margin:0;};
+/* Tables. Because of the need for padding on TH and TD, the vertical rhythm
+  on table cells has to be 33px, instead of the standard 22px or 44px
+  of other elements. */
+table{margin-bottom:1.375em;width:100%;}
+caption{text-align:left;font-style:italic;}
+thead{border-bottom:2px solid #222;}
+th{vertical-align:bottom;font-weight:bold;text-align:left;}
+th,td{padding:5px 10px 5px 5px;}
+th.groups, td.groups {padding:5px 130px 5px 5px;;}
+tbody tr:nth-child(even) td, tbody tr.even td {}
+tbody tr{border-bottom:1px solid #eee;
+  &:hover{color:red;}
+}
+tfoot{font-style:italic;}
+
+   /** --------------------------------------------------------------
+    * Forms
+    */
+    input,textarea{font:inherit;}
+    input[readonly]{color:#666;}
+    label{font-size:smaller;width:30em;}
+    .validation-failed{border:2px solid red;}
+    .validation-message{color:red;font-size:smaller;}
+    .form-action-link{font-size:smaller;}
+    textarea{width:100%;height:8em;background-color:#f6f6f6;}
+
+.content-edit{
+input[type=text]{width:40em;}
+textarea{width:40em;height:15em;}
+}
+
+.admin-edit{
+input[type=text]{width:20em;float:right;}
+textarea{width:34em;height:20em;float:right;}
+select{width:20em;float:right;}
+input[type=password]{width:20em;float:right;}
+
+
+}
+
+
+
+
+
+    /** --------------------------------------------------------------
+    * HTML & Body
+    */
+    html{background-color:@bgcolor1;}
+    body{margin:0 auto;padding:0;color:@color;background-color:@bgcolor2;font:@font;
+    } 
+
+/** --------------------------------------------------------------
+    * The header area.
+    *
+    */
+    .tablecell() {display:table-cell;vertical-align:middle;text-align:center;}
+    #outer-wrap-header{height:@magic-number*4;margin-bottom:@magic-number/2;}
+    #inner-wrap-header{.wrap();}
+    #header{.column(12);}
+
+ /** --------------------------------------------------------------
+    * Login menu
+    */
+    #login-menu{float:right;font-size:0.95em;
+      img.gravatar{vertical-align:middle;}
+      a{text-decoration:none;}
+      a:hover{text-decoration:underline;}
+    }
+
+   /** --------------------------------------------------------------
+    * Banner
+    */
+    #banner {display:table;margin-bottom:@magic-number/3;
+      #site-logo{.tablecell();}
+      #site-title{.tablecell();font-size:4em;color:#ff0000;padding-left:0.2em;text-shadow:#ccc 4px -4px 4px;
+        a{text-decoration:none;color:#ff0000;font-family:'Comic Sans MS', 'Trebuchet MS', Arial;}
+      }
+      #site-slogan{.tablecell();font-size:1.5em;padding-left:20px;color:#ff0000; font-family:'Comic Sans MS', 'Trebuchet MS', Arial; font-style: italic;}
+    }
+
+/** --------------------------------------------------------------
+ * Navbar
+ */
+
+#outer-wrap-navbar{background-color:#5b5743;height:@magic-number*1.5; margin: -9px -10px 10px -10px;}
+#inner-wrap-navbar{.wrap;height:@magic-number*1;}
+#navbar{
+  ul.menu{list-style-type:none;padding:2px 8px;
+    li{padding:1em;margin:1em;display:inline;
+      a{padding:6px 8px;text-decoration:none;border:2px solid transparent;
+        &:hover{background:#ddd;border:2px solid #999;}
+        &.selected{background:#ccc;border:2px solid #999;}
+      }
+    }
+  }
+}
+
+/** --------------------------------------------------------------
+ * My Navbar
+ */
+
+#my-navbar{
+
+  ul.menu{list-style-type:none; padding:2px 20px; margin-top:3px;
+    li{padding:0;margin:0;display:inline;
+      a{padding:6px 20px;text-decoration:none;color:#518cdc;border:1px solid #5b5743;font-weight:bold;
+        &:hover{background-color:#518cdc;color:#60002a;border:1px solid #a88e6d;font-weight:bold;}
+        &.selected{color:#6ca428;border:3px solid #333;font-weight:bold;}
+      }
+    }
+  }
+}
+
+/**------------------------------------------------------------------
+* Ucp-Navbar
+*/
+
+#ucp-navbar {
+  margin-bottom: @magicNumber;
+    ul.menu{list-style-type:none; padding:2px 8px; margin:0; 
+        li{padding:0;margin:0;display:inline;
+            a{padding:6px 8px;text-decoration:none;border:2px solid;color:#518cdc;
+                &:hover{background:#ddd;border:2px solid #333;font-weight:bold;}
+                &.selected{background:#ccc;border:2px solid #333;font-weight:bold;}
+            }
+        }
+    }
+}
+
+ul.nb-plain{
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  
+  li {
+    padding: 0 1em 0 0;
+    margin: 0;
+    display: inline;
+
+    &:last-child {
+      padding-right: 0;
+    }
+
+    &.selected a, 
+    &.current-menu-item a {
+      color: @anchorColor;
+      text-decoration: underline;
+    }    
+  }
+  
+  a {
+    text-decoration: none;
+    text-transform: uppercase;
+    color: @colorBody;
+  
+    &:hover {
+      color: @anchorColorHover;
+      text-decoration: underline;
+    }
+  }
+}
+
+ul.nb-tab{
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  border-bottom: 1px solid @colorBorderTabBottom;
+  
+  li {
+    padding: 0;
+    margin: 0 0.3em;
+    display: inline-block;
+    background-color: @anchorTabBgColor;
+    border-top: 1px solid @colorBorderTabElement;
+    border-left: 1px solid @colorBorderTabElement;
+    border-right: 1px solid @colorBorderTabElement;
+    .border-radius();
+
+    &:first-child {
+      margin-left: 0.5em;
+    }
+
+    &:last-child {
+      margin-right: 0;
+    }
+
+    &:hover {
+      background-color: @anchorTabBgColorHover;
+      border-color: @colorBorderTabElementHover;
+    }
+
+    &.selected, 
+    &.current-menu-item {
+      background-color: @anchorTabBgColorSelected;
+      border-color: @colorBorderTabElementSelected;
+    
+      a {
+        color: @colorBody;
+        padding-bottom: 2px;
+        background-color: @anchorTabBgColorSelected;
+      }
+    }
+  }
+  
+  a {
+    text-decoration: none;
+    color: @colorBodyLighter;
+    padding: 0 1em;
+  
+    &:hover {
+      color: @anchorColorHover;
+    }
+
+    &:active {
+      color: @anchorColorActive;
+      background-color: @anchorTabBgColorActive;
+    }
+  }
+}
+
+
+
+    /** --------------------------------------------------------------
+    * The flash area.
+    *
+    */
+    #outer-wrap-flash{}
+    #inner-wrap-flash{.wrap();height:@magic-number*3;margin-bottom:@magic-number;}
+    #flash{.column(12);height:100%;}
+
+
+    /** --------------------------------------------------------------
+    * The featured area.
+    *
+    */
+    #outer-wrap-featured{}
+    #inner-wrap-featured{.wrap;height:@magic-number*5;margin-bottom:@magic-number;}
+    #featured{}
+
+    #featured-first,
+    #featured-middle,
+    #featured-last{.column(4);height:100%;}
+
+
+    /** --------------------------------------------------------------
+    * The main content area.
+    *
+    */
+    #outer-wrap-main{margin: 0 30px;}
+    #inner-wrap-main{.wrap;margin-bottom:@magic-number;}
+    #main{.column();}
+
+    #primary{.column(7);}
+    #sidebar{.column(4);
+        .box{border-top:4px double #ccc;padding-top:@magic-number/2;margin-bottom:@magic-number*2.5-4px;
+        h4{}
+        }
+    }
+
+ /** --------------------------------------------------------------
+    * The triptych area.
+    *
+    */
+    #outer-wrap-triptych{}
+    #inner-wrap-triptych{.wrap();height:@magic-number*5;margin-bottom:@magic-number;}
+    #triptych{height:inherit;}
+
+    #triptych-first,
+    #triptych-middle,
+    #triptych-last{.column(4);height:100%;}
+
+
+    /** --------------------------------------------------------------
+    * The footer column area.
+    *
+    */
+    #outer-wrap-footer-column{background-color:@bgtest;border-top:1px solid #bbb;}
+    #inner-wrap-footer-column{.wrap();height:@magic-number*4;padding-bottom:@magic-number;}
+    #footer{height:inherit;}
+
+    #footer-column-one,
+    #footer-column-two,
+    #footer-column-three,
+    #footer-column-four{.column(2.9);font-size:0.8em;margin-top:1em;height:100%;
+    padding-top:0.5em;padding-left:0.5em;background-color:lighten(@bgtest,10%)
+;}
+
+
+    /** --------------------------------------------------------------
+    * The footer area.
+    *
+    */
+    #outer-wrap-footer{background-color:@bgtest;}
+    #inner-wrap-footer{.wrap();}
+    #footer{.column(12);font-size:0.80em;color:#666;padding-bottom:@magic-number;}
+
+
+    /** --------------------------------------------------------------
+    * Links
+    */
+    .hover(){text-decoration:none;color:#5C0A0A;}
+    a{color:inherit;
+      &:link{}
+      &:visited{}
+      &:hover{.hover()}
+      &:focus{.hover()}
+      &:active{}
+    }
+
+
+    /** --------------------------------------------------------------
+    * User feedback message wrappers.
+    */
+    .error, .alert, .warning, .notice, .success, .info {
+    padding: 0.8em; margin-bottom: 1em; border: 2px solid #ddd; }
+
+    .error, .alert { background: #fbe3e4; color: #8a1f11; border-color: #fbc2c4; }
+    .notice, .warning { background: #fff6bf; color: #514721; border-color: #ffd324; }
+    .success       { background: #edd51e; color: #264409; border-color: #c6d880; }
+    .info          { background: #BFEFFF; color: #205791; border-color: #92cae4; }
+    .error a, .alert a { color: #8a1f11; }
+    .notice a, .warning a { color: #514721; }
+    .success a         { color: #264409; }
+    .info a            { color: #205791; }
+
+
+    /** --------------------------------------------------------------
+    * Misc
+    */
+    .smaller-text{font-size:smaller;}
+    .silent{color:#999;} 
+    .smaller-text-up{font-size:0.5em;}
+
+.well{background-color:#f6f6f6;border:1px solid #ccc;margin-bottom:1em;padding:1em;}
+.layout{display: inline-block;
+  width: 200px;
+  height: 1.75em;}
+
+//#acp{margin: 0 30px; }
+#sidecolor{margin: 40px 0px 0px 10px; padding: 20px; background-color:#BFEFFF;}
+#headcolor{margin: 40px 0px; padding: 20px 10px; background-color:#BFEFFF;}
+.bold{font-weight:bold;}
+
+.bloglink a{text-decoration:none;line-height:0.5;margin:0; padding: 0;
+    &:focus,&:hover{color:purple;text-decoration:underline;}
+}
+

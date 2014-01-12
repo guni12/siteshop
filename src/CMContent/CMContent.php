@@ -149,6 +149,17 @@ Here will be a table.
 Here is a paragraph with some **bold** text and some *italic* text and a [link to dbwebb.se](http://dbwebb.se).
 
 EOD;
+        
+$html2 = <<<EOD
+[1]:  /siteshop/application/src/CCMycontroller/img/gunvor.jpg "Gunvor"
+
+När man lägger in ett foto (relativ sökväg med markdown filter) på sig själv fungerar det bra, men inte när jag vill ha en bild på något annat!!!???
+
+![tankfull][1]
+
+![spanska julstjärnor](/siteshop/application/src/CCMycontroller/jul.jpg "Spansk jul")
+
+EOD;
         switch ($action) {
             case 'install':
                 try {
@@ -165,7 +176,21 @@ EOD;
                     $this->db->ExecuteQuery(self::SQL('insert content'), array('markdown', 'page', 'Page with Markdown', $html_text, 'markdown', $this->user['id']));
                     $this->db->ExecuteQuery(self::SQL('insert content'), array('markdown_x', 'page', 'Page with MarkdownExtra', $html_text, 'markdown_x', $this->user['id']));
                     $this->db->ExecuteQuery(self::SQL('insert content'), array('markdown_x_smart', 'page', 'Page with MarkdownExtra plus Typographer', $html_text, 'markdown_x_smart', $this->user['id']));
-                    $this->db->ExecuteQuery(self::SQL('insert content'), array('htmlpurify', 'home', 'Homepage', "A first little attempt for my best impressions.\nAnd this is to get a newline.", 'bbcode', $this->user['id']));
+                    $this->db->ExecuteQuery(self::SQL('insert content'), array('htmlpurify', 'home', 'Startsida', "Här är en bild på min älskade pappas snickarverkstad, så som det stod innan vi sålde fastigheten. Nu står några av hans verktyg hemma i vårt garage (där inte bilen får plats).\n\nJag tycker bilden passar för det här ramverket som är ett evighetsarbete. Det blir aldrig klart och det är upp till hantverkaren hur skicklig denne vill bli och hur mycket tid han/hon vill lägga ner på sin produkt.\n\nNu ska det bli jättekul att fortsätta med del fyra i kurspaketet. Javascript och ajax kan säkert betyda mycket för att göra webbplatsen snygg och smidig.\n\nDet kommer att bli en stor utmaning igen och jag behöver se om min nacke och säkra upp tid för att träna mina hållningsmuskler.\n\nNär man fattar allt mer av kodningen - hur kul är inte det?", 'bbcode', $this->user['id']));
+                    $this->db->ExecuteQuery(self::SQL('insert content'), array('toys', 'post', 'Arduino-toy', "Here is a fun toy.\n[img]http://behovsbo.se/bilderipso/Arduino.png[/img]", 'bbcode', $this->user['id']));
+                    $this->db->ExecuteQuery(self::SQL('insert content'), array('chartest', 'post', 'ÅÄÖ', "Det är ett viktigt önskemål att kunna få till våra svenska bokstäver och det krånglade till sig rejält under några dagar. Sens moral: ändra inte default-inställningar i ini-filen i onödan -det är inte smart.", 'bbcode', $this->user['id']));
+                    $this->db->ExecuteQuery(self::SQL('insert content'), array('markdown', 'post', 'Bildtest', $html2, 'markdown', $this->user['id']));
+                    $this->db->ExecuteQuery(self::SQL('insert content'), array('byline1', 'byline', 'Byline1', "Gunvor Nilsson is a parttime student at BTH. As her fulltime occupation she sings at the Gothenburg Operahouse.", 'bbcode', $this->user['id']));
+                    $this->db->ExecuteQuery(self::SQL('insert content'), array('byline2', 'byline', 'Byline2', "This version of Siteshop is her final home assignment of the MVC and CMF framework course - 'phpmvc'.", 'bbcode', $this->user['id']));
+                    $this->db->ExecuteQuery(self::SQL('insert content'), array('byline3', 'byline', 'Byline3', "She has, through the operasinging, got a wonderful mentor, a young software architect whom she will be helping (?) with some simple codes this following Spring (2014). ", 'bbcode', $this->user['id']));
+                    $this->db->ExecuteQuery(self::SQL('insert content'), array('byline4', 'byline', 'Byline4', "In her spare time she works on her house together with her partner Anders, travels a bit, enjoys her friends, take long walks in nature... ", 'bbcode', $this->user['id']));
+                    $this->db->ExecuteQuery(self::SQL('insert content'), array('secret1', 'secret1', 'Mainsecret', "The main secrets here.", 'bbcode', $this->user['id']));
+                    $this->db->ExecuteQuery(self::SQL('insert content'), array('secret2', 'secret2', 'Sidesecret', "Side secrets here", 'bbcode', $this->user['id']));
+                    $this->db->ExecuteQuery(self::SQL('insert content'), array('footer1', 'footer', 'Footer1', "Footertext 1 to change.", 'bbcode', $this->user['id']));
+                    $this->db->ExecuteQuery(self::SQL('insert content'), array('footer2', 'footer', 'Footer2', "Footertext 2 to change.", 'bbcode', $this->user['id']));
+                    $this->db->ExecuteQuery(self::SQL('insert content'), array('footer3', 'footer', 'Footer3', "Footertext 3 to change.", 'bbcode', $this->user['id']));
+                    $this->db->ExecuteQuery(self::SQL('insert content'), array('footer4', 'footer', 'Footer4', "Footertext 4 to change.", 'bbcode', $this->user['id']));
+
                     return array('success', 'Successfully created the database tables and created a default "Hello World" blog post, owned by you.');
                 } catch (Exception$e) {
                     die("$e<br/>Failed to open database: " . $this->config['database'][0]['dsn']);
@@ -185,6 +210,10 @@ EOD;
      */
     public function AdminSave($id = null, $key, $type, $title, $data, $filter) {
         $msg = null;
+        //$key = utf8_encode($key);
+        //$title = utf8_encode($title);
+        //$data = utf8_encode($data);
+        echo $data;
         if ($id) {
             $this->db->ExecuteQuery(self::SQL('update content'), array($key, $type, $title, $data, $filter, $id));
             $msg = 'updated';
@@ -196,7 +225,7 @@ EOD;
         if ($rowcount) {
             $this->AddMessage('success', "Successfully {$msg} content '" . htmlEnt($key) . "'.");
         } else {
-            $this->AddMessage('error', "The new content '" . htmlEnt($key) . "' couldn't be {$msg} .");
+            $this->AddMessage('error', "The content in '" . htmlEnt($key) . "' couldn't be {$msg} .");
         }
         return $rowcount === 1;
     }
@@ -270,7 +299,7 @@ EOD;
         $res = $this->db->ExecuteSelectQueryAndFetchAll(self::SQL('select * by id'), array($id));
 
         if (empty($res)) {
-            $this->session->AddMessage('error', "Failed to load content with id '$id'.");
+            //$this->session->AddMessage('error', "Failed to load content with id '$id'.");
         } else {
             return $res[0];
         }
@@ -353,5 +382,14 @@ EOD;
     public function GetFilteredData() {
         return $this->Filter($this['data'], $this['filter']);
     }
+    
+    /**
+   * Check if current user own this content.
+   *
+   * @return boolean true if current user is owner of content, else false.
+   */
+  public function CurrentUserIsOwner() {
+    return $this->user['id'] === $this['uid']; //Jag ändrat till user['id'] från [id]
+  }
 
 }

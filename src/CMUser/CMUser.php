@@ -25,7 +25,6 @@ class CMUser extends CObject implements IHasSQL, ArrayAccess, IModule {
             $this['id'] = 1;
             $this['acronym'] = 'anonomous';
             $this['hasRoleAnonomous'] = true;
-            
         }
     }
 
@@ -161,7 +160,6 @@ class CMUser extends CObject implements IHasSQL, ArrayAccess, IModule {
      */
     public function GetMemberById($id) {
         $res = $this->db->ExecuteSelectQueryAndFetchAll(self::SQL('select user by id'), array($id));
-        //var_dump($res);
         if (empty($res)) {
             $this->session->AddMessage('error', "Failed to load member with id '$id'.");
         } else {
@@ -177,7 +175,6 @@ class CMUser extends CObject implements IHasSQL, ArrayAccess, IModule {
      */
     public function GetGroupsById($id) {
         $res = $this->db->ExecuteSelectQueryAndFetchAll(self::SQL('select groups by id'), array($id));
-        //var_dump($res);
         if (empty($res)) {
             $this->session->AddMessage('error', "Failed to load groups with id '$id'.");
         } else {
@@ -198,13 +195,6 @@ class CMUser extends CObject implements IHasSQL, ArrayAccess, IModule {
         if (!($user = $this->VerifyUserAndPassword($akronymOrEmail, $password))) {
             return false;
         }
-        //$user = $this->db->ExecuteSelectQueryAndFetchAll(self::SQL('check user password'), array($akronymOrEmail, $akronymOrEmail));
-        //$user = (isset($user[0])) ? $user[0] : null;
-        //if (!$user) {
-        //    return false;
-        //} else if (!$this->CheckPassword($password, $user['algorithm'], $user['salt'], $user['password'])) {
-        //    return false;
-        //}
         unset($user['algorithm']);
         unset($user['salt']);
         unset($user['password']);
@@ -218,10 +208,12 @@ class CMUser extends CObject implements IHasSQL, ArrayAccess, IModule {
                 if ($val['id'] == 2) {
                     $user['hasRoleUser'] = true;
                 }
+                if ($val['id'] == 3) {
+                    $user['hasRoleSecrets'] = true;
+                }
             }
             $this->profile = $user;
             $this->session->SetAuthenticatedUser($this->profile);
-            echo $this['id'];
         }
         return ($user != null);
     }
@@ -242,6 +234,15 @@ class CMUser extends CObject implements IHasSQL, ArrayAccess, IModule {
    */
   public function IsAdmin() {
     return $this['hasRoleAdmin'];
+  }
+  
+      /**
+   * Check if user has secrets authorisation.
+   *
+   * @return boolean true or false.
+   */
+  public function IsAuthorised() {
+    return $this['hasRoleSecrets'];
   }
   
   
@@ -451,8 +452,6 @@ class CMUser extends CObject implements IHasSQL, ArrayAccess, IModule {
      */
     public function Update($acronym, $name, $email, $id) {
         $msg = null;
-        //echo 'Inne i Update';
-        //echo $id;
         if ($id) {
             $this->db->ExecuteQuery(self::SQL('update names'), array($acronym, $name, $email, $id));
             $msg = 'updated';
@@ -473,8 +472,8 @@ class CMUser extends CObject implements IHasSQL, ArrayAccess, IModule {
      */
     public function UpdateGroups($acronym, $name, $id) {
         $msg = null;
-        echo 'Inne i UpdateGroups';
-        echo $id;
+        //echo 'Inne i UpdateGroups';
+        //echo $id;
         if ($id) {
             $this->db->ExecuteQuery(self::SQL('update groups'), array($acronym, $name, $id));
             $msg = 'updated';
@@ -498,8 +497,8 @@ class CMUser extends CObject implements IHasSQL, ArrayAccess, IModule {
      */
     public function DeleteMember($acronym, $id) {
         $msg = null;
-        echo 'Inne i Deletemember';
-        echo $id;
+        //echo 'Inne i Deletemember';
+        //echo $id;
         if ($id) {
             $this->db->ExecuteQuery(self::SQL('delete member'), array($id));
             $msg = 'deleted from user';
@@ -533,8 +532,8 @@ class CMUser extends CObject implements IHasSQL, ArrayAccess, IModule {
      */
     public function DeleteGroup($acronym, $id) {
         $msg = null;
-        echo 'Inne i Deletegroup';
-        echo $id;
+        //echo 'Inne i Deletegroup';
+        //echo $id;
         if ($id) {
             $this->db->ExecuteQuery(self::SQL('delete group'), array($id));
             $msg = 'deleted from group';
@@ -587,21 +586,6 @@ class CMUser extends CObject implements IHasSQL, ArrayAccess, IModule {
     }
 
     /**
-     * Change user password.
-     *
-     * @param string $current plaintext of current password
-     * @param string $plain plaintext of the new password
-     * @return boolean true if success else false.
-
-      public function ChangePassword($current, $plain) {
-      if(!($user = $this->VerifyUserAndPassword($this['acronym'], $current))) { return false; }
-      $password = $this->CreatePassword($plain);
-      $this->db->ExecuteQuery(self::SQL('update password'), array($password['algorithm'], $password['salt'], $password['password'], $this['id']));
-      return $this->db->RowCount() === 1;
-      }
-     */
-
-    /**
      * User changes own password if successful verification.
      *
      * @param string $acronym current user according to controller
@@ -611,11 +595,9 @@ class CMUser extends CObject implements IHasSQL, ArrayAccess, IModule {
      * @return boolean true if success else false.
      */
     public function ChangeOwnPasswordVerify($acronym, $current, $new1, $new2, $id) {
-
         if (CInterceptionFilter::Instance()->SessionUserMatches($acronym) === false) {
             return false;
-        }
-        
+        }       
         return $this->ChangePassword($new1, $id);
     }
 

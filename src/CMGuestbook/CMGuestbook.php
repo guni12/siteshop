@@ -6,13 +6,13 @@
  * @package SiteshopCore
  */
 class CMGuestbook extends CObject implements IHasSQL, ArrayAccess, IModule {
-    
+
     /**
      * Properties
      */
     public $entry;
 
-   /**
+    /**
      * Constructor
      */
     public function __construct($id = null) {
@@ -23,8 +23,7 @@ class CMGuestbook extends CObject implements IHasSQL, ArrayAccess, IModule {
             $this->entry = array();
         }
     }
-    
-    
+
     /**
      * Implementing ArrayAccess for $this->data
      */
@@ -47,7 +46,7 @@ class CMGuestbook extends CObject implements IHasSQL, ArrayAccess, IModule {
     public function offsetGet($offset) {
         return isset($this->entry[$offset]) ? $this->entry[$offset] : null;
     }
-    
+
     /**
      * Load guestbook by id.
      *
@@ -56,27 +55,25 @@ class CMGuestbook extends CObject implements IHasSQL, ArrayAccess, IModule {
      */
     public function LoadById($id) {
         $res = $this->db->ExecuteSelectQueryAndFetchAll(self::SQL('select guestbook * by id'), array($id));
-        var_dump($res);
+        //var_dump($res);
         if (empty($res)) {
             $this->AddMessage('error', "Failed to load content with id '$id'.");
             return false;
         } else {
             $this->entry = $res[0];
-            
         }
         return true;
     }
-    
-     /**
+
+    /**
      * List all content.
      *
      * @param $args array with various settings for the request. Default is null.
      * @returns array with listing or null if empty.
      */
     public function ListAll($args = null) {
-        try {           
-                return $this->db->ExecuteSelectQueryAndFetchAll(self::SQL('select * from guestbook', $args));
-               
+        try {
+            return $this->db->ExecuteSelectQueryAndFetchAll(self::SQL('select * from guestbook', $args));
         } catch (Exception $e) {
             echo $e;
             return null;
@@ -90,12 +87,11 @@ class CMGuestbook extends CObject implements IHasSQL, ArrayAccess, IModule {
      */
     public static function SQL($key = null) {
         $queries = array(
-			'drop table guestbook' => "DROP TABLE IF EXISTS Guestbook;",
+            'drop table guestbook' => "DROP TABLE IF EXISTS Guestbook;",
             'create table guestbook' => "CREATE TABLE IF NOT EXISTS Guestbook (id INTEGER PRIMARY KEY, entry TEXT, created DATETIME default (datetime('now', 'localtime')), updated DATETIME default NULL, deleted DATETIME default NULL);",
             'insert into guestbook' => 'INSERT INTO Guestbook (entry) VALUES (?);',
             'select guestbook * by id' => 'SELECT * FROM Guestbook WHERE id=? AND deleted IS NULL;',
-            'select * from guestbook' => 'SELECT * FROM Guestbook WHERE deleted IS NULL ORDER BY id DESC;',  
-                                       
+            'select * from guestbook' => 'SELECT * FROM Guestbook WHERE deleted IS NULL ORDER BY id DESC;',
             'delete from guestbook' => 'DELETE FROM Guestbook;',
             'update guestbook' => "UPDATE Guestbook SET entry=?, updated=datetime('now', 'localtime') WHERE id=?;",
             'update guestbook as deleted' => "UPDATE Guestbook SET deleted=datetime('now', 'localtime') WHERE id=?;",
@@ -125,19 +121,19 @@ class CMGuestbook extends CObject implements IHasSQL, ArrayAccess, IModule {
                 break;
         }
     }
-    
-    /**
-   * Add a new entry to the guestbook and save to database.
-   */
-  public function Add($entry) {
-    $this->db->ExecuteQuery(self::SQL('insert into guestbook'), array($entry));
-    $this->session->AddMessage('success', 'Successfully inserted new message.');
-    if($this->db->rowCount() != 1) {
-      die('Failed to insert new guestbook item into database.');
-    }
-  }
 
-   /**
+    /**
+     * Add a new entry to the guestbook and save to database.
+     */
+    public function Add($entry) {
+        $this->db->ExecuteQuery(self::SQL('insert into guestbook'), array($entry));
+        $this->session->AddMessage('success', 'Successfully inserted new message.');
+        if ($this->db->rowCount() != 1) {
+            die('Failed to insert new guestbook item into database.');
+        }
+    }
+
+    /**
      * Save guestbook-content. If it has an id, use it to update current entry or else insert new entry.
      *
      * @returns boolean true if success else false.
@@ -147,15 +143,15 @@ class CMGuestbook extends CObject implements IHasSQL, ArrayAccess, IModule {
         if ($this['id']) {
             $this->db->ExecuteQuery(self::SQL('update guestbook'), array($this['entry'], $this['id']));
             $msg = 'updated';
-        }else{
+        } else {
             $this->db->ExecuteQuery(self::SQL('insert into guestbook'), array($this['entry']));
-        $this['id'] = $this->db->LastInsertId();
+            $this['id'] = $this->db->LastInsertId();
             $msg = 'created';
         }
         $rowcount = $this->db->RowCount();
-        if($rowcount){
+        if ($rowcount) {
             $this->session->AddMessage('success', "Successfully {$msg} a post.");
-        }else{
+        } else {
             $this->session->AddMessage('error', "The guestbook was not {$msg}.");
         }
         if ($this->db->rowCount() != 1) {
@@ -168,11 +164,13 @@ class CMGuestbook extends CObject implements IHasSQL, ArrayAccess, IModule {
      * Delete all entries from the guestbook and database.
      */
     public function DeleteAll() {
+        $if = new CInterceptionFilter();
+        $access = $if->AdminOrForbidden();
         $this->db->ExecuteQuery(self::SQL('delete from guestbook'));
         $this->session->AddMessage('info', 'Removed all messages from the guestbook table.');
     }
-    
-     /**
+
+    /**
      * Delete content. Set its deletion-date to enable wastebasket functionality.
      *
      * @returns boolean true if success else false.

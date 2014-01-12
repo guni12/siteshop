@@ -70,6 +70,19 @@ class CInterceptionFilter extends CObject implements ISingleton {
         $msg = t('You do not have privileges to access this content.');
         return $this->ss->ShowErrorPage(403, $msg);
     }
+    
+       /**
+     * Check if user is owner of content, or has administrator role else redirect to forbidden.
+     *
+     * @param CMContent $content to display.
+     * @return CInterceptionFilter to allow chaining.
+     */
+    public function SecretRoleOrForbidden($msg = null) {
+        $msg = isset($msg) ? $msg : t('You do not have privileges to access this content.');
+        if (!$this->user->IsAuthorised()) {
+            $this->ss->ShowErrorPage(403, $msg);
+        }
+    }
 
     /**
      * Check if secret matches in config.php. This enables remote management of some features
@@ -120,8 +133,6 @@ class CInterceptionFilter extends CObject implements ISingleton {
      */
     public function IsRegularUserOrForbidden() {
         if (!$this->user->IsUser()) {
-            //echo __DIR__;
-            //var_dump($this);
             $this->ss->ShowErrorPage(403, t('You are just visiting this site and have no profile.'));
         }
         return $this;

@@ -114,49 +114,12 @@ function get_messages_from_session() {
   return $html;
 }
 
-
-/**
- * Login menu. Creates a menu which reflects if user is logged in or not.
-
-function login_menu() {
-  $ss = CSiteshop::Instance();
-
-  if(!isset($ss->config['menus']['login'])) {
-    return null;
-  }
-  $menu = $ss->config['menus']['login'];
-
-  
-  if($ss->user['isAuthenticated']) {
-    $item = $menu['items']['ucp'];
-    //$items = "<a href='" . create_url('user/profile') . "'><img class='gravatar' src='" . get_gravatar(20) . "' alt=''></a>&#160;";
-    //$items .= "<a href='" . create_url('user/profile') . "'>" . $ss->user['acronym'] . "</a>&#160;";
-    $items = "<a href='" . create_url($item['url']) . "' title='{$item['title']}'>" . $ss->user['acronym'] . " <img class='gravatar' src='" . get_gravatar(20) . "' alt='[avatar]'></a>";
-    if($ss->user['hasRoleAdmin']) {
-        $item = $menu['items']['acp'];
-      //$items .= "<a href='" . create_url('acp') . "'>acp</a>&#160;";
-        $items .= "<a href='" . create_url($item['url']) . "' title='{$item['title']}'>{$item['label']}</a> ";
-    }
-    //$item = $menu['items']['logout'];
-    //$items .= "<a href='" . create_url('user/logout') . "'>logout</a>&#160;";
-  } else {
-    //$items = "<a href='" . create_url('user/login') . "'>login</a>&#160;";
-      $item = $menu['items']['login'];
-    $items = "<a href='" . create_url($item['url']) . "' title='{$item['title']}' rel='nofollow'>{$item['label']}</a>";
-  }
-  //return "<nav id='login-menu'>$items</nav>";
-  $id    = isset($menu['id'])    ? " id='{$menu['id']}'" : null;
-  $class = isset($menu['class']) ? " class='{$menu['class']}'" : null;
-  return "<nav{$id}{$class}>$items</nav>";
-}
-*/
-
 function login_menu() {
   $ss = CSiteshop::Instance();
   if(isset($ss->config['menus']['login'])) {
     if($ss->user->isAuthenticated()) {
       $item = $ss->config['menus']['login']['items']['ucp'];
-      $items = "<a href='" . create_url($item['url']) . "' title='{$item['title']}'><img class='gravatar' src='" . get_gravatar(20) . "' alt=''> " . $ss->user['acronym'] . "</a> ";
+      $items = "<a href='" . create_url($item['url']) . "' title='{$item['title']}'><img class='gravatar'  alt=''> " . $ss->user['acronym'] . "</a> ";
       if($ss->user['hasRoleAdmin']) {
         $item = $ss->config['menus']['login']['items']['acp'];
         $items .= "<a href='" . create_url($item['url']) . "' title='{$item['title']}'>{$item['label']}</a> ";
@@ -295,6 +258,6 @@ function region_has_content($region = 'default' /* ... */) {
  * @return string with formatted HTML for menu.
  */
 function create_menu($menu) {
-  return CLydia::Instance()->CreateMenu($menu);
+  return CSiteshop::Instance()->CreateMenu($menu);
 }
 

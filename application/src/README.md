@@ -1,4 +1,4 @@
-Siteshop, the site/src directory
+Siteshop, the application/src directory
 =========================
 
 The directory `application/src` contains classes for addon controllers, models and more. The autoloader 

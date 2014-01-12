@@ -128,12 +128,12 @@ class CObject {
   }
   
   /**
-   * Wrapper for same method in Csiteshop. See there for documentation.
+   * Wrapper for same method in CSiteshop. See there for documentation.
    * 
    */
 
    protected function SetLocale() {
-    return $this->ly->SetLocale();
+    return $this->ss->SetLocale();
   }
 
 

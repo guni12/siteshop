@@ -17,14 +17,14 @@
                         <a href='<?= base_url() ?>'><img id='site-logo' src='<?= theme_url($logo) ?>' alt='logo' width='<?= $logo_width ?>' height='<?= $logo_height ?>' /></a>
                         <span id='site-title'><a href='<?= base_url() ?>'><?= $header ?></a></span>
                         <span id='site-slogan'><?= $slogan ?></span>
-                    </div>
-                    <div id='outer-wrap-navbar'>
-                        <div id='inner-wrap-navbar'>
-                            <?php if(region_has_content('my-navbar')): ?>
-                                <div id='my-navbar'><?=render_views('my-navbar')?></div>
-                            <?php endif; ?>
-                        </div>
-                    </div>
+                    </div>                    
+                        <div id='outer-wrap-navbar'>
+                            <div id='inner-wrap-navbar'>
+                                <?php if(region_has_content('my-navbar')): ?>
+                                    <div id='my-navbar'><?=render_views('my-navbar')?></div>
+                                <?php endif; ?>
+                            </div>
+                        </div>                   
                                 <?php if(region_has_content('navbar')): ?>
                                     <div id='navbar'><?=render_views('navbar')?></div>
                                 <?php endif; ?>

@@ -38,7 +38,7 @@ public function Index() {
    */
   public function Handler() {
     if(isset($_POST['doAdd'])) {
-      $this->guestbookModel->Add(strip_tags($_POST['newEntry']));
+      $this->guestbookModel->Add(utf8_encode(strip_tags($_POST['newEntry'])));
     }
     elseif(isset($_POST['doClear'])) {
       $this->guestbookModel->DeleteAll();

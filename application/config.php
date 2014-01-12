@@ -20,7 +20,7 @@ $ss->config['debug']['timer'] = false;
 $ss->config['debug']['db-num-queries'] = false;
 $ss->config['debug']['db-queries'] = false;
 $ss->config['debug']['memory'] = false;
-$ss->config['debug']['timestamp'] = true;
+$ss->config['debug']['timestamp'] = false;
 
 
 /**
@@ -102,11 +102,12 @@ $ss->config['controllers'] = array(
     'developer' => array('enabled' => true,'class' => 'CCDeveloper'),
     'guestbook' => array('enabled' => true,'class' => 'CCGuestbook'),
     'index'     => array('enabled' => true,'class' => 'CCIndex'),
-    'modules'   => array('enabled' => true, 'class' => 'CCModules'),
+    'modules'   => array('enabled' => true,'class' => 'CCModules'),
     'my'        => array('enabled' => true,'class' => 'CCMycontroller'),   
     'page'      => array('enabled' => true,'class' => 'CCPage'),
-    'theme'     => array('enabled' => true, 'class' => 'CCTheme'),
-    'user'      => array('enabled' => true,'class' => 'CCUser'),  
+    'theme'     => array('enabled' => true,'class' => 'CCTheme'),
+    'user'      => array('enabled' => true,'class' => 'CCUser'),
+    'startup'      => array('enabled' => true,'class' => 'CCStartup'),
 );
 
 /**
@@ -127,23 +128,23 @@ $ss->config['routing'] = array(
  */
 $ss->config['menus'] = array(
     'navbar' => array(
-        'home' => array('label' => 'Home', 'url' => 'home'),
-        'modules' => array('label' => 'Modules', 'url' => 'modules'),
-        'content' => array('label' => 'Content', 'url' => 'content'),
+        'home' => array('label' => t('Home'), 'url' => 'home'),
+        'modules' => array('label' => t('Modules'), 'url' => 'modules'),
+        'content' => array('label' => t('Content'), 'url' => 'content'),
     ),
     'my-navbar' => array(
-        'home' => array('label' => 'About Me', 'url' => 'my'),
-        'blog' => array('label' => 'My blog', 'url' => 'my/blog'),
-        'guestbook' => array('label' => 'Guestbook', 'url' => 'my/guestbook'),
+        'me' => array('label' => t('About Me'), 'url' => 'my'),
+        'blog' => array('label' => t('My blog'), 'url' => 'my/blog'),
+        'guestbook' => array('label' => t('Guestbook'), 'url' => 'my/guestbook'),
     ),
     'login' => array(
         'id' => 'login-menu',
         'class' => '',
         'items' => array(
-            'login' => array('label' => 'login', 'url' => 'user/login', 'title' => 'Login'),
-            'logout' => array('label' => 'logout', 'url' => 'user/logout', 'title' => 'Logout'),
-            'ucp' => array('label' => 'ucp', 'url' => 'user', 'title' => 'User control panel'),
-            'acp' => array('label' => 'acp', 'url' => 'acp', 'title' => 'Admin control panel'),
+            'login' => array('label' => 'login', 'url' => 'user/login', 'title' => t('Login')),
+            'logout' => array('label' => 'logout', 'url' => 'user/logout', 'title' => t('Logout')),
+            'ucp' => array('label' => 'ucp', 'url' => 'user', 'title' => t('User control panel')),
+            'acp' => array('label' => 'acp', 'url' => 'acp', 'title' => t('Admin control panel')),
         ),
     ),
     'navbar-ucp' => array(
@@ -183,9 +184,10 @@ $ss->config['menus'] = array(
  * available to the template files.
  */
 $ss->config['theme'] = array(
-    'path' => 'application/themes/mytheme',
-    //'path' => 'themes/grid',
-    'parent' => 'themes/grid',
+    'path' => 'application/themes/mytheme',  //You can change code in 'style.css' in this path if you want to go from bb theme to grid theme
+    'parent' => 'themes/bb', // change this if you want to go to the grid theme
+    //'path' => 'themes/grid', 
+    //'parent' => 'themes/grid',
     'stylesheet' => 'style.css',
     'template_file' => 'index.tpl.php',
     'regions' => array('navbar', 'my-navbar', 'flash', 'featured-first', 'featured-middle', 'featured-last',
@@ -196,11 +198,11 @@ $ss->config['theme'] = array(
     'menu_to_region' => array('navbar' => 'navbar', 'my-navbar'=>'my-navbar'),
     'data' => array(
         'header' => 'Siteshop',
-        'slogan' => 'A PHP-based MVC-inspired CMF',
+        'slogan' => t('A PHP-based MVC-inspired CMF'),
         'favicon' => 'icopig.ico',
         'logo' => 'pig.jpg',
         'logo_width' => 88,
         'logo_height' => 88,
-        'footer' => '<p>Siteshop &copy; by Gunvor Nilsson (student at BTH)</p>',
+        'footer' => t('<p>Siteshop &copy; by Gunvor Nilsson (student at BTH)</p>'),
     ),
 );

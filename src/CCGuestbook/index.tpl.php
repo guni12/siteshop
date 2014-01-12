@@ -9,7 +9,7 @@
   <p>
     <input type='submit' name='doAdd' value='Add message' />
     <input type='submit' name='doClear' value='Clear all messages' />
-    <input type='submit' name='doCreate' value='Create database table' />
+    <!--<input type='submit' name='doCreate' value='Create database table' />-->
   </p>
 </form>
 

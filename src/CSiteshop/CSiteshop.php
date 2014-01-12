@@ -18,7 +18,6 @@ class CSiteshop implements ISingleton /* , IModule */ {
     public $views;
     public $session;
     public $user;
-    //public $timer = array();// obsolete from Summer 2013 by mos when adding CLog
     public $log;
 
     /**
@@ -32,14 +31,31 @@ class CSiteshop implements ISingleton /* , IModule */ {
      * Init the class, can not do init in constructor since the class itself is used during Init-process.
      */
     public function Init() {
-        // time page generation
-        //$this->timer['first'] = microtime(true);
+        
         $this->log = new CLog();
         $this->log->Timestamp(__CLASS__, __METHOD__, 'Init Siteshop');
-        //echo $this->log->MemoryPeak();
-        // include the site specific config.php and create a ref to $ss to be used by config.php
+
         $ss = &$this;
-        require(SITESHOP_APPLICATION_PATH . '/config.php');
+        //require(SITESHOP_APPLICATION_PATH . '/config.php');
+        // Checking for default value for backward compatibility, should be removed later on.
+    if(!defined('SITESHOP_CONFIG_PATH')) {
+      define('SITESHOP_CONFIG_PATH', SITESHOP_APPLICATION_PATH.'/config.php');
+    }
+    
+    // Setup data path if not defined (backward compatibility, should be removed later on.
+    if(!defined('SITESHOP_DATA_PATH')) {
+      define('SITESHOP_DATA_PATH', SITESHOP_SITE_PATH.'/data');
+    } 
+
+    if(is_readable(SITESHOP_CONFIG_PATH)) {
+      require(SITESHOP_CONFIG_PATH);
+    } else {
+      throw new Exception("Missing config-file: " . SITESHOP_CONFIG_PATH);
+    }
+
+    if(!is_dir(SITESHOP_DATA_PATH)) {
+      throw new Exception("Data-directory does not exists: " . SITESHOP_DATA_PATH);
+    }
 
         // Setup i18n, internationalization and multi-language support
         $this->SetLocale();
@@ -52,22 +68,12 @@ class CSiteshop implements ISingleton /* , IModule */ {
 
         // Set default date/time-zone
         date_default_timezone_set('UTC');
-        //date_default_timezone_set($this->config['timezone']);
-        // Create a database object.
-        /*
-          if(isset($this->config['database'][0]['dsn'])) {
-          try {
-          $this->db = new CDatabase($this->config['database'][0]['dsn']);
-          }
-          catch(Exception $e) {
-          if(!$this->config['controllers']['install']['enabled']) {
-          throw $e;
-          }
-          }
-          } */
+
         // Create a database object.
         if (isset($this->config['database'][0]['dsn'])) {
+
             $this->db = new CDatabase($this->config['database'][0]['dsn']);
+           
         }
 
         // Create a container for all views and theme data
@@ -105,29 +111,6 @@ class CSiteshop implements ISingleton /* , IModule */ {
             textdomain('siteshop');
         }
     }
-
-    /**
-     * Implementing interface IModule. Manage install/update/deinstall and equal actions.
-     */
-    /* public function Manage($action=null) {
-      switch($action) {
-      case 'preinstall':
-      // Check gettext
-      // Check safe_mode (putenv)
-      // Check pdo & sqlite
-      // Disable magic quotes
-      // check memory limit
-      // check writable data-directory
-      break;
-
-      case 'install':
-      break;
-
-      default:
-      throw new Exception('Unsupported action for this module.');
-      break;
-      }
-      } */
 
     /**
      * Frontcontroller, check url and route to controllers.
@@ -192,31 +175,31 @@ class CSiteshop implements ISingleton /* , IModule */ {
             $this->ShowErrorPage(404, t('Page is not found.'));
         }
     }
-    
-    	/**
-	 * Display a custom error page.
-   *
-	 * @param $code integer the code, for example 403 or 404.
-	 * @param $message string a message to be displayed on the page.
-	 */
-	public function ShowErrorPage($code, $message=null) {
-	  $errors = array(
-	    '403' => array('header' => 'HTTP/1.0 403 Restricted Content', 'title' => t('403, restricted content')),
-	    '404' => array('header' => 'HTTP/1.0 404 Not Found', 'title' => t('404, page not found')),
-	  );	  
-	  if(!array_key_exists($code, $errors)) { throw new Exception(t('Header code is not valid.')); }
-    
-    $this->views->SetTitle($errors[$code]['title'])
-                //->AddIncludeToRegion('primary', $this->LoadView(null, "{$code}.tpl.php"), array('message'=>$message))
-                //->AddIncludeToRegion('sidebar', $this->LoadView(null, "{$code}_sidebar.tpl.php"), array('message'=>$message));
-                ->AddIncludeToRegion('primary', (__DIR__ . '/' . "{$code}.tpl.php"), array('message'=>$message))
-                ->AddIncludeToRegion('sidebar', (__DIR__ . '/' . "{$code}_sidebar.tpl.php"), array('message'=>$message));
 
-                $this->log->Timestamp(__CLASS__, __METHOD__); 
-    header($errors[$code]['header']);
-    $this->ThemeEngineRender();
-    exit();
-  }
+    /**
+     * Display a custom error page.
+     *
+     * @param $code integer the code, for example 403 or 404.
+     * @param $message string a message to be displayed on the page.
+     */
+    public function ShowErrorPage($code, $message = null) {
+        $errors = array(
+            '403' => array('header' => 'HTTP/1.0 403 Restricted Content', 'title' => t('403, restricted content')),
+            '404' => array('header' => 'HTTP/1.0 404 Not Found', 'title' => t('404, page not found')),
+        );
+        if (!array_key_exists($code, $errors)) {
+            throw new Exception(t('Header code is not valid.'));
+        }
+
+        $this->views->SetTitle($errors[$code]['title'])
+                ->AddIncludeToRegion('primary', (__DIR__ . '/' . "{$code}.tpl.php"), array('message' => $message))
+                ->AddIncludeToRegion('sidebar', (__DIR__ . '/' . "{$code}_sidebar.tpl.php"), array('message' => $message));
+
+        $this->log->Timestamp(__CLASS__, __METHOD__);
+        header($errors[$code]['header']);
+        $this->ThemeEngineRender();
+        exit();
+    }
 
     /**
      * ThemeEngineRender, renders the reply of the request to HTML or whatever.
@@ -256,7 +239,6 @@ class CSiteshop implements ISingleton /* , IModule */ {
         if (is_array($this->config['theme']['menu_to_region'])) {
             foreach ($this->config['theme']['menu_to_region'] as $key => $val) {
                 $this->views->AddString($this->DrawMenu($key), null, $val);
-                //$this->views->AddString($this->CreateMenu($key), null, $val);
             }
         }
 
@@ -522,50 +504,5 @@ class CSiteshop implements ISingleton /* , IModule */ {
         $class = isset($options['class']) ? " class='{$options['class']}'" : null;
         return "<ul{$id}{$class}>\n{$items}</ul>\n";
     }
-
-    /**
-     * Create a breadcrumb from an array.
-     *
-     * @param array $items to use in breadcrumb.
-     * @param string $separator to use as separator.
-     * @param array $options to use when creating the breadcrumb.
-     * @return string with the HTML representing the breadcrumb.
-     */
-    public function CreateBreadcrumb($items = array(), $separator = '&raquo;', $options = array()) {
-        $default = array(
-            'items' => $items,
-            'separator' => $separator,
-        );
-        $options = array_merge($default, $options);
-        $crumbs = null;
-        foreach ($options['items'] as $item) {
-            if (isset($item['url'])) {
-                $crumbs .= "<li><a href='" . $this->CreateUrl($item['url']) . "'>{$item['label']}</a> {$options['separator']}</li>\n";
-            } else {
-                $crumbs .= "<li>{$item['label']}</li>\n";
-            }
-        }
-        return "<ul class='breadcrumb'>\n{$crumbs}</ul>\n";
-    }
-    
-    /**
-   * Load a view, looks for the file in SITESHOP_SITE_PATH/views/$module and then in 
-   * SITESHOP_INSTALL_PATH/views/$module.
-   *
-   * @param string $module name of the module owning the view.
-   * @param string $view filename of the view.
-   * @param boolean $original set to true to override the site-version of the view, default is false.
-   * @return string with the absolute filename or false if no filename exists.
-   */
-  public function LoadView($module, $view, $original=false) {
-    $path1 = SITESHOP_APPLICATION_PATH . "/views/$module/$view";
-    $path2 = SITESHOP_INSTALL_PATH . "/views/$module/$view";
-    if(!$original && is_file($path1)) {
-      return $path1;
-    } else if(is_file($path2)) {
-      return $path2;
-    }
-    return false;
-  }
 
 }

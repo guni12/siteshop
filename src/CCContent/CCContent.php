@@ -31,6 +31,8 @@ class CCContent extends CObject implements IController {
      * @param id integer the id of the content.
      */
     public function Edit($id = null) {
+        $if = new CInterceptionFilter();
+        $access = $if->AdminOrForbidden();
         $content = new CMContent($id);
         $form = new CFormContent($content);
         $status = $form->Check();

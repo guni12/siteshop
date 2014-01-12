@@ -1,16 +1,8 @@
-<h1>Blog</h1>
-<p>All nice news and blogposts here.</p>
+<h1><?= $title?></h1>
+<?php if ($content['id']): ?>
+    <h2><?= esc($content['title']) ?><span class='smaller-text-up'><em> Posted on <?= $content['created'] ?> by <?= $content['owner'] ?></em></span></h2>
+    <p><?= $content->GetFilteredData() ?></p>
 
-<?php if($contents != null):?>
-  <?php foreach($contents as $val):?>
-    <h2><?=esc($val['title'])?></h2>
-<p class='smaller-text'><em>Posted on <?=$val['created']?> by <?=$val['owner']?></em></p>
-<p><?=filter_data($val['data'], $val['filter'])?></p>
-<p class='smaller-text silent'> <a href='<?= create_url("my/oneblog/{$val['id']}") ?>'>view</a></p>
-
-<?php endforeach; ?>
-<?php else:?>
-  <p>No posts exists.</p>
-<?php endif;?>
-
-
+<?php else: ?>
+    <p>404: No such page exists.</p>
+<?php endif; ?>

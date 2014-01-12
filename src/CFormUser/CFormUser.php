@@ -76,25 +76,6 @@ class CFormUser extends CForm {
     $user['email'] = $form['email']['value'];
     return $user->Save();
   }
-  
-
-  /**
-   * Change password form.
-   *
-   * @param CUser $user the user object.
-   */
-/*  public function CreateChangePassword($user) {
-    $this->AddElement(new CFormElementHidden('acronym', array('value'=>$user['acronym'])))
-         ->AddElement(new CFormElementPassword('password1', array('label'=>'Current password:')))
-         ->AddElement(new CFormElementPassword('password2', array('label'=>'New password:')))
-         ->AddElement(new CFormElementPassword('password3', array('label'=>'New password again:')))
-         ->AddElement(new CFormElementSubmit('change_password', array('callback'=>array($this, 'DoChangePassword'), 'callback-args'=>array($user))));
-         
-    $this->SetValidation('password1', array('not_empty'))
-         ->SetValidation('password2', array('not_empty'))
-         ->SetValidation('password3', array('not_empty', 'match'=>'password2'));
-  }
-  */
 
   /**
    * Change the password.
