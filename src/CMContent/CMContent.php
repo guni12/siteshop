@@ -159,7 +159,7 @@ En bild på mig själv.
 
 Och en spansk jul.
 
-![spanska julstjärnor](/~guni/phpmvc/siteshop/application/src/CCMycontroller/img/jul2.jpg "Spansk jul")
+![spanska julstjärnor](/~guni12/phpmvc/siteshop/application/src/CCMycontroller/img/jul2.jpg "Spansk jul")
 
 EOD;
         switch ($action) {
