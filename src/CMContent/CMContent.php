@@ -149,15 +149,17 @@ Here will be a table.
 Here is a paragraph with some **bold** text and some *italic* text and a [link to dbwebb.se](http://dbwebb.se).
 
 EOD;
-        
+$dir = "";       
 $html2 = <<<EOD
 [1]:  /siteshop/application/src/CCMycontroller/img/gunvor.jpg "Gunvor"
 
-När man lägger in ett foto (relativ sökväg med markdown filter) på sig själv fungerar det bra, men inte när jag vill ha en bild på något annat!!!???
+En bild på mig själv.
 
 ![tankfull][1]
 
-![spanska julstjärnor](/siteshop/application/src/CCMycontroller/jul.jpg "Spansk jul")
+Och en spansk jul.
+
+![spanska julstjärnor](/siteshop/application/src/CCMycontroller/img/jul2.jpg "Spansk jul")
 
 EOD;
         switch ($action) {
