@@ -151,7 +151,7 @@ Here is a paragraph with some **bold** text and some *italic* text and a [link t
 EOD;
 $dir = "";       
 $html2 = <<<EOD
-[1]:  /~guni/phpmvc/siteshop/application/src/CCMycontroller/img/gunvor.jpg "Gunvor"
+[1]:  /~guni12/phpmvc/siteshop/application/src/CCMycontroller/img/gunvor.jpg "Gunvor"
 
 En bild på mig själv.
 
