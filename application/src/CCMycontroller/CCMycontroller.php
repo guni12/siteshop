@@ -44,7 +44,7 @@ class CCMycontroller extends CObject implements IController {
 		$dir = __DIR__;
 		//echo $dir;
 		//echo '<br />';
-        $img = array('title' => $text1, 'source' => $dir . '/img/snickarboden.jpg', 'alt' => $text2, 'width' => '336', 'height' => '397');
+        $img = array('title' => $text1, 'source' => $dir . '/img/snickarboden.JPG', 'alt' => $text2, 'width' => '336', 'height' => '397');
 		//echo $img['source'];
         $this->views->SetTitle(t('About me') . htmlEnt($content['title']))
                 ->AddInclude(__DIR__ . '/page.tpl.php', array('contents' => $content->ListAll(array('type' => 'home'))), 'primary')
