@@ -53,6 +53,13 @@ You can login with root/root as the administrator or with doe/doe, helga/helga o
 saved in the database, such as usernames, blogcontent, group-belongings etc. If the users are members of the third group, 'Järngänget', they have access to a secret page which they 
 reach from siteshop/user. This can also be edited by the administrator.
 
+Startup-class
+==========================================================
+
+If you want to reach the startup again you can click the link from the index-page. You can also set 
+	'startup'      => array('enabled' => false,'class' => 'CCStartup'),
+enabled = false as you see here. This means that only the administrator can install all the modules, if needed.
+
 
 Change the sites appearance
 ========================================================
@@ -71,17 +78,23 @@ Here you can alter the label-names from Home, Modules etc. to something else. Be
 edit this file with an editer as Poedit. You can add more labels if you follow the exact same pattern. An array in the config-file shows you which controllers you can use:
 $ss->config['controllers'] = array(...
 
-I have chosen to only include the my-navbar in the bb theme and both of the navigation-menues in the grid theme. But you can go to the bb-folder, find and uncomment this code, 
-<!--<div id='navbar'><?=render_views('navbar')?></div>-->, in the index.tpl.php file.
+I have chosen to only include the my-navbar in the bb theme and both navbar and my-navbar in the grid theme. But you can go to the bb-folder, find and uncomment this code, 
+<!--<div id='navbar'><?=render_views('navbar')?></div>-->, in the index.tpl.php file. Or you can change in
+'menu_to_region' => array(...
 
-'my-navbar' => array(
+from 	'my-navbar'=>'my-navbar'),
+to 		'my-navbar'=>'navbar'),
+
+(In the my-navbar case all of the navigation-elements' url points to the class CCMycontroller.php and methods in it. In order to make alterations here you need to know how to add 
+new methods and templet files.)
+
+	'my-navbar' => array(
         'me' => array('label' => t('About Me'), 'url' => 'my'),
         'blog' => array('label' => t('My blog'), 'url' => 'my/blog'),
         'guestbook' => array('label' => t('Guestbook'), 'url' => 'my/guestbook'),
     ),
 	
-(In this case all of the navigation-elements' url points to the class CCMycontroller.php and methods in it. In order to make alterations here you need to know how to add 
-new methods and templet files.)
+
 
 You also find this:
 

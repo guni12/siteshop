@@ -1,13 +1,13 @@
-Siteshop, the site directory
+Siteshop, the application directory
 =========================
 
-Some people would call this the site directory, I call it the application directory. It should 
+Some people would call this the application directory, I call it the application directory. It should 
 contain the code to actually make a working website. When Siteshop is deployed, and extended into a 
 website, then this directory should be the only place where content changes.
 
 The config.php
 ---------------
-The file `config.php` holds the configuration for this site.
+The file `config.php` holds the configuration for this application.
 
 
 The src-directory
