@@ -1,4 +1,4 @@
-a:4:{s:4:"root";s:10:"style.less";s:8:"compiled";s:14361:"html,
+a:4:{s:4:"root";s:10:"style.less";s:8:"compiled";s:14340:"html,
 body,
 div,
 span,
@@ -724,7 +724,7 @@ ul.nb-tab a:active {
   width: 960px;
   margin: 0 auto;
   *zoom: 1;
-  height: 88px;
+  height: 110px;
   padding-bottom: 22px;
 }
 #inner-wrap-footer-column:before,
@@ -749,7 +749,6 @@ ul.nb-tab a:active {
   font-size: 0.8em;
   margin-top: 1em;
   height: 100%;
-  padding-top: 0.5em;
   padding-left: 0.5em;
   background-color: rgba(230,230,230,0.5);
 }
@@ -879,4 +878,4 @@ a:focus {
   color: purple;
   text-decoration: underline;
 }
-";s:5:"files";a:2:{s:41:"C:\wamp\www\siteshop\themes\bb\style.less";i:1389464174;s:69:"C:\wamp\www\siteshop\themes\bb\semantic.gs\stylesheets\less\grid.less";i:1387269861;}s:7:"updated";i:1389464180;}
+";s:5:"files";a:2:{s:41:"C:\wamp\www\siteshop\themes\bb\style.less";i:1389617822;s:69:"C:\wamp\www\siteshop\themes\bb\semantic.gs\stylesheets\less\grid.less";i:1387269861;}s:7:"updated";i:1389617828;}

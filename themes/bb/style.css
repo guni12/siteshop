@@ -724,7 +724,7 @@ ul.nb-tab a:active {
   width: 960px;
   margin: 0 auto;
   *zoom: 1;
-  height: 88px;
+  height: 110px;
   padding-bottom: 22px;
 }
 #inner-wrap-footer-column:before,
@@ -749,7 +749,6 @@ ul.nb-tab a:active {
   font-size: 0.8em;
   margin-top: 1em;
   height: 100%;
-  padding-top: 0.5em;
   padding-left: 0.5em;
   background-color: rgba(230,230,230,0.5);
 }
