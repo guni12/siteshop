@@ -41,7 +41,8 @@ class CCMycontroller extends CObject implements IController {
 
 		$text1 = t("Daddys workshop");
 		$text2 = t("My dad's workshop before he passed away");
-        $img = array('title' => $text1, 'source' => 'application/src/CCMycontroller/img/snickarboden.jpg', 'alt' => $text2, 'width' => '336', 'height' => '397');
+
+        $img = array('title' => $text1, 'source' => 'application/src/CCMycontroller/img/snickarboden.JPG', 'alt' => $text2, 'width' => '336', 'height' => '397');
         $this->views->SetTitle(t('About me') . htmlEnt($content['title']))
                 ->AddInclude(__DIR__ . '/page.tpl.php', array('contents' => $content->ListAll(array('type' => 'home'))), 'primary')
                ->AddInclude(__DIR__ . '/imagepage.tpl.php', array('img' => $img),'sidebar')

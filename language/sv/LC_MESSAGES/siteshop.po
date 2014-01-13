@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: siteshop\n"
-"POT-Creation-Date: 2014-01-12 22:08+0100\n"
+"POT-Creation-Date: 2014-01-13 14:41+0100\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Gunvor Nilsson <nilsson.gunvor@bredband.net>\n"
 "Language-Team: Gunvor Nilsson <nilsson.gunvor@bredband.net>\n"
@@ -16,6 +16,7 @@ msgstr ""
 "X-Poedit-Basepath: .\n"
 "X-Poedit-SearchPath-0: ../..\n"
 "X-Poedit-SearchPath-1: ../../..\n"
+"X-Poedit-SearchPath-2: src/CCIndex\n"
 
 #: ../../../application/config.php:131
 msgid "Home"
@@ -36,7 +37,7 @@ msgid "About Me"
 msgstr "Om mig"
 
 #: ../../../application/config.php:137
-#: ../../../application/src/CCMycontroller/CCMycontroller.php:114
+#: ../../../application/src/CCMycontroller/CCMycontroller.php:115
 msgid "My blog"
 msgstr "Min blogg"
 
@@ -99,53 +100,53 @@ msgstr "Pappas snickarbod"
 msgid "My dad's workshop before he passed away"
 msgstr "Min pappas hobbyverkstad efter ett väl levt liv."
 
-#: ../../../application/src/CCMycontroller/CCMycontroller.php:45
+#: ../../../application/src/CCMycontroller/CCMycontroller.php:46
 msgid "About me"
 msgstr "Om mig"
 
-#: ../../../application/src/CCMycontroller/CCMycontroller.php:101
+#: ../../../application/src/CCMycontroller/CCMycontroller.php:102
 msgid "Older articles"
 msgstr "Äldre artiklar"
 
-#: ../../../application/src/CCMycontroller/CCMycontroller.php:115
+#: ../../../application/src/CCMycontroller/CCMycontroller.php:116
 msgid "The Siteshop Blog"
 msgstr "Siteshop Bloggen"
 
-#: ../../../application/src/CCMycontroller/CCMycontroller.php:128
+#: ../../../application/src/CCMycontroller/CCMycontroller.php:129
 msgid "One post"
 msgstr "Ett inlägg"
 
-#: ../../../application/src/CCMycontroller/CCMycontroller.php:148
+#: ../../../application/src/CCMycontroller/CCMycontroller.php:149
 #: ../../../application/src/CCMycontroller/guestbook.tpl.php:1
 msgid "My Guestbook"
 msgstr "Min gästbok"
 
-#: ../../../application/src/CCMycontroller/CCMycontroller.php:171
+#: ../../../application/src/CCMycontroller/CCMycontroller.php:172
 #: ../../../src/CCAdminControlPanel/CCAdminControlPanel.php:396
 #: ../../../src/CCAdminControlPanel/CCAdminControlPanel.php:475
 msgid "Update"
 msgstr "Uppdatera"
 
-#: ../../../application/src/CCMycontroller/CCMycontroller.php:171
+#: ../../../application/src/CCMycontroller/CCMycontroller.php:172
 #: ../../../src/CCAdminControlPanel/CCAdminControlPanel.php:264
 #: ../../../src/CCAdminControlPanel/CCAdminControlPanel.php:332
 #: ../../../src/CCAdminControlPanel/CCAdminControlPanel.php:354
 msgid "Create"
 msgstr "Skapa "
 
-#: ../../../application/src/CCMycontroller/CCMycontroller.php:209
+#: ../../../application/src/CCMycontroller/CCMycontroller.php:210
 msgid "Secretside"
 msgstr "Hemliga sidan"
 
-#: ../../../application/src/CCMycontroller/CCMycontroller.php:237
+#: ../../../application/src/CCMycontroller/CCMycontroller.php:238
 msgid "update"
 msgstr "uppdatera"
 
-#: ../../../application/src/CCMycontroller/CCMycontroller.php:237
+#: ../../../application/src/CCMycontroller/CCMycontroller.php:238
 msgid "add"
 msgstr "Skicka"
 
-#: ../../../application/src/CCMycontroller/CCMycontroller.php:239
+#: ../../../application/src/CCMycontroller/CCMycontroller.php:240
 msgid "Add entry:"
 msgstr "Skriv ett inlägg."
 
@@ -686,10 +687,18 @@ msgid "You can review its source directly on github: "
 msgstr "Du kan också titta på källkoden direkt på github: "
 
 #: ../../../src/CCIndex/index.tpl.php:13
-msgid "Now you are ready to check this MVC out. Good Luck!"
-msgstr "Nu är du redo att utforska denna MVC. Lycka till!"
+msgid "Now you are ready to check this MVC out."
+msgstr "Nu är du redo att utforska denna MVC. "
 
-#: ../../../src/CCIndex/index.tpl.php:18
+#: ../../../src/CCIndex/index.tpl.php:14
+msgid ""
+"You can always go back to the startup-page by clicking on the startup-link "
+"to the right."
+msgstr ""
+"Du kan alltid komma tillbaka till uppstartsidan genom att klicka på startup-"
+"länken till höger."
+
+#: ../../../src/CCIndex/index.tpl.php:19
 msgid "Welcome to Siteshop framework."
 msgstr "Välkommen till ramverket Sitehop."
 

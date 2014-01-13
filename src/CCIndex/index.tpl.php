@@ -10,7 +10,8 @@
     </blockquote>
     <p><?= t('You can review its source directly on github: ') ?><br /><a href='https://github.com/guni12/siteshop'>https://github.com/guni12/siteshop</a></p>
 
-<p><?= t('Now you are ready to check this MVC out. Good Luck!')?></p>
+<p><?= t('Now you are ready to check this MVC out.')?></p><br />
+<p><?= t('You can always go back to the startup-page by clicking on the startup-link to the right.')?></p>
 
 <? else: ?>
 
