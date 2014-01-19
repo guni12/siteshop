@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: siteshop\n"
-"POT-Creation-Date: 2014-01-13 17:00+0100\n"
+"POT-Creation-Date: 2014-01-14 14:54+0100\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Gunvor Nilsson <nilsson.gunvor@bredband.net>\n"
 "Language-Team: Gunvor Nilsson <nilsson.gunvor@bredband.net>\n"
@@ -14,8 +14,8 @@ msgstr ""
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-KeywordsList: t;gettext_noop;_;gettext\n"
 "X-Poedit-Basepath: .\n"
-"X-Poedit-SearchPath-0: ../..\n"
-"X-Poedit-SearchPath-1: ../../..\n"
+"X-Poedit-SearchPath-0: /../..\n"
+"X-Poedit-SearchPath-1: /../../..\n"
 
 #: ../../../application/config.php:131
 msgid "Home"
@@ -36,7 +36,7 @@ msgid "About Me"
 msgstr "Om mig"
 
 #: ../../../application/config.php:137
-#: ../../../application/src/CCMycontroller/CCMycontroller.php:118
+#: ../../../application/src/CCMycontroller/CCMycontroller.php:115
 msgid "My blog"
 msgstr "Min blogg"
 
@@ -99,53 +99,53 @@ msgstr "Pappas snickarbod"
 msgid "My dad's workshop before he passed away"
 msgstr "Min pappas hobbyverkstad efter ett väl levt liv."
 
-#: ../../../application/src/CCMycontroller/CCMycontroller.php:49
+#: ../../../application/src/CCMycontroller/CCMycontroller.php:46
 msgid "About me"
 msgstr "Om mig"
 
-#: ../../../application/src/CCMycontroller/CCMycontroller.php:105
+#: ../../../application/src/CCMycontroller/CCMycontroller.php:102
 msgid "Older articles"
 msgstr "Äldre artiklar"
 
-#: ../../../application/src/CCMycontroller/CCMycontroller.php:119
+#: ../../../application/src/CCMycontroller/CCMycontroller.php:116
 msgid "The Siteshop Blog"
 msgstr "Siteshop Bloggen"
 
-#: ../../../application/src/CCMycontroller/CCMycontroller.php:132
+#: ../../../application/src/CCMycontroller/CCMycontroller.php:129
 msgid "One post"
 msgstr "Ett inlägg"
 
-#: ../../../application/src/CCMycontroller/CCMycontroller.php:152
+#: ../../../application/src/CCMycontroller/CCMycontroller.php:149
 #: ../../../application/src/CCMycontroller/guestbook.tpl.php:1
 msgid "My Guestbook"
 msgstr "Min gästbok"
 
-#: ../../../application/src/CCMycontroller/CCMycontroller.php:175
+#: ../../../application/src/CCMycontroller/CCMycontroller.php:172
 #: ../../../src/CCAdminControlPanel/CCAdminControlPanel.php:396
 #: ../../../src/CCAdminControlPanel/CCAdminControlPanel.php:475
 msgid "Update"
 msgstr "Uppdatera"
 
-#: ../../../application/src/CCMycontroller/CCMycontroller.php:175
+#: ../../../application/src/CCMycontroller/CCMycontroller.php:172
 #: ../../../src/CCAdminControlPanel/CCAdminControlPanel.php:264
 #: ../../../src/CCAdminControlPanel/CCAdminControlPanel.php:332
 #: ../../../src/CCAdminControlPanel/CCAdminControlPanel.php:354
 msgid "Create"
 msgstr "Skapa "
 
-#: ../../../application/src/CCMycontroller/CCMycontroller.php:213
+#: ../../../application/src/CCMycontroller/CCMycontroller.php:210
 msgid "Secretside"
 msgstr "Hemliga sidan"
 
-#: ../../../application/src/CCMycontroller/CCMycontroller.php:241
+#: ../../../application/src/CCMycontroller/CCMycontroller.php:238
 msgid "update"
 msgstr "uppdatera"
 
-#: ../../../application/src/CCMycontroller/CCMycontroller.php:241
+#: ../../../application/src/CCMycontroller/CCMycontroller.php:238
 msgid "add"
 msgstr "Skicka"
 
-#: ../../../application/src/CCMycontroller/CCMycontroller.php:243
+#: ../../../application/src/CCMycontroller/CCMycontroller.php:240
 msgid "Add entry:"
 msgstr "Skriv ett inlägg."
 

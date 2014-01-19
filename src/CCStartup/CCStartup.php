@@ -75,39 +75,39 @@ class CCStartup extends CObject implements IController {
         $html21 = t('And here is your result:');
 
         $result = "";
-        $result .= "<p>" . $html16 . "</p>";
+        $result .= "<p class ='smaller-text'>" . $html16 . "</p>";
         $result .= "<p class='info'>" . $html1 . PHP_VERSION;
         $result .= $html22;
         $result .= $html2 . $memory_limit;
         $result .= $html3 . PHP_OS;       
-        $result .= ".</p>"; 
-        $result .= "<p>" . $html19 . "</p>";
+        $result .= ".</p><br /><br />"; 
+        $result .= "<p class ='smaller-text'>" . $html19 . "</p>";
         if ($pdo && $pdo_sqlite):
-            $result .= "<p class='success'>" . $html8 . "</p>";
+            $result .= "<p class='success'>" . $html8 . "</p><br />";
         elseif ($pdo):
-            $result .= "<p class='error'>" . $html9 . "</p>";
+            $result .= "<p class='error'>" . $html9 . "</p><br />";
         else:
-            $result .= "<p class='error'>" . $html10 . "</p>";
+            $result .= "<p class='error'>" . $html10 . "</p><br />";
         endif;
-        $result .= "<p>" . $html18 . "</p>";
+        $result .= "<p class ='smaller-text'>" . $html18 . "</p>";
         if ($safemode):
-            $result .= "<p class='error'>" . $html6 . "</p>";
+            $result .= "<p class='error'>" . $html6 . "</p><br />";
         else:
-            $result .= "<p class='success'>" . $html7 . "</p>";
+            $result .= "<p class='success'>" . $html7 . "</p><br />";
         endif;        
-        $result .= "<p>" . $html20 . "</p>";
+        $result .= "<p class ='smaller-text'>" . $html20 . "</p>";
         if ($magic_quotes):
-            $result .= "<p class='error'>" . $html11 . "</p>";
+            $result .= "<p class='error'>" . $html11 . "</p><br />";
         else:
-            $result .= "<p class='success'>" . $html12 . "</p>";
+            $result .= "<p class='success'>" . $html12 . "</p><br />";
         endif;
-        $result .= "<p>" . $html17 . "</p>";
+        $result .= "<p class ='smaller-text'>" . $html17 . "</p>";
         if ($gettext):
-            $result .= "<p class='success'>" . $html4 . "</p>";
+            $result .= "<p class='success'>" . $html4 . "</p><br />";
         else:
-            $result .= "<p class='info'>" . $html5 . "</p>";
+            $result .= "<p class='info'>" . $html5 . "</p><br />";
         endif;
-        $result .= "<p>" . $html21 . "</p>";
+        $result .= "<p class ='smaller-text'>" . $html21 . "</p>";
         if ($problems):
             $result .= "<p class='error'>" . $html13 . "</p>";
         else:

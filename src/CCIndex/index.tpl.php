@@ -13,6 +13,8 @@
 <p><?= t('Now you are ready to check this MVC out.')?></p><br />
 <p><?= t('You can always go back to the startup-page by clicking on the startup-link to the right.')?></p>
 
+<a href='<?= base_url() ?>source.php'>Kolla källkoden för detaljer</a>
+
 <? else: ?>
 
     <div id='headcolor'>

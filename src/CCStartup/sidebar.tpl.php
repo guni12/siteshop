@@ -1,7 +1,8 @@
 <div id ='sidecolor'>
-<p><?= t('The path to your application-directory is') ?><br /><?= t('(this is defined in') ?> <code>index.php</code>):</p>
+<p><?= t('The path to your application-directory is') ?>
 
-<code><?= SITESHOP_APPLICATION_PATH . '/data' ?></code><br />
+<code><?= SITESHOP_APPLICATION_PATH . '/data' ?></code></p>
+<p class ='smaller-text'><?= t('(this is defined in') ?> <code>index.php</code>)</p>
 
 <p><?= t('First you have to make the data-directory writable. This is the place where Siteshop needs to be able to write and create files.') ?></p>
 <?php
