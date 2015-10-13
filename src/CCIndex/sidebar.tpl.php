@@ -22,7 +22,7 @@
     </ul>
 </div>
 <? else: ?>
-<h2><?= t('To get the framwork nice and going...') ?></h2>
+<h2><?= t('To get the framework nice and going...') ?></h2>
 <p><?= t('you need to do some installations.') ?> 
 <br /><?= t('Go to the ')?><a href="<?=create_url('startup');?>"><?= t('startup-page')?></a><?= t(' to continue.') ?></p>
 <? endif; ?>

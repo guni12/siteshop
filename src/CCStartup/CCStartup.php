@@ -7,6 +7,10 @@
  */
 class CCStartup extends CObject implements IController {
 
+    public $goodSofar = false;
+    public $goodSidebar = false;
+    public $db_works = false;
+
     /**
      * Constructor
      */
@@ -20,13 +24,13 @@ class CCStartup extends CObject implements IController {
   public function Index() {  
       $result = $this->testThings();
       $controllers = 'controllers';
-      $sealInstallation = $this->sealInstallation();
+      //$sealInstallation = $this->sealInstallation();
 
       $dsn = isset($this->config['database'][0]['dsn']) ? $this->config['database'][0]['dsn'] : t('Settings for default database is missing in application/config.php.');
 
     $this->views->SetTitle(t('Install Siteshop'))
                 ->AddInclude(__DIR__ . '/index.tpl.php', array('result' => $result), 'primary')
-                ->AddInclude(__DIR__ . '/sidebar.tpl.php', array('dsn' => $dsn, 'sealInstallation' => $sealInstallation), 'sidebar');
+                ->AddInclude(__DIR__ . '/sidebar.tpl.php', array('dsn' => $dsn, 'goodSofar' => $this->goodSofar, 'goodSidebar' => $this->goodSidebar), 'sidebar');
   }
   
   
@@ -112,6 +116,7 @@ class CCStartup extends CObject implements IController {
             $result .= "<p class='error'>" . $html13 . "</p>";
         else:
             $result .= "<p class='success'><b>" . $html14 . "</b>" . $html15 . "</p>";
+        $this->goodSofar = true;
         endif;
 
         return $result;

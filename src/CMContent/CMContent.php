@@ -149,17 +149,17 @@ Here will be a table.
 Here is a paragraph with some **bold** text and some *italic* text and a [link to dbwebb.se](http://dbwebb.se).
 
 EOD;
-$dir = "";       
+    
 $html2 = <<<EOD
-[1]:  /~guni12/phpmvc/siteshop/application/src/CCMycontroller/img/gunvor.jpg "Gunvor"
+[1]:  http://behovsbo.se/bilderipso/Arduino.png "Arduino"
 
-En bild på mig själv.
+Leksak.
 
 ![tankfull][1]
 
 Och en spansk jul.
 
-![spanska julstjärnor](/~guni12/phpmvc/siteshop/application/src/CCMycontroller/img/jul2.jpg "Spansk jul")
+![spanska julstjärnor](http://www.student.bth.se/~guni12/phpmvc/siteshop/application/src/CCMycontroller/img/jul2.jpg "Spansk jul")
 
 EOD;
         switch ($action) {
@@ -167,33 +167,31 @@ EOD;
                 try {
                     $this->db->ExecuteQuery(self::SQL('drop table content'));
                     $this->db->ExecuteQuery(self::SQL('create table content'));
-                    $this->db->ExecuteQuery(self::SQL('insert content'), array('hello-world', 'post', 'Hello World', "This is a demo post.\n\nThis is another row in this demo post.", 'plain', $this->user['id']));
-                    $this->db->ExecuteQuery(self::SQL('insert content'), array('hello-world-again', 'post', 'Hello World Again', "This is another demo post.\n\nThis is another row in this demo post.", 'plain', $this->user['id']));
-                    $this->db->ExecuteQuery(self::SQL('insert content'), array('hello-world-once-more', 'post', 'Hello World Once More', "This is one more demo post.\n\nThis is another row in this demo post.", 'plain', $this->user['id']));
-                    $this->db->ExecuteQuery(self::SQL('insert content'), array('home', 'page', 'Home page', "This is a demo page, this could be your personal home-page.\n\nLydia is a PHP-based MVC-inspired Content management Framework, watch the making of Lydia at: http://dbwebb.se/lydia/tutorial.", 'plain', $this->user['id']));
-                    $this->db->ExecuteQuery(self::SQL('insert content'), array('about', 'page', 'About page', "This is a demo page, this could be your personal about-page.\n\nLydia is used as a tool to educate in MVC frameworks.", 'plain', $this->user['id']));
-                    $this->db->ExecuteQuery(self::SQL('insert content'), array('download', 'page', 'Download page', "This is a demo page, this could be your personal download-page.\n\nYou can download your own copy of lydia from https://github.com/mosbth/lydia.", 'plain', $this->user['id']));
-                    $this->db->ExecuteQuery(self::SQL('insert content'), array('bbcode', 'page', 'Page with BBCode', "This is a demo page with some BBCode-formatting.\n\n[b]Text in bold[/b] and [i]text in italic[/i] and [url=http://dbwebb.se]a link to dbwebb.se[/url]. You can also include images using bbcode, such as the lydia logo: [img]http://dbwebb.se/lydia/current/themes/core/logo_80x80.png[/img]", 'bbcode', $this->user['id']));
-                    $this->db->ExecuteQuery(self::SQL('insert content'), array('htmlpurify', 'page', 'Page with HTMLPurifier', "This is a demo page with some HTML code intended to run through <a href='http://htmlpurifier.org/'>HTMLPurify</a>. Edit the source and insert HTML code and see if it works.\n\n<b>Text in bold</b> and <i>text in italic</i> and <a href='http://dbwebb.se'>a link to dbwebb.se</a>. JavaScript, like this: <javascript>alert('hej');</javascript> should however be removed.", 'htmlpurify', $this->user['id']));
-                    $this->db->ExecuteQuery(self::SQL('insert content'), array('markdown', 'page', 'Page with Markdown', $html_text, 'markdown', $this->user['id']));
-                    $this->db->ExecuteQuery(self::SQL('insert content'), array('markdown_x', 'page', 'Page with MarkdownExtra', $html_text, 'markdown_x', $this->user['id']));
-                    $this->db->ExecuteQuery(self::SQL('insert content'), array('markdown_x_smart', 'page', 'Page with MarkdownExtra plus Typographer', $html_text, 'markdown_x_smart', $this->user['id']));
+                    $this->db->ExecuteQuery(self::SQL('insert content'), array('hello-world', 'post', t('Hello World'), t("This is a demo post.\n\nThis is another row in this demo post."), 'bbcode', $this->user['id']));
+                    $this->db->ExecuteQuery(self::SQL('insert content'), array('home', 'page', t('Home page'), t("This is a demo page, this could be your personal home-page.\n\nLydia is a PHP-based MVC-inspired Content management Framework, watch the making of Lydia at: http://dbwebb.se/lydia/tutorial."), 'plain', $this->user['id']));
+                    $this->db->ExecuteQuery(self::SQL('insert content'), array('about', 'page', t('About page'), t("This is a demo page, this could be your personal about-page.\n\nLydia is used as a tool to educate in MVC frameworks."), 'plain', $this->user['id']));
+                    $this->db->ExecuteQuery(self::SQL('insert content'), array('download', 'page', t('Download page'), t("This is a demo page, this could be your personal download-page.\n\nYou can download your own copy of lydia from https://github.com/mosbth/lydia."), 'plain', $this->user['id']));
+                    $this->db->ExecuteQuery(self::SQL('insert content'), array('bbcode', 'page', t('Page with BBCode'), t("This is a demo page with some BBCode-formatting.\n\n[b]Text in bold[/b] and [i]text in italic[/i] and [url=http://dbwebb.se]a link to dbwebb.se[/url]. You can also include images using bbcode, such as the lydia logo: [img]http://dbwebb.se/lydia/current/themes/core/logo_80x80.png[/img]"), 'bbcode', $this->user['id']));
+                    $this->db->ExecuteQuery(self::SQL('insert content'), array('htmlpurify', 'page', t('Page with HTMLPurifier'), t("This is a demo page with some HTML code intended to run through <a href='http://htmlpurifier.org/'>HTMLPurify</a>. Edit the source and insert HTML code and see if it works.\n\n<b>Text in bold</b> and <i>text in italic</i> and <a href='http://dbwebb.se'>a link to dbwebb.se</a>. JavaScript, like this: <javascript>alert('hej');</javascript> should however be removed."), 'htmlpurify', $this->user['id']));
+                    $this->db->ExecuteQuery(self::SQL('insert content'), array('markdown', 'page', t('Page with Markdown'), $html_text, 'markdown', $this->user['id']));
+                    $this->db->ExecuteQuery(self::SQL('insert content'), array('markdown_x', 'page', t('Page with MarkdownExtra'), $html_text, 'markdown_x', $this->user['id']));
+                    $this->db->ExecuteQuery(self::SQL('insert content'), array('markdown_x_smart', 'page', t('Page with MarkdownExtra plus Typographer'), $html_text, 'markdown_x_smart', $this->user['id']));
                     $this->db->ExecuteQuery(self::SQL('insert content'), array('htmlpurify', 'home', 'Startsida', "Här är en bild på min älskade pappas snickarverkstad, så som det stod innan vi sålde fastigheten. Nu står några av hans verktyg hemma i vårt garage (där inte bilen får plats).\n\nJag tycker bilden passar för det här ramverket som är ett evighetsarbete. Det blir aldrig klart och det är upp till hantverkaren hur skicklig denne vill bli och hur mycket tid han/hon vill lägga ner på sin produkt.\n\nNu ska det bli jättekul att fortsätta med del fyra i kurspaketet. Javascript och ajax kan säkert betyda mycket för att göra webbplatsen snygg och smidig.\n\nDet kommer att bli en stor utmaning igen och jag behöver se om min nacke och säkra upp tid för att träna mina hållningsmuskler.\n\nNär man fattar allt mer av kodningen - hur kul är inte det?", 'bbcode', $this->user['id']));
-                    $this->db->ExecuteQuery(self::SQL('insert content'), array('toys', 'post', 'Arduino-toy', "Here is a fun toy.\n[img]http://behovsbo.se/bilderipso/Arduino.png[/img]", 'bbcode', $this->user['id']));
+                    $this->db->ExecuteQuery(self::SQL('insert content'), array('toys', 'post', t('Arduino-toy'), t("Here is a fun toy.\n[img]http://behovsbo.se/bilderipso/Arduino.png[/img]"), 'bbcode', $this->user['id']));
                     $this->db->ExecuteQuery(self::SQL('insert content'), array('chartest', 'post', 'ÅÄÖ', "Det är ett viktigt önskemål att kunna få till våra svenska bokstäver och det krånglade till sig rejält under några dagar. Sens moral: ändra inte default-inställningar i ini-filen i onödan -det är inte smart.", 'bbcode', $this->user['id']));
                     $this->db->ExecuteQuery(self::SQL('insert content'), array('markdown', 'post', 'Bildtest', $html2, 'markdown', $this->user['id']));
-                    $this->db->ExecuteQuery(self::SQL('insert content'), array('byline1', 'byline', 'Byline1', "Gunvor Nilsson is a parttime student at BTH. As her fulltime occupation she sings at the Gothenburg Operahouse.", 'bbcode', $this->user['id']));
-                    $this->db->ExecuteQuery(self::SQL('insert content'), array('byline2', 'byline', 'Byline2', "This version of Siteshop is her final home assignment of the MVC and CMF framework course - 'phpmvc'.", 'bbcode', $this->user['id']));
-                    $this->db->ExecuteQuery(self::SQL('insert content'), array('byline3', 'byline', 'Byline3', "She has, through the operasinging, got a wonderful mentor, a young software architect whom she will be helping (?) with some simple codes this following Spring (2014). ", 'bbcode', $this->user['id']));
-                    $this->db->ExecuteQuery(self::SQL('insert content'), array('byline4', 'byline', 'Byline4', "In her spare time she works on her house together with her partner Anders, travels a bit, enjoys her friends, take long walks in nature... ", 'bbcode', $this->user['id']));
-                    $this->db->ExecuteQuery(self::SQL('insert content'), array('secret1', 'secret1', 'Mainsecret', "The main secrets here.", 'bbcode', $this->user['id']));
-                    $this->db->ExecuteQuery(self::SQL('insert content'), array('secret2', 'secret2', 'Sidesecret', "Side secrets here", 'bbcode', $this->user['id']));
-                    $this->db->ExecuteQuery(self::SQL('insert content'), array('footer1', 'footer', 'Footer1', "Footertext 1 to change.", 'bbcode', $this->user['id']));
-                    $this->db->ExecuteQuery(self::SQL('insert content'), array('footer2', 'footer', 'Footer2', "Footertext 2 to change.", 'bbcode', $this->user['id']));
-                    $this->db->ExecuteQuery(self::SQL('insert content'), array('footer3', 'footer', 'Footer3', "Footertext 3 to change.", 'bbcode', $this->user['id']));
-                    $this->db->ExecuteQuery(self::SQL('insert content'), array('footer4', 'footer', 'Footer4', "Footertext 4 to change.", 'bbcode', $this->user['id']));
+                    $this->db->ExecuteQuery(self::SQL('insert content'), array('byline1', 'byline', 'Byline1', t("Gunvor Nilsson is a parttime student at BTH. As her fulltime occupation she sings at the Gothenburg Operahouse."), 'bbcode', $this->user['id']));
+                    $this->db->ExecuteQuery(self::SQL('insert content'), array('byline2', 'byline', 'Byline2', t("This version of Siteshop is her final home assignment of the MVC and CMF framework course - 'phpmvc'."), 'bbcode', $this->user['id']));
+                    $this->db->ExecuteQuery(self::SQL('insert content'), array('byline3', 'byline', 'Byline3', t("In her spare time she works on her house together with her partner Anders, travels a bit, enjoys her friends, take long walks in nature... "), 'bbcode', $this->user['id']));
+                    $this->db->ExecuteQuery(self::SQL('insert content'), array('byline4', 'byline', 'Byline4', t("Together with Anders she works on Behovsboboxen - a tool to buy electricity when the spotprice is low. This helps the grid to be smarter and the overall usage to be more even."), 'bbcode', $this->user['id']));
+                    $this->db->ExecuteQuery(self::SQL('insert content'), array('secret1', 'secret1', t('Mainsecret'), t("The main secrets here."), 'bbcode', $this->user['id']));
+                    $this->db->ExecuteQuery(self::SQL('insert content'), array('secret2', 'secret2', t('Sidesecret'), t("Side secrets here"), 'bbcode', $this->user['id']));
+                    $this->db->ExecuteQuery(self::SQL('insert content'), array('footer1', 'footer', 'Footer1', t("Footertext 1 to change."), 'bbcode', $this->user['id']));
+                    $this->db->ExecuteQuery(self::SQL('insert content'), array('footer2', 'footer', 'Footer2', t("Footertext 2 to change."), 'bbcode', $this->user['id']));
+                    $this->db->ExecuteQuery(self::SQL('insert content'), array('footer3', 'footer', 'Footer3', t("Footertext 3 to change."), 'bbcode', $this->user['id']));
+                    $this->db->ExecuteQuery(self::SQL('insert content'), array('footer4', 'footer', 'Footer4', t("Footertext 4 to change."), 'bbcode', $this->user['id']));
 
-                    return array('success', 'Successfully created the database tables and created a default "Hello World" blog post, owned by you.');
+                    return array('success', t('Successfully created the database tables and created a default "Hello World" blog post, owned by you.'));
                 } catch (Exception$e) {
                     die("$e<br/>Failed to open database: " . $this->config['database'][0]['dsn']);
                 }

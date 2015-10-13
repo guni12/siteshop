@@ -40,7 +40,7 @@ if (!defined('SITESHOP_PASS_BOOTSTRAP')) {
 // PHASE: FRONTCONTROLLER ROUTE
 //
 //CSiteshop::Instance()->FrontControllerRoute();
-if (!defined('LYDIA_PASS_FRONTCONTROLLER')) {
+if (!defined('SITESHOP_PASS_FRONTCONTROLLER')) {
     $ss->FrontControllerRoute();
 }
 
@@ -49,6 +49,6 @@ if (!defined('LYDIA_PASS_FRONTCONTROLLER')) {
 // PHASE: THEME ENGINE RENDER
 //
 //CSiteshop::Instance()->ThemeEngineRender();
-if (!defined('LYDIA_PASS_THEMEENGINE')) {
+if (!defined('SITESHOP_PASS_THEMEENGINE')) {
     $ss->ThemeEngineRender();
 }

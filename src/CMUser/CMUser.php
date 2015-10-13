@@ -23,7 +23,7 @@ class CMUser extends CObject implements IHasSQL, ArrayAccess, IModule {
         $this['isAuthenticated'] = is_null($profile) ? false : true;
         if (!$this['isAuthenticated']) {
             $this['id'] = 1;
-            $this['acronym'] = 'anonomous';
+            $this['acronym'] = 'anonymous';
             $this['hasRoleAnonomous'] = true;
         }
     }
@@ -66,7 +66,7 @@ class CMUser extends CObject implements IHasSQL, ArrayAccess, IModule {
                     $this->db->ExecuteQuery(self::SQL('create table user'));
                     $this->db->ExecuteQuery(self::SQL('create table group'));
                     $this->db->ExecuteQuery(self::SQL('create table user2group'));
-                    $this->db->ExecuteQuery(self::SQL('insert into user'), array('anonomous', 'Anonomous, not authenticated', null, 'plain', null, null));
+                    $this->db->ExecuteQuery(self::SQL('insert into user'), array('anonymous', 'Anonymous, not authenticated', null, 'plain', null, null));
                     $password = $this->CreatePassword('root');
                     $this->db->ExecuteQuery(self::SQL('insert into user'), array('root', 'The Administrator', 'root@dbwebb.se', $password['algorithm'], $password['salt'], $password['password']));
                     $idRootUser = $this->db->LastInsertId();
@@ -96,7 +96,7 @@ class CMUser extends CObject implements IHasSQL, ArrayAccess, IModule {
                     $this->db->ExecuteQuery(self::SQL('insert into user2group'), array($idHelgaUser, $idIronGroup));
                     $this->db->ExecuteQuery(self::SQL('insert into user2group'), array($idBoUser, $idUserGroup));
                     $this->db->ExecuteQuery(self::SQL('insert into user2group'), array($idBoUser, $idHouseGroup));
-                    return array('success', 'Successfully created the database tables and created a default admin user as root:root and an ordinary user as doe:doe.');
+                    return array('success', t('Successfully created the database tables and created a default admin user as root:root and an ordinary user as doe:doe.'));
                 } catch (Exception$e) {
                     die("$e<br/>Failed to open database: " . $this->config['database'][0]['dsn']);
                 }

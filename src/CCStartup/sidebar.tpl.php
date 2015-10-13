@@ -10,9 +10,10 @@ $is_directory = is_dir(SITESHOP_APPLICATION_PATH . '/data');
 $is_writable = is_writable(SITESHOP_APPLICATION_PATH . '/data');
 ?> 
 
-<?php if ($is_directory && $is_writable): ?>
+<?php if ($is_directory && $is_writable && $goodSofar): ?>
 
     <p class='success'><?= t('Success. The data directory exists and is writable.') ?></p>
+    <?php $this->goodSidebar = true; ?>
 
 <?php elseif ($is_directory): ?>
 
@@ -52,13 +53,12 @@ $is_writable = is_writable(SITESHOP_APPLICATION_PATH . '/data');
 
 <?php
 global $ss;
-$db_works = $ss->db === null ? false : true;
+$this->db_works = $ss->db === null ? false : true;
 ?> 
 
-<?php if ($db_works): ?>
+<?php if ($this->db_works): ?>
 
     <p class='success'><?= t('Great, I can connect to the database!') ?></p>
-    <?php $sealInstallation; ?>
     
 
 <?php else: ?>
@@ -66,7 +66,8 @@ $db_works = $ss->db === null ? false : true;
     <p class='error'><?= t('Failed. I can not connect to the database. Review your database connection settings.') ?></p>
 
 <?php endif; ?>
-        
+
+<?php if($goodSofar && $this->goodSidebar): ?>       
     <p><?= t('Second, Siteshop has some modules that need to be initialized.') ?></p>
     
     <p><?= t('When you have done that you can login as root/root for the administrator. At the acp page you can make the changes you prefer.')?></p>
@@ -75,4 +76,5 @@ $db_works = $ss->db === null ? false : true;
     <blockquote>
         <a href='<?= create_url('modules/install') ?>'>modules/install</a>
     </blockquote>
+<?php endif; ?>
 </div>

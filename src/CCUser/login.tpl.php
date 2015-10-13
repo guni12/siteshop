@@ -1,3 +1,4 @@
+<div class='login-edit'>
 <h1><?= t('Login') ?></h1>
 <p><?= t('Login using your acronym or email.') ?></p>
 <?=$login_form->GetHTML(array('start'=>true))?>
@@ -10,5 +11,6 @@
     <?php endif; ?>
   </fieldset>
 </form>
+</div>
 
 

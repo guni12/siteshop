@@ -21,3 +21,10 @@
         <h2><?= t('Welcome to Siteshop framework.') ?></h2>
     </div>
 <? endif; ?>
+<pre>
+<?php
+print_r(apache_get_modules());
+    $modules = apache_get_modules();
+    echo in_array('mod_rewrite', $modules) ? "mod_rewrite module is enabled" : "mod_rewrite module is not enabled";
+?>
+</pre>

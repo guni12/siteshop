@@ -1,204 +1,220 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: siteshop\n"
-"POT-Creation-Date: 2014-01-14 14:54+0100\n"
+"POT-Creation-Date: 2015-10-05 16:55+0200\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Gunvor Nilsson <nilsson.gunvor@bredband.net>\n"
-"Language-Team: Gunvor Nilsson <nilsson.gunvor@bredband.net>\n"
+"Language-Team: Gunvor Nilsson <gunvor@behovsbo.se>\n"
 "Language: sv\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.6.3\n"
+"X-Generator: Poedit 1.8.5\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-KeywordsList: t;gettext_noop;_;gettext\n"
-"X-Poedit-Basepath: .\n"
-"X-Poedit-SearchPath-0: /../..\n"
-"X-Poedit-SearchPath-1: /../../..\n"
+"X-Poedit-Basepath: ../../..\n"
+"X-Poedit-SearchPath-0: language/sv/LC_MESSAGES\n"
+"X-Poedit-SearchPath-1: language/sv\n"
+"X-Poedit-SearchPath-2: language\n"
+"X-Poedit-SearchPath-3: application\n"
+"X-Poedit-SearchPath-4: src\n"
+"X-Poedit-SearchPath-5: themes\n"
 
-#: ../../../application/config.php:131
+#: application/config.php:131
 msgid "Home"
 msgstr "Hem"
 
-#: ../../../application/config.php:132
+#: application/config.php:132
 msgid "Modules"
 msgstr "Moduler"
 
-#: ../../../application/config.php:133
-#: ../../../src/CCAdminControlPanel/CCAdminControlPanel.php:277
-#: ../../../src/CCUser/content.tpl.php:3
+#: application/config.php:133
+#: src/CCAdminControlPanel/CCAdminControlPanel.php:277
+#: src/CCUser/content.tpl.php:3
 msgid "Content"
 msgstr "Innehåll"
 
-#: ../../../application/config.php:136
+#: application/config.php:136
 msgid "About Me"
 msgstr "Om mig"
 
-#: ../../../application/config.php:137
-#: ../../../application/src/CCMycontroller/CCMycontroller.php:115
+#: application/config.php:137
+#: application/src/CCMycontroller/CCMycontroller.php:128
 msgid "My blog"
 msgstr "Min blogg"
 
-#: ../../../application/config.php:138
+#: application/config.php:138
 msgid "Guestbook"
 msgstr "Gästbok"
 
-#: ../../../application/config.php:144 ../../../src/CCUser/CCUser.php:316
-#: ../../../src/CCUser/login.tpl.php:1
+#: application/config.php:144
+msgid "login"
+msgstr "Logga in"
+
+#: application/config.php:144 src/CCUser/CCUser.php:316
+#: src/CCUser/login.tpl.php:1
 msgid "Login"
 msgstr "Logga in"
 
-#: ../../../application/config.php:145
+#: application/config.php:145
+msgid "logout"
+msgstr "Logga ut"
+
+#: application/config.php:145
 msgid "Logout"
 msgstr "Logga ut"
 
-#: ../../../application/config.php:146
+#: application/config.php:146
 msgid "User control panel"
 msgstr "Kontrollpanelen"
 
-#: ../../../application/config.php:147
+#: application/config.php:147
 msgid "Admin control panel"
 msgstr "Admin kontrollpanel"
 
-#: ../../../application/config.php:154
+#: application/config.php:154
 msgid "Overview"
 msgstr "Översikt"
 
-#: ../../../application/config.php:155
+#: application/config.php:155
 msgid "Profile"
 msgstr "Profil"
 
-#: ../../../application/config.php:156
-#: ../../../src/CCAdminControlPanel/CCAdminControlPanel.php:100
-#: ../../../src/CCUser/CCUser.php:262 ../../../src/CCUser/groups.tpl.php:3
+#: application/config.php:156
+#: src/CCAdminControlPanel/CCAdminControlPanel.php:100
+#: src/CCUser/CCUser.php:262 src/CCUser/groups.tpl.php:3
 msgid "Groups"
 msgstr "Grupper"
 
-#: ../../../application/config.php:157
+#: application/config.php:157
 msgid "Mail"
 msgstr "Email"
 
-#: ../../../application/config.php:158
+#: application/config.php:158
 msgid "Password"
 msgstr "Lösenord"
 
-#: ../../../application/config.php:201
+#: application/config.php:201
 msgid "A PHP-based MVC-inspired CMF"
 msgstr "Ett PHP-baserat MVC-inspirerat CMF"
 
-#: ../../../application/config.php:206
+#: application/config.php:206
 msgid "<p>Siteshop &copy; by Gunvor Nilsson (student at BTH)</p>"
 msgstr "<p>Siteshop &copy; av Gunvor Nilsson (student vid BTH)</p>"
 
-#: ../../../application/src/CCMycontroller/CCMycontroller.php:42
+#: application/src/CCMycontroller/CCMycontroller.php:42
 msgid "Daddys workshop"
 msgstr "Pappas snickarbod"
 
-#: ../../../application/src/CCMycontroller/CCMycontroller.php:43
+#: application/src/CCMycontroller/CCMycontroller.php:43
 msgid "My dad's workshop before he passed away"
 msgstr "Min pappas hobbyverkstad efter ett väl levt liv."
 
-#: ../../../application/src/CCMycontroller/CCMycontroller.php:46
+#: application/src/CCMycontroller/CCMycontroller.php:55
 msgid "About me"
 msgstr "Om mig"
 
-#: ../../../application/src/CCMycontroller/CCMycontroller.php:102
+#: application/src/CCMycontroller/CCMycontroller.php:115
 msgid "Older articles"
 msgstr "Äldre artiklar"
 
-#: ../../../application/src/CCMycontroller/CCMycontroller.php:116
+#: application/src/CCMycontroller/CCMycontroller.php:129
 msgid "The Siteshop Blog"
 msgstr "Siteshop Bloggen"
 
-#: ../../../application/src/CCMycontroller/CCMycontroller.php:129
+#: application/src/CCMycontroller/CCMycontroller.php:148
 msgid "One post"
 msgstr "Ett inlägg"
 
-#: ../../../application/src/CCMycontroller/CCMycontroller.php:149
-#: ../../../application/src/CCMycontroller/guestbook.tpl.php:1
+#: application/src/CCMycontroller/CCMycontroller.php:168
+#: application/src/CCMycontroller/guestbook.tpl.php:1
 msgid "My Guestbook"
 msgstr "Min gästbok"
 
-#: ../../../application/src/CCMycontroller/CCMycontroller.php:172
-#: ../../../src/CCAdminControlPanel/CCAdminControlPanel.php:396
-#: ../../../src/CCAdminControlPanel/CCAdminControlPanel.php:475
+#: application/src/CCMycontroller/CCMycontroller.php:191
+#: src/CCAdminControlPanel/CCAdminControlPanel.php:396
+#: src/CCAdminControlPanel/CCAdminControlPanel.php:475
 msgid "Update"
 msgstr "Uppdatera"
 
-#: ../../../application/src/CCMycontroller/CCMycontroller.php:172
-#: ../../../src/CCAdminControlPanel/CCAdminControlPanel.php:264
-#: ../../../src/CCAdminControlPanel/CCAdminControlPanel.php:332
-#: ../../../src/CCAdminControlPanel/CCAdminControlPanel.php:354
+#: application/src/CCMycontroller/CCMycontroller.php:191
+#: src/CCAdminControlPanel/CCAdminControlPanel.php:264
+#: src/CCAdminControlPanel/CCAdminControlPanel.php:332
+#: src/CCAdminControlPanel/CCAdminControlPanel.php:354
 msgid "Create"
 msgstr "Skapa "
 
-#: ../../../application/src/CCMycontroller/CCMycontroller.php:210
+#: application/src/CCMycontroller/CCMycontroller.php:259
 msgid "Secretside"
 msgstr "Hemliga sidan"
 
-#: ../../../application/src/CCMycontroller/CCMycontroller.php:238
+#: application/src/CCMycontroller/CCMycontroller.php:287
 msgid "update"
 msgstr "uppdatera"
 
-#: ../../../application/src/CCMycontroller/CCMycontroller.php:238
+#: application/src/CCMycontroller/CCMycontroller.php:287
 msgid "add"
 msgstr "Skicka"
 
-#: ../../../application/src/CCMycontroller/CCMycontroller.php:240
+#: application/src/CCMycontroller/CCMycontroller.php:289
 msgid "Add entry:"
 msgstr "Skriv ett inlägg."
 
-#: ../../../application/src/CCMycontroller/guestbook.tpl.php:3
+#: application/src/CCMycontroller/CCMycontroller.php:291
+msgid "delete"
+msgstr "Kasta"
+
+#: application/src/CCMycontroller/guestbook.tpl.php:3
 msgid "Write something here."
 msgstr "Välkommen att skriva här."
 
-#: ../../../application/src/CCMycontroller/guestside.tpl.php:1
+#: application/src/CCMycontroller/guestside.tpl.php:1
 msgid "Latest messages"
 msgstr "Senaste inläggen här."
 
-#: ../../../application/src/CCMycontroller/guestside.tpl.php:6
+#: application/src/CCMycontroller/guestside.tpl.php:6
 msgid "At: "
 msgstr ""
 
-#: ../../../application/src/CCMycontroller/guestside.tpl.php:10
+#: application/src/CCMycontroller/guestside.tpl.php:10
 msgid "Updated at "
 msgstr "Uppdaterad "
 
-#: ../../../application/src/CCMycontroller/guestside.tpl.php:13
+#: application/src/CCMycontroller/guestside.tpl.php:13
 msgid "Update or delete content"
 msgstr "Ändra eller ta bort innehåll "
 
-#: ../../../src/CCAdminControlPanel/CCAdminControlPanel.php:76
+#: src/CCAdminControlPanel/CCAdminControlPanel.php:76
 msgid "ACP: Admin Control Panel"
 msgstr "AKP: Administratörens KontrollPanel"
 
-#: ../../../src/CCAdminControlPanel/CCAdminControlPanel.php:85
+#: src/CCAdminControlPanel/CCAdminControlPanel.php:85
 msgid "Here you can create and edit"
 msgstr "Här kan du skapa och uppdatera"
 
-#: ../../../src/CCAdminControlPanel/CCAdminControlPanel.php:86
+#: src/CCAdminControlPanel/CCAdminControlPanel.php:86
 msgid "The blogs"
 msgstr "Bloggarna"
 
-#: ../../../src/CCAdminControlPanel/CCAdminControlPanel.php:87
+#: src/CCAdminControlPanel/CCAdminControlPanel.php:87
 msgid "The pages"
 msgstr "Första sidan"
 
-#: ../../../src/CCAdminControlPanel/CCAdminControlPanel.php:88
-#: ../../../src/CCUser/content.tpl.php:18
+#: src/CCAdminControlPanel/CCAdminControlPanel.php:88
+#: src/CCUser/content.tpl.php:18
 msgid "Actions"
 msgstr "Skapa"
 
-#: ../../../src/CCAdminControlPanel/CCAdminControlPanel.php:89
+#: src/CCAdminControlPanel/CCAdminControlPanel.php:89
 msgid "The users"
 msgstr "Användare"
 
-#: ../../../src/CCAdminControlPanel/CCAdminControlPanel.php:90
+#: src/CCAdminControlPanel/CCAdminControlPanel.php:90
 msgid "The groups"
 msgstr "Grupper"
 
-#: ../../../src/CCAdminControlPanel/CCAdminControlPanel.php:91
+#: src/CCAdminControlPanel/CCAdminControlPanel.php:91
 msgid ""
 "a user or group or edit content in pages and blog. You can also delete the "
 "whole guestbook if needed."
@@ -206,238 +222,238 @@ msgstr ""
 "en användare eller grupp och uppdatera sidor och bloggar. Du kan också "
 "slänga hela eller delar av gästboken om det skulle behövas."
 
-#: ../../../src/CCAdminControlPanel/CCAdminControlPanel.php:92
+#: src/CCAdminControlPanel/CCAdminControlPanel.php:92
 msgid "Create new content"
 msgstr "Skapa nytt innehåll"
 
-#: ../../../src/CCAdminControlPanel/CCAdminControlPanel.php:93
+#: src/CCAdminControlPanel/CCAdminControlPanel.php:93
 msgid "Acronym"
 msgstr "Akronym"
 
-#: ../../../src/CCAdminControlPanel/CCAdminControlPanel.php:94
+#: src/CCAdminControlPanel/CCAdminControlPanel.php:94
 msgid "Name"
 msgstr "Namn"
 
-#: ../../../src/CCAdminControlPanel/CCAdminControlPanel.php:95
+#: src/CCAdminControlPanel/CCAdminControlPanel.php:95
 msgid "Algorithm"
 msgstr "Algoritm"
 
-#: ../../../src/CCAdminControlPanel/CCAdminControlPanel.php:96
+#: src/CCAdminControlPanel/CCAdminControlPanel.php:96
 msgid "Created"
 msgstr "Skapad"
 
-#: ../../../src/CCAdminControlPanel/CCAdminControlPanel.php:97
+#: src/CCAdminControlPanel/CCAdminControlPanel.php:97
 msgid "Updated"
 msgstr "Ändrad"
 
-#: ../../../src/CCAdminControlPanel/CCAdminControlPanel.php:98
+#: src/CCAdminControlPanel/CCAdminControlPanel.php:98
 msgid "Edit member"
 msgstr "Ändra medlem"
 
-#: ../../../src/CCAdminControlPanel/CCAdminControlPanel.php:99
+#: src/CCAdminControlPanel/CCAdminControlPanel.php:99
 msgid "Edit joins"
 msgstr "Ändra samband"
 
-#: ../../../src/CCAdminControlPanel/CCAdminControlPanel.php:101
-#: ../../../src/CCAdminControlPanel/CCAdminControlPanel.php:264
-#: ../../../src/CCAdminControlPanel/CCAdminControlPanel.php:426
-#: ../../../src/CCAdminControlPanel/CCAdminControlPanel.php:560
+#: src/CCAdminControlPanel/CCAdminControlPanel.php:101
+#: src/CCAdminControlPanel/CCAdminControlPanel.php:264
+#: src/CCAdminControlPanel/CCAdminControlPanel.php:426
+#: src/CCAdminControlPanel/CCAdminControlPanel.php:560
 msgid "Edit"
 msgstr "Ändra"
 
-#: ../../../src/CCAdminControlPanel/CCAdminControlPanel.php:102
+#: src/CCAdminControlPanel/CCAdminControlPanel.php:102
 msgid "GroupEdit"
 msgstr "Fixa"
 
-#: ../../../src/CCAdminControlPanel/CCAdminControlPanel.php:110
+#: src/CCAdminControlPanel/CCAdminControlPanel.php:110
 msgid "The secrets"
 msgstr "Hemligheterna"
 
-#: ../../../src/CCAdminControlPanel/CCAdminControlPanel.php:111
+#: src/CCAdminControlPanel/CCAdminControlPanel.php:111
 msgid "The guestbook can be deleted here:"
 msgstr "Ta bort alla gästbokens inlägg:"
 
-#: ../../../src/CCAdminControlPanel/CCAdminControlPanel.php:112
+#: src/CCAdminControlPanel/CCAdminControlPanel.php:112
 msgid "Create a new member"
 msgstr "Skapa ny medlem"
 
-#: ../../../src/CCAdminControlPanel/CCAdminControlPanel.php:113
+#: src/CCAdminControlPanel/CCAdminControlPanel.php:113
 msgid "Create a new group"
 msgstr "Skapa ny grupp"
 
-#: ../../../src/CCAdminControlPanel/CCAdminControlPanel.php:114
+#: src/CCAdminControlPanel/CCAdminControlPanel.php:114
 msgid "Initiate the database here:"
 msgstr "Initiera databasen här."
 
-#: ../../../src/CCAdminControlPanel/CCAdminControlPanel.php:115
+#: src/CCAdminControlPanel/CCAdminControlPanel.php:115
 msgid "Delete the guestbook"
 msgstr "Släng&nbsp;gästboken"
 
-#: ../../../src/CCAdminControlPanel/CCAdminControlPanel.php:116
-#: ../../../src/CCAdminControlPanel/CCAdminControlPanel.php:177
-#: ../../../src/CCAdminControlPanel/CCAdminControlPanel.php:182
-#: ../../../src/CCUser/login.tpl.php:9
+#: src/CCAdminControlPanel/CCAdminControlPanel.php:116
+#: src/CCAdminControlPanel/CCAdminControlPanel.php:177
+#: src/CCAdminControlPanel/CCAdminControlPanel.php:182
+#: src/CCUser/login.tpl.php:9
 msgid "Create user"
 msgstr "Skapa användare"
 
-#: ../../../src/CCAdminControlPanel/CCAdminControlPanel.php:117
-#: ../../../src/CCAdminControlPanel/CCAdminControlPanel.php:349
+#: src/CCAdminControlPanel/CCAdminControlPanel.php:117
+#: src/CCAdminControlPanel/CCAdminControlPanel.php:349
 msgid "Create group"
 msgstr "Skapa grupp"
 
-#: ../../../src/CCAdminControlPanel/CCAdminControlPanel.php:118
+#: src/CCAdminControlPanel/CCAdminControlPanel.php:118
 msgid "Init database, create tables and create default admin user"
 msgstr "Initiera databasen, skapa tabeller och skapa användare."
 
-#: ../../../src/CCAdminControlPanel/CCAdminControlPanel.php:135
+#: src/CCAdminControlPanel/CCAdminControlPanel.php:135
 msgid "Password:"
 msgstr "Lösenord"
 
-#: ../../../src/CCAdminControlPanel/CCAdminControlPanel.php:143
+#: src/CCAdminControlPanel/CCAdminControlPanel.php:143
 msgid "Password again:"
 msgstr "Lösenord igen:"
 
-#: ../../../src/CCAdminControlPanel/CCAdminControlPanel.php:160
+#: src/CCAdminControlPanel/CCAdminControlPanel.php:160
 msgid "DoCreate"
 msgstr "Skicka"
 
-#: ../../../src/CCAdminControlPanel/CCAdminControlPanel.php:171
+#: src/CCAdminControlPanel/CCAdminControlPanel.php:171
 msgid "The CreateUserForm could not be processed."
 msgstr "Formuläret för att skapa användare kunde inte processas."
 
-#: ../../../src/CCAdminControlPanel/CCAdminControlPanel.php:183
+#: src/CCAdminControlPanel/CCAdminControlPanel.php:183
 msgid "Create a new user here:"
 msgstr "Skapa en ny användare här"
 
-#: ../../../src/CCAdminControlPanel/CCAdminControlPanel.php:207
+#: src/CCAdminControlPanel/CCAdminControlPanel.php:207
 msgid "Title:"
 msgstr "Titel"
 
-#: ../../../src/CCAdminControlPanel/CCAdminControlPanel.php:213
-#: ../../../src/CCAdminControlPanel/CCAdminControlPanel.php:276
+#: src/CCAdminControlPanel/CCAdminControlPanel.php:213
+#: src/CCAdminControlPanel/CCAdminControlPanel.php:276
 msgid "Key"
 msgstr "Nyckel"
 
-#: ../../../src/CCAdminControlPanel/CCAdminControlPanel.php:219
-#: ../../../src/CFormContent/CFormContent.php:24
+#: src/CCAdminControlPanel/CCAdminControlPanel.php:219
+#: src/CFormContent/CFormContent.php:24
 msgid "Content:"
 msgstr "Innehåll"
 
-#: ../../../src/CCAdminControlPanel/CCAdminControlPanel.php:228
+#: src/CCAdminControlPanel/CCAdminControlPanel.php:228
 msgid "Type:"
 msgstr "Typ"
 
-#: ../../../src/CCAdminControlPanel/CCAdminControlPanel.php:248
-#: ../../../src/CCAdminControlPanel/CCAdminControlPanel.php:403
-#: ../../../src/CCAdminControlPanel/CCAdminControlPanel.php:482
+#: src/CCAdminControlPanel/CCAdminControlPanel.php:248
+#: src/CCAdminControlPanel/CCAdminControlPanel.php:403
+#: src/CCAdminControlPanel/CCAdminControlPanel.php:482
 msgid "Delete"
 msgstr "Ta bort "
 
-#: ../../../src/CCAdminControlPanel/CCAdminControlPanel.php:258
+#: src/CCAdminControlPanel/CCAdminControlPanel.php:258
 msgid "The content could not be created."
 msgstr "Innehållet kunde inte skapas."
 
-#: ../../../src/CCAdminControlPanel/CCAdminControlPanel.php:265
+#: src/CCAdminControlPanel/CCAdminControlPanel.php:265
 msgid "content: "
 msgstr "innehåll:"
 
-#: ../../../src/CCAdminControlPanel/CCAdminControlPanel.php:270
+#: src/CCAdminControlPanel/CCAdminControlPanel.php:270
 msgid "Create content"
 msgstr "Skapa nytt innehåll"
 
-#: ../../../src/CCAdminControlPanel/CCAdminControlPanel.php:271
+#: src/CCAdminControlPanel/CCAdminControlPanel.php:271
 msgid "Create new page here"
 msgstr "Skapa en ny sida här"
 
-#: ../../../src/CCAdminControlPanel/CCAdminControlPanel.php:275
-#: ../../../src/CCAdminControlPanel/CCAdminControlPanel.php:298
+#: src/CCAdminControlPanel/CCAdminControlPanel.php:275
+#: src/CCAdminControlPanel/CCAdminControlPanel.php:298
 msgid "Title"
 msgstr "Titel"
 
-#: ../../../src/CCAdminControlPanel/CCAdminControlPanel.php:278
+#: src/CCAdminControlPanel/CCAdminControlPanel.php:278
 msgid "Type"
 msgstr "Typ"
 
-#: ../../../src/CCAdminControlPanel/CCAdminControlPanel.php:279
+#: src/CCAdminControlPanel/CCAdminControlPanel.php:279
 msgid "Filter"
 msgstr "Filter"
 
-#: ../../../src/CCAdminControlPanel/CCAdminControlPanel.php:280
+#: src/CCAdminControlPanel/CCAdminControlPanel.php:280
 msgid "This is the clickable link to your post from the archive."
 msgstr "Detta är en klickbar länk till ditt inlägg från arkivlistan."
 
-#: ../../../src/CCAdminControlPanel/CCAdminControlPanel.php:281
+#: src/CCAdminControlPanel/CCAdminControlPanel.php:281
 msgid "Make a unique key for the post."
 msgstr "Skapa en unik nyckel till ditt inlägg."
 
-#: ../../../src/CCAdminControlPanel/CCAdminControlPanel.php:282
+#: src/CCAdminControlPanel/CCAdminControlPanel.php:282
 msgid "You can write using various filters."
 msgstr "Du kan använda olika filter för att göra texten säker."
 
-#: ../../../src/CCAdminControlPanel/CCAdminControlPanel.php:283
+#: src/CCAdminControlPanel/CCAdminControlPanel.php:283
 msgid "post - a blogpost"
 msgstr "post - du skapar en bloggpost"
 
-#: ../../../src/CCAdminControlPanel/CCAdminControlPanel.php:284
+#: src/CCAdminControlPanel/CCAdminControlPanel.php:284
 msgid "home - the static homepage"
 msgstr "home - startsidan"
 
-#: ../../../src/CCAdminControlPanel/CCAdminControlPanel.php:285
+#: src/CCAdminControlPanel/CCAdminControlPanel.php:285
 msgid "page - any contentpage."
 msgstr "page - en vanlig webbsida"
 
-#: ../../../src/CCAdminControlPanel/CCAdminControlPanel.php:286
+#: src/CCAdminControlPanel/CCAdminControlPanel.php:286
 msgid "byline - one of the footers to the homepage"
 msgstr "byline - en av fyra footers till startsidan"
 
-#: ../../../src/CCAdminControlPanel/CCAdminControlPanel.php:287
+#: src/CCAdminControlPanel/CCAdminControlPanel.php:287
 msgid "secret1 - the secret main content"
 msgstr "secret1 - huvudinnehåll till hemliga sidan"
 
-#: ../../../src/CCAdminControlPanel/CCAdminControlPanel.php:288
+#: src/CCAdminControlPanel/CCAdminControlPanel.php:288
 msgid "secret2 - the secret sidebar content"
 msgstr "secret2 - sidoinnehåll till hemliga sidan"
 
-#: ../../../src/CCAdminControlPanel/CCAdminControlPanel.php:289
+#: src/CCAdminControlPanel/CCAdminControlPanel.php:289
 msgid "footer - one of the footers to the secret page"
 msgstr "footer - en av fyra footers till hemliga sidan"
 
-#: ../../../src/CCAdminControlPanel/CCAdminControlPanel.php:290
+#: src/CCAdminControlPanel/CCAdminControlPanel.php:290
 msgid ""
 "is simple, but remember that the computer does not recognise how you write "
 "the text in the textarea - it just adds all text in a long row."
 msgstr ""
 "är enkel och utan filter, men all text kommer att hamna i en enda lång rad."
 
-#: ../../../src/CCAdminControlPanel/CCAdminControlPanel.php:291
+#: src/CCAdminControlPanel/CCAdminControlPanel.php:291
 msgid "will recognise a new line in your textarea. You can also use"
 msgstr "upptäcker radbyten i textfältet. Du kan också använda "
 
-#: ../../../src/CCAdminControlPanel/CCAdminControlPanel.php:292
+#: src/CCAdminControlPanel/CCAdminControlPanel.php:292
 msgid "if you like."
 msgstr "om du vill."
 
-#: ../../../src/CCAdminControlPanel/CCAdminControlPanel.php:293
+#: src/CCAdminControlPanel/CCAdminControlPanel.php:293
 msgid "is a plugin-filter to use with normal html-tags such as"
 msgstr ""
 "är ett plugin-filter som används tillsammans med vanliga html-taggar som "
 
-#: ../../../src/CCAdminControlPanel/CCAdminControlPanel.php:294
+#: src/CCAdminControlPanel/CCAdminControlPanel.php:294
 msgid "etc. You cannot use java script with it."
 msgstr "etc. du kan inte använda javascript med det."
 
-#: ../../../src/CCAdminControlPanel/CCAdminControlPanel.php:295
+#: src/CCAdminControlPanel/CCAdminControlPanel.php:295
 msgid ""
 "all the markdown filters need you to learn a special syntax. Try to write"
 msgstr ""
 "alla markdown filter kräver att du använder en speciell syntax. Prova att "
 "skriva"
 
-#: ../../../src/CCAdminControlPanel/CCAdminControlPanel.php:296
+#: src/CCAdminControlPanel/CCAdminControlPanel.php:296
 msgid "To include a photo use this:"
 msgstr "För att lägga in en foto skriv så här:"
 
-#: ../../../src/CCAdminControlPanel/CCAdminControlPanel.php:297
+#: src/CCAdminControlPanel/CCAdminControlPanel.php:297
 msgid ""
 "The above code is where the image is going to be placed and the address for "
 "the image can be written anywhere in your textarea."
@@ -445,158 +461,165 @@ msgstr ""
 "Koden ovan skrivs där som bilden ska placeras och adressen för bilden kan "
 "sedan placeras var som helst i textfältet."
 
-#: ../../../src/CCAdminControlPanel/CCAdminControlPanel.php:299
+#: src/CCAdminControlPanel/CCAdminControlPanel.php:299
 msgid "or place your image somewhere else in your tree and refer to that."
 msgstr "eller placera bilden varsomhelst i din trästruktur och referera dit."
 
-#: ../../../src/CCAdminControlPanel/CCAdminControlPanel.php:300
+#: src/CCAdminControlPanel/CCAdminControlPanel.php:300
 msgid "stands for"
 msgstr "står för"
 
-#: ../../../src/CCAdminControlPanel/CCAdminControlPanel.php:301
+#: src/CCAdminControlPanel/CCAdminControlPanel.php:301
 msgid "and the last filter also include the plugin typographer."
 msgstr "och det tredje filtret innehåller även typographer."
 
-#: ../../../src/CCAdminControlPanel/CCAdminControlPanel.php:302
+#: src/CCAdminControlPanel/CCAdminControlPanel.php:302
 msgid "You can study how to write in this way at"
 msgstr "Du kan lära mera om dessa filter hos"
 
-#: ../../../src/CCAdminControlPanel/CCAdminControlPanel.php:303
+#: src/CCAdminControlPanel/CCAdminControlPanel.php:303
 msgid "and at"
 msgstr "och hos"
 
-#: ../../../src/CCAdminControlPanel/CCAdminControlPanel.php:342
+#: src/CCAdminControlPanel/CCAdminControlPanel.php:342
 msgid "The groupcreateform could not be processed."
 msgstr "Formuläret för att skapa grupp kunde inte processas."
 
-#: ../../../src/CCAdminControlPanel/CCAdminControlPanel.php:355
+#: src/CCAdminControlPanel/CCAdminControlPanel.php:355
 msgid "Create group  here:"
 msgstr "Skapa grupp här:"
 
-#: ../../../src/CCAdminControlPanel/CCAdminControlPanel.php:375
+#: src/CCAdminControlPanel/CCAdminControlPanel.php:375
 msgid "Group id:"
 msgstr "Kategori id:"
 
-#: ../../../src/CCAdminControlPanel/CCAdminControlPanel.php:413
+#: src/CCAdminControlPanel/CCAdminControlPanel.php:413
 msgid "The groupeditform could not be processed."
 msgstr "Formuläret för att uppdatera grupp kunde inte processas."
 
-#: ../../../src/CCAdminControlPanel/CCAdminControlPanel.php:420
+#: src/CCAdminControlPanel/CCAdminControlPanel.php:420
 msgid "Update group"
 msgstr "Uppdatera grupp"
 
-#: ../../../src/CCAdminControlPanel/CCAdminControlPanel.php:427
+#: src/CCAdminControlPanel/CCAdminControlPanel.php:427
 msgid "Edit name or acronym  here:"
 msgstr "Uppdatera namn eller akronym här:"
 
-#: ../../../src/CCAdminControlPanel/CCAdminControlPanel.php:447
-#: ../../../src/CCAdminControlPanel/CCAdminControlPanel.php:530
+#: src/CCAdminControlPanel/CCAdminControlPanel.php:447
+#: src/CCAdminControlPanel/CCAdminControlPanel.php:530
 msgid "Member id:"
 msgstr "Kategori id:"
 
-#: ../../../src/CCAdminControlPanel/CCAdminControlPanel.php:468
+#: src/CCAdminControlPanel/CCAdminControlPanel.php:468
 msgid "New email:"
 msgstr "Email:"
 
-#: ../../../src/CCAdminControlPanel/CCAdminControlPanel.php:492
+#: src/CCAdminControlPanel/CCAdminControlPanel.php:492
 msgid "The editform could not be processed."
 msgstr "Formuläret för att uppdatera kunde inte processas."
 
-#: ../../../src/CCAdminControlPanel/CCAdminControlPanel.php:503
-#: ../../../src/CCUser/CCUser.php:139
+#: src/CCAdminControlPanel/CCAdminControlPanel.php:503
+#: src/CCUser/CCUser.php:139
 msgid "Current password:"
 msgstr "Nuvarande lösenord:"
 
-#: ../../../src/CCAdminControlPanel/CCAdminControlPanel.php:510
-#: ../../../src/CCUser/CCUser.php:154
+#: src/CCAdminControlPanel/CCAdminControlPanel.php:510
+#: src/CCUser/CCUser.php:154
 msgid "New password:"
 msgstr "Nytt lösenord:"
 
-#: ../../../src/CCAdminControlPanel/CCAdminControlPanel.php:517
-#: ../../../src/CCUser/CCUser.php:160
+#: src/CCAdminControlPanel/CCAdminControlPanel.php:517
+#: src/CCUser/CCUser.php:160
 msgid "New password again:"
 msgstr "Nytt lösenord igen:"
 
-#: ../../../src/CCAdminControlPanel/CCAdminControlPanel.php:535
-#: ../../../src/CCUser/CCUser.php:166 ../../../src/CCUser/CCUser.php:193
-#: ../../../src/CCUser/CCUser.php:245
-#: ../../../src/CCUser/change_password.tpl.php:3
+#: src/CCAdminControlPanel/CCAdminControlPanel.php:535
+#: src/CCUser/CCUser.php:166 src/CCUser/CCUser.php:193
+#: src/CCUser/CCUser.php:245 src/CCUser/change_password.tpl.php:3
 msgid "Change password"
 msgstr "Ändra lösenord"
 
-#: ../../../src/CCAdminControlPanel/CCAdminControlPanel.php:554
-#: ../../../src/CCAdminControlPanel/CCAdminControlPanel.php:691
+#: src/CCAdminControlPanel/CCAdminControlPanel.php:554
+#: src/CCAdminControlPanel/CCAdminControlPanel.php:691
 msgid "Update member: "
 msgstr "Uppdatra medlem: "
 
-#: ../../../src/CCAdminControlPanel/CCAdminControlPanel.php:561
+#: src/CCAdminControlPanel/CCAdminControlPanel.php:561
 msgid "Edit name, acronym or email-address here:"
 msgstr "Uppdatera namn, akronym eller epost-adress här: "
 
-#: ../../../src/CCAdminControlPanel/CCAdminControlPanel.php:562
+#: src/CCAdminControlPanel/CCAdminControlPanel.php:562
 msgid "Edit password here"
 msgstr "Uppdatera lösenordet här: "
 
-#: ../../../src/CCAdminControlPanel/CCAdminControlPanel.php:617
-#: ../../../src/CCAdminControlPanel/CCAdminControlPanel.php:659
+#: src/CCAdminControlPanel/CCAdminControlPanel.php:617
+#: src/CCAdminControlPanel/CCAdminControlPanel.php:659
 msgid "idUser:"
 msgstr "Användarid:"
 
-#: ../../../src/CCAdminControlPanel/CCAdminControlPanel.php:625
-#: ../../../src/CCUser/CCUser.php:83
+#: src/CCAdminControlPanel/CCAdminControlPanel.php:625 src/CCUser/CCUser.php:83
 msgid "Name:"
 msgstr "Namn:"
 
-#: ../../../src/CCAdminControlPanel/CCAdminControlPanel.php:635
+#: src/CCAdminControlPanel/CCAdminControlPanel.php:635
 msgid "Choose Group to delete:"
 msgstr "Välj grupp att ta bort:"
 
-#: ../../../src/CCAdminControlPanel/CCAdminControlPanel.php:639
+#: src/CCAdminControlPanel/CCAdminControlPanel.php:639
 msgid "Delete Group"
 msgstr "Ta bort grupp"
 
-#: ../../../src/CCAdminControlPanel/CCAdminControlPanel.php:649
-#: ../../../src/CCAdminControlPanel/CCAdminControlPanel.php:683
+#: src/CCAdminControlPanel/CCAdminControlPanel.php:649
+#: src/CCAdminControlPanel/CCAdminControlPanel.php:683
 msgid "The group could not be chosen."
 msgstr "Gruppen kunde inte väljas."
 
-#: ../../../src/CCAdminControlPanel/CCAdminControlPanel.php:669
+#: src/CCAdminControlPanel/CCAdminControlPanel.php:669
 msgid "Choose Group to add:"
 msgstr "Välj grupp att lägga till:"
 
-#: ../../../src/CCAdminControlPanel/CCAdminControlPanel.php:673
+#: src/CCAdminControlPanel/CCAdminControlPanel.php:673
 msgid "Add Group"
 msgstr "Lägg till grupp"
 
-#: ../../../src/CCAdminControlPanel/CCAdminControlPanel.php:697
+#: src/CCAdminControlPanel/CCAdminControlPanel.php:697
 msgid "Edit groupmembership"
 msgstr "Uppdatera gruppmedlemsskap "
 
-#: ../../../src/CCAdminControlPanel/CCAdminControlPanel.php:698
+#: src/CCAdminControlPanel/CCAdminControlPanel.php:698
 msgid "Out from group"
 msgstr "Ut ur grupp"
 
-#: ../../../src/CCAdminControlPanel/CCAdminControlPanel.php:699
+#: src/CCAdminControlPanel/CCAdminControlPanel.php:699
 msgid "Enter group"
 msgstr "In i grupp"
 
-#: ../../../src/CCIndex/CCIndex.php:42 ../../../src/CCStartup/CCStartup.php:55
+#: src/CCAdminControlPanel/index.tpl.php:9
+#: src/CCAdminControlPanel/index.tpl.php:20
+#: src/CCAdminControlPanel/index.tpl.php:29
+#: src/CCAdminControlPanel/sidebar.tpl.php:15
+#: src/CCAdminControlPanel/sidebar.tpl.php:24
+#: src/CCAdminControlPanel/sidebar.tpl.php:33
+msgid "by"
+msgstr "av"
+
+#: src/CCIndex/CCIndex.php:42 src/CCStartup/CCStartup.php:59
 msgid "Your PHP version is: "
 msgstr "Din version av PHP är: "
 
-#: ../../../src/CCIndex/CCIndex.php:43
+#: src/CCIndex/CCIndex.php:43
 msgid ". Max memory limit is "
 msgstr "Maximal minneskapacitet är "
 
-#: ../../../src/CCIndex/CCIndex.php:44 ../../../src/CCStartup/CCStartup.php:57
+#: src/CCIndex/CCIndex.php:44 src/CCStartup/CCStartup.php:61
 msgid ". Operating system is "
 msgstr ". Operativsystemet är "
 
-#: ../../../src/CCIndex/CCIndex.php:45 ../../../src/CCStartup/CCStartup.php:58
+#: src/CCIndex/CCIndex.php:45 src/CCStartup/CCStartup.php:62
 msgid "You have gettext enabled and can use the multilanguage support."
 msgstr "Du har aktiverat gettext och kan använda översättningsfunktionen."
 
-#: ../../../src/CCIndex/CCIndex.php:46
+#: src/CCIndex/CCIndex.php:46
 msgid ""
 "You have NOT gettext enabled and can NOT use the multilanguage support. To "
 "use these functions you must download and install the GNU gettext package "
@@ -608,7 +631,7 @@ msgstr ""
 "GNU gettext från »  http://www.gnu.org/software/gettext/gettext.html . Men "
 "ramverket kommer att fungera utan översättning."
 
-#: ../../../src/CCIndex/CCIndex.php:47
+#: src/CCIndex/CCIndex.php:47
 msgid ""
 "You have safe mode enabled on this server. Safe mode has been DEPRECATED as "
 "of PHP 5.3.0 and REMOVED as of PHP 5.4.0. Turn this off."
@@ -616,7 +639,7 @@ msgstr ""
 "Du har aktiverat safe mode på den här servern. Safe mode har tagits bort "
 "från och med PHP 5.4.0. Stäng av detta."
 
-#: ../../../src/CCIndex/CCIndex.php:48
+#: src/CCIndex/CCIndex.php:48
 msgid ""
 "Safe mode is NOT enabled on this server. Good, as this feature has been "
 "DEPRECATED as of PHP 5.3.0 and REMOVED as of PHP 5.4.0."
@@ -624,31 +647,31 @@ msgstr ""
 "Safe mode är inte aktiverat på den här servern. Bra, då detta verktyg har "
 "tagits  bort från PHP 5.4.0."
 
-#: ../../../src/CCIndex/CCIndex.php:49 ../../../src/CCStartup/CCStartup.php:62
+#: src/CCIndex/CCIndex.php:49 src/CCStartup/CCStartup.php:66
 msgid "You have PDO enabled and you have SQLite as available driver for PDO."
 msgstr ""
 "Du har aktiverat PDO och du har SQLite som en tillgänglig drivrutin för PDO."
 
-#: ../../../src/CCIndex/CCIndex.php:50 ../../../src/CCStartup/CCStartup.php:63
+#: src/CCIndex/CCIndex.php:50 src/CCStartup/CCStartup.php:67
 msgid ""
 "You have PDO enabled but is lacking support for the SQLite PDO driver. You "
 "must fix this."
 msgstr "Du har aktiverat PDO men saknar stöd för SQLite. Detta måste åtgärdas."
 
-#: ../../../src/CCIndex/CCIndex.php:51 ../../../src/CCStartup/CCStartup.php:64
+#: src/CCIndex/CCIndex.php:51 src/CCStartup/CCStartup.php:68
 msgid "Database driver PDO is not available. You must fix this."
 msgstr ""
 "PDO-drivrutinen för databas är inte tillgänglig. du måste åtgärda detta."
 
-#: ../../../src/CCIndex/CCIndex.php:52 ../../../src/CCStartup/CCStartup.php:65
+#: src/CCIndex/CCIndex.php:52 src/CCStartup/CCStartup.php:69
 msgid "You have magic quotes enabled on this server. Fix this."
 msgstr "Du har magic quotes aktiverade på denna server. Inaktivera dem."
 
-#: ../../../src/CCIndex/CCIndex.php:53 ../../../src/CCStartup/CCStartup.php:66
+#: src/CCIndex/CCIndex.php:53 src/CCStartup/CCStartup.php:70
 msgid "Magic quotes are disabled. This is good."
 msgstr "Magic quotes är inaktiverade - bra!"
 
-#: ../../../src/CCIndex/CCIndex.php:54 ../../../src/CCStartup/CCStartup.php:67
+#: src/CCIndex/CCIndex.php:54 src/CCStartup/CCStartup.php:71
 msgid ""
 "Your environment does not fully match the need of Siteshop. Go back and "
 "correct issues here if you get problems."
@@ -656,40 +679,40 @@ msgstr ""
 "Din datamiljö uppfyller inte helt behoven i Siteshop. Kom tillbaka och "
 "åtgärda dessa problem om ramverket inte fungerar korrekt."
 
-#: ../../../src/CCIndex/CCIndex.php:55 ../../../src/CCStartup/CCStartup.php:68
+#: src/CCIndex/CCIndex.php:55 src/CCStartup/CCStartup.php:72
 msgid "Nice!"
 msgstr "Härligt!  "
 
-#: ../../../src/CCIndex/CCIndex.php:56 ../../../src/CCStartup/CCStartup.php:69
+#: src/CCIndex/CCIndex.php:56 src/CCStartup/CCStartup.php:73
 msgid " It seems like this is an environment where Siteshop may enjoy herself."
 msgstr ""
 "Det verkar som att du har en datamiljö där Siteshop kommer att fungera väl."
 
-#: ../../../src/CCIndex/index.tpl.php:3
+#: src/CCIndex/index.tpl.php:3
 msgid "Welcome to Siteshop index controller."
 msgstr "Välkommen till Sitehops kontroller-sida"
 
-#: ../../../src/CCIndex/index.tpl.php:5
+#: src/CCIndex/index.tpl.php:5
 msgid "This is the index page with all the controllers"
 msgstr "Här är index-sidan med alla tillgängliga kontroller."
 
-#: ../../../src/CCIndex/index.tpl.php:6
+#: src/CCIndex/index.tpl.php:6
 msgid "Download"
 msgstr "Ladda ner"
 
-#: ../../../src/CCIndex/index.tpl.php:7
+#: src/CCIndex/index.tpl.php:7
 msgid "You can download Siteshop from github."
 msgstr "Du kan ladda ner Siteshop från github."
 
-#: ../../../src/CCIndex/index.tpl.php:11
+#: src/CCIndex/index.tpl.php:11
 msgid "You can review its source directly on github: "
 msgstr "Du kan också titta på källkoden direkt på github: "
 
-#: ../../../src/CCIndex/index.tpl.php:13
+#: src/CCIndex/index.tpl.php:13
 msgid "Now you are ready to check this MVC out."
 msgstr "Nu är du redo att utforska denna MVC. "
 
-#: ../../../src/CCIndex/index.tpl.php:14
+#: src/CCIndex/index.tpl.php:14
 msgid ""
 "You can always go back to the startup-page by clicking on the startup-link "
 "to the right."
@@ -697,50 +720,123 @@ msgstr ""
 "Du kan alltid komma tillbaka till uppstartsidan genom att klicka på startup-"
 "länken till höger."
 
-#: ../../../src/CCIndex/index.tpl.php:19
+#: src/CCIndex/index.tpl.php:21
 msgid "Welcome to Siteshop framework."
 msgstr "Välkommen till ramverket Sitehop."
 
-#: ../../../src/CCIndex/sidebar.tpl.php:4
+#: src/CCIndex/sidebar.tpl.php:4
 msgid "Controllers and methods"
 msgstr "Kontroller och metoder"
 
-#: ../../../src/CCIndex/sidebar.tpl.php:6
+#: src/CCIndex/sidebar.tpl.php:6
 msgid ""
 "The following controllers exists. You enable and disable controllers in "
 msgstr ""
 "Följande kontroller finns i ramverket. Du kan aktivera eller inaktivera "
 "kontrollerna i "
 
-#: ../../../src/CCIndex/sidebar.tpl.php:25
-msgid "To get the framwork nice and going..."
+#: src/CCIndex/sidebar.tpl.php:25
+msgid "To get the framework nice and going..."
 msgstr "För att få ramverket att fungera..."
 
-#: ../../../src/CCIndex/sidebar.tpl.php:26
+#: src/CCIndex/sidebar.tpl.php:26
 msgid "you need to do some installations."
 msgstr "behöver du göra några installationer."
 
-#: ../../../src/CCIndex/sidebar.tpl.php:27
+#: src/CCIndex/sidebar.tpl.php:27
 msgid "Go to the "
 msgstr "Gå till "
 
-#: ../../../src/CCIndex/sidebar.tpl.php:27
+#: src/CCIndex/sidebar.tpl.php:27
 msgid "startup-page"
 msgstr "startsidan"
 
-#: ../../../src/CCIndex/sidebar.tpl.php:27
+#: src/CCIndex/sidebar.tpl.php:27
 msgid " to continue."
 msgstr " för att fortsätta."
 
-#: ../../../src/CCStartup/CCStartup.php:25
+#: src/CCModules/install.tpl.php:1
+msgid "Install modules"
+msgstr "Installera moduler"
+
+#: src/CCModules/install.tpl.php:3
+msgid "The following modules were affected by this action."
+msgstr "Följande moduler påverkades."
+
+#: src/CCModules/install.tpl.php:6
+msgid "Results from installing modules."
+msgstr "Resultat av installerade moduler."
+
+#: src/CCModules/install.tpl.php:8
+msgid "Module"
+msgstr "Modul"
+
+#: src/CCModules/install.tpl.php:8
+msgid "Result"
+msgstr "Resultat"
+
+#: src/CCModules/sidebar.tpl.php:2
+msgid "All modules"
+msgstr "Alla moduler"
+
+#: src/CCModules/sidebar.tpl.php:3
+msgid "All Siteshop modules."
+msgstr "Alla Siteshops moduler."
+
+#: src/CCModules/sidebar.tpl.php:13
+msgid "Siteshop core"
+msgstr "Siteshops kärna"
+
+#: src/CCModules/sidebar.tpl.php:14
+msgid "Siteshop core modules."
+msgstr "Siteshops kärnmoduler."
+
+#: src/CCModules/sidebar.tpl.php:27
+msgid "Siteshop Content Management Framework (CMF) modules."
+msgstr "Siteshops Ramverks moduler, CMF, Content Management Framework."
+
+#: src/CCModules/sidebar.tpl.php:39
+msgid "Models"
+msgstr "Modeller"
+
+#: src/CCModules/sidebar.tpl.php:40
+msgid "A class is considered a model if its name starts with CM."
+msgstr "En klass räknas som modell om namnet börjar med CM."
+
+#: src/CCModules/sidebar.tpl.php:52
+msgid "Controllers"
+msgstr "Kontroller"
+
+#: src/CCModules/sidebar.tpl.php:53 src/CCModules/sidebar.tpl.php:65
+#: src/CCModules/sidebar.tpl.php:78
+msgid "Implements interface"
+msgstr "Implementerar gränssnittet "
+
+#: src/CCModules/sidebar.tpl.php:64
+msgid "Manageable module"
+msgstr "Påverkningsbar modul"
+
+#: src/CCModules/sidebar.tpl.php:77
+msgid "Contains SQL"
+msgstr "Innehåller SQL"
+
+#: src/CCModules/sidebar.tpl.php:90
+msgid "More modules"
+msgstr "Fler moduler"
+
+#: src/CCModules/sidebar.tpl.php:91
+msgid "Modules that does not implement any specific Siteshop interface."
+msgstr "Moduler som inte implementerar något specifikt Siteshop gränssnitt."
+
+#: src/CCStartup/CCStartup.php:29
 msgid "Settings for default database is missing in application/config.php."
 msgstr "Inställningar för standard databas saknas i application/config.php."
 
-#: ../../../src/CCStartup/CCStartup.php:27
+#: src/CCStartup/CCStartup.php:31
 msgid "Install Siteshop"
 msgstr "Installera Siteshop"
 
-#: ../../../src/CCStartup/CCStartup.php:37
+#: src/CCStartup/CCStartup.php:41
 msgid ""
 "This is an outdated version of PHP and might mean that Siteshop won't work. "
 "Please download a new verion."
@@ -748,15 +844,15 @@ msgstr ""
 "Det här är en gammal version av PHP som kan innebära att Siteshop inte "
 "fungerar som den ska. Ladda ner en ny version."
 
-#: ../../../src/CCStartup/CCStartup.php:38
+#: src/CCStartup/CCStartup.php:42
 msgid "You have a new enough version of PHP."
 msgstr "Bra, du har en tillräckligt ny version av PHP."
 
-#: ../../../src/CCStartup/CCStartup.php:56
+#: src/CCStartup/CCStartup.php:60
 msgid "Max memory limit is "
 msgstr "Maximal minneskapacitet är "
 
-#: ../../../src/CCStartup/CCStartup.php:59
+#: src/CCStartup/CCStartup.php:63
 msgid ""
 "You have NOT gettext enabled and can NOT use the multilanguage support. To "
 "use these functions you must download and install the GNU gettext package "
@@ -768,15 +864,15 @@ msgstr ""
 "GNU gettext från »  http://www.gnu.org/software/gettext/gettext.html . Men "
 "ramverket kommer att fungera utan översättning."
 
-#: ../../../src/CCStartup/CCStartup.php:60
+#: src/CCStartup/CCStartup.php:64
 msgid "You have safe mode enabled on this server. Turn this off."
 msgstr "Du har aktiverat safe mode på den här servern.  Stäng av detta."
 
-#: ../../../src/CCStartup/CCStartup.php:61
+#: src/CCStartup/CCStartup.php:65
 msgid "Safe mode is NOT enabled on this server. Good!"
 msgstr "Safe mode är inte aktiverat. Bra!"
 
-#: ../../../src/CCStartup/CCStartup.php:70
+#: src/CCStartup/CCStartup.php:74
 msgid ""
 "It's important to have a fairly new version of PHP (min 5.3) for some of the "
 "features used in Siteshop. We are testing this here."
@@ -784,7 +880,7 @@ msgstr ""
 "Det är viktigt att ha en tillräckligt ny version av PHP (minst 5.3) för att "
 "alla verktyg i Siteshop ska fungera. Vi testar det här."
 
-#: ../../../src/CCStartup/CCStartup.php:71
+#: src/CCStartup/CCStartup.php:75
 msgid ""
 "We have included a Swedish translation in Siteshop, but to get it working "
 "you need to have gettext enabled. We have used Poedit to create the .po and ."
@@ -795,14 +891,14 @@ msgstr ""
 "alternativt ladda ner verktyget och sedan aktivera det. Vi har använt Poedit "
 "för att skapa .po och .mo-filerna."
 
-#: ../../../src/CCStartup/CCStartup.php:72
+#: src/CCStartup/CCStartup.php:76
 msgid ""
 "Safe mode has been DEPRECATED as of PHP 5.3.0 and REMOVED as of PHP 5.4.0. "
 msgstr ""
 "Verktyget safe mode har frångåtts från PHP 5.3.0 och tagits bort från PHP "
 "5.4.0."
 
-#: ../../../src/CCStartup/CCStartup.php:73
+#: src/CCStartup/CCStartup.php:77
 msgid ""
 "This framework runs with PDO but with PHP version 5.1.0 it should be "
 "included."
@@ -810,30 +906,30 @@ msgstr ""
 "Detta ramverk körs med PDO. Med en PHP version som är lägst 5.1.0 bör den "
 "vara inkluderad."
 
-#: ../../../src/CCStartup/CCStartup.php:74
+#: src/CCStartup/CCStartup.php:78
 msgid ""
 "Magic quotes has been DEPRECATED as of PHP 5.3.0 and REMOVED as of PHP 5.4.0."
 msgstr ""
 "Man har frångått magic quotes från PHP 5.3.0 och de har tagits bort från PHP "
 "5.4.0."
 
-#: ../../../src/CCStartup/CCStartup.php:75
+#: src/CCStartup/CCStartup.php:79
 msgid "And here is your result:"
 msgstr "Här ser du ditt resultat:"
 
-#: ../../../src/CCStartup/index.tpl.php:2
+#: src/CCStartup/index.tpl.php:2
 msgid "This is the installation phase."
 msgstr "Det här är installationsfasen."
 
-#: ../../../src/CCStartup/sidebar.tpl.php:2
+#: src/CCStartup/sidebar.tpl.php:2
 msgid "The path to your application-directory is"
 msgstr "Sökvägen till din application-katalog är"
 
-#: ../../../src/CCStartup/sidebar.tpl.php:2
+#: src/CCStartup/sidebar.tpl.php:5
 msgid "(this is defined in"
 msgstr "(den finns definierad i "
 
-#: ../../../src/CCStartup/sidebar.tpl.php:6
+#: src/CCStartup/sidebar.tpl.php:7
 msgid ""
 "First you have to make the data-directory writable. This is the place where "
 "Siteshop needs to be able to write and create files."
@@ -841,52 +937,52 @@ msgstr ""
 "Först måste du göra databasens katalog skrivbar. Detta gör att Siteshop kan "
 "skriva och skapa filer."
 
-#: ../../../src/CCStartup/sidebar.tpl.php:14
+#: src/CCStartup/sidebar.tpl.php:15
 msgid "Success. The data directory exists and is writable."
 msgstr "Succé! Datakatalogen finns och är skrivbar."
 
-#: ../../../src/CCStartup/sidebar.tpl.php:18
+#: src/CCStartup/sidebar.tpl.php:20
 msgid "Failed. The data directory exists but it is NOT writable."
 msgstr "Fel. Datakatalogen finns, men är inte skrivbar."
 
-#: ../../../src/CCStartup/sidebar.tpl.php:20
+#: src/CCStartup/sidebar.tpl.php:22
 msgid "Correct this by changing the permissions on the directory."
 msgstr "Åtgärda det genom att ändra rättigheterna för katalogen."
 
-#: ../../../src/CCStartup/sidebar.tpl.php:28
+#: src/CCStartup/sidebar.tpl.php:30
 msgid "Failed. The data directory does NOT exist."
 msgstr "Fel. Datakatalogen finns inte."
 
-#: ../../../src/CCStartup/sidebar.tpl.php:30
+#: src/CCStartup/sidebar.tpl.php:32
 msgid ""
 "Are you sure that you have the correct SITESHOP_APPLICATION_PATH set in "
 msgstr "Är du säker på att du har satt korrekt SITESHOP_APPLICATION_PATH i  "
 
-#: ../../../src/CCStartup/sidebar.tpl.php:30
+#: src/CCStartup/sidebar.tpl.php:32
 msgid "? It is currently set to:"
 msgstr "? Den är nu satt till: "
 
-#: ../../../src/CCStartup/sidebar.tpl.php:34
+#: src/CCStartup/sidebar.tpl.php:36
 msgid "Try to create the directory."
 msgstr "Försök skapa katalogen. "
 
-#: ../../../src/CCStartup/sidebar.tpl.php:43
+#: src/CCStartup/sidebar.tpl.php:45
 msgid "Verify that the default database is available"
 msgstr "Verifiera att en förvald databas är aktiverad."
 
-#: ../../../src/CCStartup/sidebar.tpl.php:46
+#: src/CCStartup/sidebar.tpl.php:48
 msgid "Lets check to see if we can connect to the default database."
 msgstr "Låt oss se om vi kan koppla till denna databas."
 
-#: ../../../src/CCStartup/sidebar.tpl.php:48
+#: src/CCStartup/sidebar.tpl.php:50
 msgid "Your default database is (change this in "
 msgstr "Din förvalda databas är (ändra i "
 
-#: ../../../src/CCStartup/sidebar.tpl.php:59
+#: src/CCStartup/sidebar.tpl.php:61
 msgid "Great, I can connect to the database!"
 msgstr "Toppen, jag kan ansluta till databasen!"
 
-#: ../../../src/CCStartup/sidebar.tpl.php:65
+#: src/CCStartup/sidebar.tpl.php:66
 msgid ""
 "Failed. I can not connect to the database. Review your database connection "
 "settings."
@@ -894,11 +990,11 @@ msgstr ""
 "Fel. Jag kan inte ansluta till databasen. Kontrollera dina inställningar för "
 "databasens anslutningar. "
 
-#: ../../../src/CCStartup/sidebar.tpl.php:69
+#: src/CCStartup/sidebar.tpl.php:71
 msgid "Second, Siteshop has some modules that need to be initialized."
 msgstr "Därefter måste du initiera några av Siteshops moduler. "
 
-#: ../../../src/CCStartup/sidebar.tpl.php:71
+#: src/CCStartup/sidebar.tpl.php:73
 msgid ""
 "When you have done that you can login as root/root for the administrator. At "
 "the acp page you can make the changes you prefer."
@@ -906,7 +1002,7 @@ msgstr ""
 "När det är gjort kan du logga in som administratör med root/root. På  acp-"
 "sidan kan du göra alla ändringar du behöver."
 
-#: ../../../src/CCStartup/sidebar.tpl.php:72
+#: src/CCStartup/sidebar.tpl.php:74
 msgid ""
 "Go back to the index page and start to get to know Siteshop, but first - "
 "point your browser to the following link. Enjoy!"
@@ -914,112 +1010,110 @@ msgstr ""
 "Gå tillbaka till indexsidan och börja bekanta dig med Siteshop, men klicka "
 "först på följande länk. Mycket nöje!"
 
-#: ../../../src/CCUser/403.tpl.php:1
+#: src/CCUser/403.tpl.php:1 src/CSiteshop/403.tpl.php:1
 msgid "Restricted content"
 msgstr "403, begränsad tillgänglighet till detta innehåll"
 
-#: ../../../src/CCUser/403.tpl.php:3
+#: src/CCUser/403.tpl.php:3 src/CSiteshop/403.tpl.php:3
 msgid "You are trying to reach restricted content."
 msgstr "Du försöker nå en otillåten sida"
 
-#: ../../../src/CCUser/403.tpl.php:5
+#: src/CCUser/403.tpl.php:5 src/CSiteshop/403.tpl.php:5
 msgid "Detailed message:"
 msgstr "Mera information:"
 
-#: ../../../src/CCUser/CCUser.php:45
+#: src/CCUser/CCUser.php:45
 msgid "User Control Panel"
 msgstr "Kontrollpanelen"
 
-#: ../../../src/CCUser/CCUser.php:52
-#: ../../../src/CInterceptionFilter/CInterceptionFilter.php:70
-#: ../../../src/CInterceptionFilter/CInterceptionFilter.php:81
+#: src/CCUser/CCUser.php:52 src/CInterceptionFilter/CInterceptionFilter.php:70
+#: src/CInterceptionFilter/CInterceptionFilter.php:81
 msgid "You do not have privileges to access this content."
 msgstr "Du har inte rättigheter för att komma åt detta innehåll."
 
-#: ../../../src/CCUser/CCUser.php:75
+#: src/CCUser/CCUser.php:75
 msgid "Acronym:"
 msgstr "Akronym:"
 
-#: ../../../src/CCUser/CCUser.php:91 ../../../src/CCUser/CCUser.php:221
+#: src/CCUser/CCUser.php:91 src/CCUser/CCUser.php:221
 msgid "Save"
 msgstr "Spara"
 
-#: ../../../src/CCUser/CCUser.php:102
+#: src/CCUser/CCUser.php:102
 msgid "The profile could not be saved."
 msgstr "Profilen kunde inte sparas."
 
-#: ../../../src/CCUser/CCUser.php:106
+#: src/CCUser/CCUser.php:106
 msgid "Saved profile at "
 msgstr "Sparade profilen."
 
-#: ../../../src/CCUser/CCUser.php:117
+#: src/CCUser/CCUser.php:117
 msgid "Edit profile"
 msgstr "Ändra profil"
 
-#: ../../../src/CCUser/CCUser.php:146
+#: src/CCUser/CCUser.php:146
 msgid "Your id:"
 msgstr "Din id:"
 
-#: ../../../src/CCUser/CCUser.php:176
+#: src/CCUser/CCUser.php:176
 msgid ""
 "The password could not be changed, ensure that all fields match and the "
 "current password is correct."
 msgstr "Lösenordet kunde inte ändras. Kontrollera att fälten stämde överens."
 
-#: ../../../src/CCUser/CCUser.php:180
+#: src/CCUser/CCUser.php:180
 msgid "Saved new password at "
 msgstr "Sparade nytt lösenord."
 
-#: ../../../src/CCUser/CCUser.php:213
+#: src/CCUser/CCUser.php:213
 msgid "Current email adress:"
 msgstr "Nuvarande email adress:"
 
-#: ../../../src/CCUser/CCUser.php:231
+#: src/CCUser/CCUser.php:231
 msgid "The email adress could not be saved."
 msgstr "Email-addressen kunde inte sparas."
 
-#: ../../../src/CCUser/CCUser.php:234
+#: src/CCUser/CCUser.php:234
 msgid "Saved email adress."
 msgstr "Sparade email adressen."
 
-#: ../../../src/CCUser/CCUser.php:299
+#: src/CCUser/CCUser.php:299
 msgid "Failed to login, user or password does not match."
 msgstr "Kunde inte logga in, användaren eller lösenordet stämde inte."
 
-#: ../../../src/CCUser/CCUser.php:356
+#: src/CCUser/CCUser.php:356
 msgid "The account could not be created."
 msgstr "Kontot kunde inte skapas."
 
-#: ../../../src/CCUser/CCUser.php:359
+#: src/CCUser/CCUser.php:359
 msgid "Your have successfully created a new account."
 msgstr "Du har skapat ett nytt konto."
 
-#: ../../../src/CCUser/content.tpl.php:7
+#: src/CCUser/content.tpl.php:7
 msgid "All content"
 msgstr "Innehåll"
 
-#: ../../../src/CCUser/content.tpl.php:15
+#: src/CCUser/content.tpl.php:15
 msgid "No content exists."
 msgstr "Det finns inga inlägg."
 
-#: ../../../src/CCUser/email.tpl.php:3
+#: src/CCUser/email.tpl.php:3
 msgid "Email adress"
 msgstr "Email-address"
 
-#: ../../../src/CCUser/groups.tpl.php:5
-#: ../../../src/CCUser/profileside.tpl.php:7
+#: src/CCUser/groups.tpl.php:5 src/CCUser/profileside.tpl.php:7
 msgid "You are member of !number group(s)."
 msgstr "Du är medlem i !number grupper."
 
-#: ../../../src/CCUser/index.tpl.php:2
+#: src/CCUser/index.tpl.php:2
 msgid "User Controller Index"
 msgstr "Indexsida för användarkontrollerna"
 
-#: ../../../src/CCUser/index.tpl.php:3
+#: src/CCUser/index.tpl.php:3
 msgid "Hi "
 msgstr "Hej"
 
-#: ../../../src/CCUser/index.tpl.php:4
+#: src/CCUser/index.tpl.php:4
 msgid ""
 "Check the menu in the upper right corner to logout or to admin if you are "
 "authorised."
@@ -1027,114 +1121,317 @@ msgstr ""
 "Gå till menyn i övre högra hörnet för att logga ut eller administrera om du "
 "har rättigheter."
 
-#: ../../../src/CCUser/index.tpl.php:7
+#: src/CCUser/index.tpl.php:7
 msgid "You can see the secret page here:"
 msgstr "Du kan se den hemliga sidan här:"
 
-#: ../../../src/CCUser/index.tpl.php:9
+#: src/CCUser/index.tpl.php:9
 msgid "The secret page"
 msgstr "Hemliga sidan"
 
-#: ../../../src/CCUser/login.tpl.php:2
+#: src/CCUser/login.tpl.php:2
 msgid "Login using your acronym or email."
 msgstr "Logga in med din användare eller epost."
 
-#: ../../../src/CCUser/profile.tpl.php:3
+#: src/CCUser/profile.tpl.php:3
 msgid "User details"
 msgstr "Användar-detaljer"
 
-#: ../../../src/CCUser/profileside.tpl.php:1
+#: src/CCUser/profileside.tpl.php:1
 msgid "You were created at"
 msgstr "Du skapades "
 
-#: ../../../src/CInterceptionFilter/CInterceptionFilter.php:53
+#: src/CInterceptionFilter/CInterceptionFilter.php:53
 msgid "You need admin-privileges to access this content."
 msgstr ""
 "Du behöver administratörsrättigheter för att komma åt detta innehållet."
 
-#: ../../../src/CInterceptionFilter/CInterceptionFilter.php:96
+#: src/CInterceptionFilter/CInterceptionFilter.php:96
 msgid "You need admin-privileges to access this page."
 msgstr "Du behöver administratörsrättigheter för att komma åt denna sidan."
 
-#: ../../../src/CInterceptionFilter/CInterceptionFilter.php:110
+#: src/CInterceptionFilter/CInterceptionFilter.php:110
 msgid "User value matches session."
 msgstr "Användarinformationen matchar sessionen."
 
-#: ../../../src/CInterceptionFilter/CInterceptionFilter.php:113
+#: src/CInterceptionFilter/CInterceptionFilter.php:113
 msgid "User conflict between value and session."
 msgstr "Informationen om användaren stämmer inte mellan värde och sessionen."
 
-#: ../../../src/CInterceptionFilter/CInterceptionFilter.php:124
+#: src/CInterceptionFilter/CInterceptionFilter.php:124
 msgid "Create new user is disabled by site owner."
 msgstr "Att skapa ny användare är avstängt av webbplatsens administratör."
 
-#: ../../../src/CInterceptionFilter/CInterceptionFilter.php:136
+#: src/CInterceptionFilter/CInterceptionFilter.php:136
 msgid "You are just visiting this site and have no profile."
 msgstr "Du är besökare på denna webbplats och har ingen profil."
 
-#: ../../../src/CInterceptionFilter/CInterceptionFilter.php:148
+#: src/CInterceptionFilter/CInterceptionFilter.php:148
 msgid "You need to login to access this content."
 msgstr "Du behöver logga in för att komma åt detta innehåll."
 
-#: ../../../src/CObject/CObject.php:125
+#: src/CMContent/CMContent.php:170
+msgid "Hello World"
+msgstr "Hejsan Världen!"
+
+#: src/CMContent/CMContent.php:170
+msgid ""
+"This is a demo post.\n"
+"\n"
+"This is another row in this demo post."
+msgstr ""
+"Detta är en demo post.\n"
+"\n"
+"Detta är en ny rad i demo posten."
+
+#: src/CMContent/CMContent.php:171
+msgid "Home page"
+msgstr "Hemsida"
+
+#: src/CMContent/CMContent.php:171
+msgid ""
+"This is a demo page, this could be your personal home-page.\n"
+"\n"
+"Lydia is a PHP-based MVC-inspired Content management Framework, watch the "
+"making of Lydia at: http://dbwebb.se/lydia/tutorial."
+msgstr ""
+"Detta är en demosida, den kan bli din personliga hemsida.<br />\n"
+"Lydia är ett PHP-baserat MVC-inspirerat ramverk. Se hur du skapar Lydia här: "
+"http://dbwebb.se/lydia/tutorial."
+
+#: src/CMContent/CMContent.php:172
+msgid "About page"
+msgstr "Om oss"
+
+#: src/CMContent/CMContent.php:172
+msgid ""
+"This is a demo page, this could be your personal about-page.\n"
+"\n"
+"Lydia is used as a tool to educate in MVC frameworks."
+msgstr ""
+"Detta är en demosida. Den kan bli din personliga om-sida.<br /><br />\n"
+"Lydia används som ett verktyg för att undervisa om MVC ramverk."
+
+#: src/CMContent/CMContent.php:173
+msgid "Download page"
+msgstr "Hämtningssida"
+
+#: src/CMContent/CMContent.php:173
+msgid ""
+"This is a demo page, this could be your personal download-page.\n"
+"\n"
+"You can download your own copy of lydia from https://github.com/mosbth/lydia."
+msgstr ""
+"Detta är en demosida, den skulle kunna bli din personliga nerladdningssida."
+"<br /><br />\n"
+"Du kan ladda ner en kopia av Lydia från https://github.com/mosbth/lydia."
+
+#: src/CMContent/CMContent.php:174
+msgid "Page with BBCode"
+msgstr "Sida med BBCode"
+
+#: src/CMContent/CMContent.php:174
+msgid ""
+"This is a demo page with some BBCode-formatting.\n"
+"\n"
+"[b]Text in bold[/b] and [i]text in italic[/i] and [url=http://dbwebb.se]a "
+"link to dbwebb.se[/url]. You can also include images using bbcode, such as "
+"the lydia logo: [img]http://dbwebb.se/lydia/current/themes/core/logo_80x80."
+"png[/img]"
+msgstr ""
+"Detta är en demosida med BB frmatterad kod.<br /><br />\n"
+"\n"
+"[b]Tjock text[/b] och [i]snedställd text[/i] och [url=http://dbwebb.se]en "
+"länk till dbwebb.se[/url].<br />\n"
+"Du kan också infoga bildermed bbcode, som t.ex.  lydia logon: [img]http://"
+"dbwebb.se/lydia/current/themes/core/logo_80x80.png[/img]"
+
+#: src/CMContent/CMContent.php:175
+msgid "Page with HTMLPurifier"
+msgstr "Sida med HTMLPurifier"
+
+#: src/CMContent/CMContent.php:175
+msgid ""
+"This is a demo page with some HTML code intended to run through <a "
+"href='http://htmlpurifier.org/'>HTMLPurify</a>. Edit the source and insert "
+"HTML code and see if it works.\n"
+"\n"
+"<b>Text in bold</b> and <i>text in italic</i> and <a href='http://dbwebb."
+"se'>a link to dbwebb.se</a>. JavaScript, like this: <javascript>alert('hej');"
+"</javascript> should however be removed."
+msgstr ""
+"Detta är en demosida med HTML kod som ska köras genom <a href='http://"
+"htmlpurifier.org/'>HTMLPurify</a>. <br />\n"
+"Redigera källan, stoppa in lite HTML kod och se om det fungerar.<br />\n"
+"<br />\n"
+"<b>Tjock text</b> och <i>snedställd text</i> och <a href='http://dbwebb."
+"se'>en länk till dbwebb.se</a>. JavaScript, som detta: "
+"<javascript>alert('hej');</javascript> ska däremot tas bort."
+
+#: src/CMContent/CMContent.php:176
+msgid "Page with Markdown"
+msgstr "Sida med Markdown"
+
+#: src/CMContent/CMContent.php:177
+msgid "Page with MarkdownExtra"
+msgstr "Sida med MarkdownExtra"
+
+#: src/CMContent/CMContent.php:178
+msgid "Page with MarkdownExtra plus Typographer"
+msgstr "Sida med MarkdownExtra och Typographer"
+
+#: src/CMContent/CMContent.php:180
+msgid "Arduino-toy"
+msgstr "Arduino-leksak"
+
+#: src/CMContent/CMContent.php:180
+msgid ""
+"Here is a fun toy.\n"
+"[img]http://behovsbo.se/bilderipso/Arduino.png[/img]"
+msgstr ""
+"Här är en kul leksak.\n"
+"[img]http://behovsbo.se/bilderipso/Arduino.png[/img]"
+
+#: src/CMContent/CMContent.php:183
+msgid ""
+"Gunvor Nilsson is a parttime student at BTH. As her fulltime occupation she "
+"sings at the Gothenburg Operahouse."
+msgstr ""
+"Gunvor Nilsson studerar deltid vid BTH. Hennes heltidsjobb är att sjunga på "
+"GöteborgsOperan."
+
+#: src/CMContent/CMContent.php:184
+msgid ""
+"This version of Siteshop is her final home assignment of the MVC and CMF "
+"framework course - 'phpmvc'."
+msgstr ""
+"Denna version av Siteshop är hennes senaste inlämning för kursen \"phpmvc\", "
+"ett ramverk med CMF och MVC."
+
+#: src/CMContent/CMContent.php:185
+msgid ""
+"In her spare time she works on her house together with her partner Anders, "
+"travels a bit, enjoys her friends, take long walks in nature... "
+msgstr ""
+"På fritiden renoverar hon sitt hus tillsammans med sin sambo Anders, reser "
+"lite, umgås med vänner, vandrar i naturen..."
+
+#: src/CMContent/CMContent.php:186
+msgid ""
+"Together with Anders she works on Behovsboboxen - a tool to buy electricity "
+"when the spotprice is low. This helps the grid to be smarter and the overall "
+"usage to be more even."
+msgstr ""
+"Tillsammans med Anders arbetar hon med Behovsboboxen - ett verktyg att köpa "
+"el när spotpriset är lågt. Detta hjälper till att göra elnätet smartare och "
+"att få all användning av el jämnare. Boxen använder sig av raspberry pi."
+
+#: src/CMContent/CMContent.php:187
+msgid "Mainsecret"
+msgstr "Huvudhemlighet"
+
+#: src/CMContent/CMContent.php:187
+msgid "The main secrets here."
+msgstr "Huvudsidan med hemligheter."
+
+#: src/CMContent/CMContent.php:188
+msgid "Sidesecret"
+msgstr "Bredvidhemligheter"
+
+#: src/CMContent/CMContent.php:188
+msgid "Side secrets here"
+msgstr "Bredvidsidan med hemligheter."
+
+#: src/CMContent/CMContent.php:189
+msgid "Footertext 1 to change."
+msgstr "Footertext 1 att ändra."
+
+#: src/CMContent/CMContent.php:190
+msgid "Footertext 2 to change."
+msgstr "Footertext 2 att ändra."
+
+#: src/CMContent/CMContent.php:191
+msgid "Footertext 3 to change."
+msgstr "Footertext 3 att ändra."
+
+#: src/CMContent/CMContent.php:192
+msgid "Footertext 4 to change."
+msgstr "Footertext 4 att ändra."
+
+#: src/CMContent/CMContent.php:194
+msgid ""
+"Successfully created the database tables and created a default \"Hello World"
+"\" blog post, owned by you."
+msgstr "Skapade databastabellerna och skapade några blogposter, ägda av dig."
+
+#: src/CMGuestbook/CMGuestbook.php:113
+msgid ""
+"Successfully created the database tables (or left them untouched if they "
+"already existed)."
+msgstr ""
+"Skapade databastabellerna (eller lät dem vara opåverkade om de redan fanns)."
+
+#: src/CMUser/CMUser.php:99
+msgid ""
+"Successfully created the database tables and created a default admin user as "
+"root:root and an ordinary user as doe:doe."
+msgstr ""
+"Skapade databastabeller och skapade en admin-användare som root:root och en "
+"vanlig användare som doe:doe."
+
+#: src/CObject/CObject.php:125
 msgid "No such view @viewname."
 msgstr "Det finns ingen sådan vy: '@viewname'."
 
-#: ../../../src/CPageLoader/CPageLoader.php:73
+#: src/CPageLoader/CPageLoader.php:73
 msgid "Page is not found. No such content."
 msgstr "Sidan kan inte hittas. Det finns inget sådant innehåll."
 
-#: ../../../src/CSiteshop/404.tpl.php:1
+#: src/CSiteshop/404.tpl.php:1
 msgid "404, Page not found"
 msgstr "404, sidan kunde inte hittas"
 
-#: ../../../src/CSiteshop/404.tpl.php:3
+#: src/CSiteshop/404.tpl.php:3
 msgid "The page you are looking for is not here."
 msgstr "Sidan du söker finns inte här."
 
-#: ../../../src/CSiteshop/404.tpl.php:5
+#: src/CSiteshop/404.tpl.php:5
 msgid "Detailed message: @message"
 msgstr "Detaljerad meddelande: @message"
 
-#: ../../../src/CSiteshop/CSiteshop.php:175
+#: src/CSiteshop/CSiteshop.php:175
 msgid "Page is not found."
 msgstr "Sidan kan inte hittas."
 
-#: ../../../src/CSiteshop/CSiteshop.php:187
+#: src/CSiteshop/CSiteshop.php:187
 msgid "403, restricted content"
 msgstr "403, begränsad tillgänglighet till detta innehåll"
 
-#: ../../../src/CSiteshop/CSiteshop.php:188
+#: src/CSiteshop/CSiteshop.php:188
 msgid "404, page not found"
 msgstr "404, sidan kunde inte hittas"
 
-#: ../../../src/CSiteshop/CSiteshop.php:191
+#: src/CSiteshop/CSiteshop.php:191
 msgid "Header code is not valid."
 msgstr "Header koden är ej giltigt."
 
-#: ../../../src/CSiteshop/CSiteshop.php:215
+#: src/CSiteshop/CSiteshop.php:215
 msgid "Theme not enabled."
 msgstr "Temat är inte tillgängligt."
 
-#: ../../../src/CViewContainer/CViewContainer.php:180
+#: src/CViewContainer/CViewContainer.php:180
 msgid "View filename is empty."
 msgstr "View filnamn saknas."
 
-#: ../../../src/CViewContainer/CViewContainer.php:271
+#: src/CViewContainer/CViewContainer.php:271
 msgid "No such type for adding region to view container: '@type'."
 msgstr "Typen finns inte för att lägga till region till vy-listan: '@type'."
 
 #~ msgid "My dad"
 #~ msgstr "Min pappa"
 
-#~ msgid "delete"
-#~ msgstr "Ta bort"
-
 #~ msgid "thoughtful face"
 #~ msgstr "tankfullt ansikte"
-
-#~ msgid "Index Controller"
-#~ msgstr "Indexsida för användarkontrollerna"
 
 #~ msgid ""
 #~ "Failed. I can NOT connect to the database. Review your database "
@@ -1157,6 +1454,3 @@ msgstr "Typen finns inte för att lägga till region till vy-listan: '@type'."
 
 #~ msgid "acronym"
 #~ msgstr "Akronym:"
-
-#~ msgid "login"
-#~ msgstr "Logga in"

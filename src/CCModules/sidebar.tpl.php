@@ -1,6 +1,6 @@
 <div class='box'>
-    <h4>All modules</h4>
-    <p>All Siteshop modules.</p>
+    <h4><?= t('All modules') ?></h4>
+    <p><?= t('All Siteshop modules.') ?></p>
     <ul>
         <?php foreach ($modules as $module): ?>
             <li><a href='<?= create_url("modules/view/{$module['name']}") ?>'><?= $module['name'] ?></a></li>
@@ -10,8 +10,8 @@
 
 
 <div class='box'>
-    <h4>Siteshop core</h4>
-    <p>Siteshop core modules.</p>
+    <h4><?= t('Siteshop core') ?></h4>
+    <p><?= t('Siteshop core modules.') ?></p>
     <ul>
         <?php foreach ($modules as $module): ?>
             <?php if ($module['isSiteshopCore']): ?>
@@ -24,7 +24,7 @@
 
 <div class='box'>
     <h4>Siteshop CMF</h4>
-    <p>Siteshop Content Management Framework (CMF) modules.</p>
+    <p><?= t('Siteshop Content Management Framework (CMF) modules.') ?></p>
     <ul>
         <?php foreach ($modules as $module): ?>
             <?php if ($module['isSiteshopCMF']): ?>
@@ -36,8 +36,8 @@
 
 
 <div class='box'>
-    <h4>Models</h4>
-    <p>A class is considered a model if its name starts with CM.</p>
+    <h4><?= t('Models') ?></h4>
+    <p><?= t('A class is considered a model if its name starts with CM.') ?></p>
     <ul>
         <?php foreach ($modules as $module): ?>
             <?php if ($module['isModel']): ?>
@@ -49,8 +49,8 @@
 
 
 <div class='box'>
-    <h4>Controllers</h4>
-    <p>Implements interface <code>IController</code>.</p>
+    <h4><?= t('Controllers') ?></h4>
+    <p><?= t('Implements interface') ?> <code>IController</code>.</p>
     <ul>
         <?php foreach ($modules as $module): ?>
             <?php if ($module['isController']): ?>
@@ -61,8 +61,8 @@
 </div>
 
 <div class='box'>
-    <h4>Manageable module</h4>
-    <p>Implements interface <code>IModule</code>.</p>
+    <h4><?= t('Manageable module') ?></h4>
+    <p><?= t('Implements interface') ?> <code>IModule</code>.</p>
     <ul>
         <?php foreach ($modules as $module): ?>
             <?php if ($module['isManageable']): ?>
@@ -74,8 +74,8 @@
 
 
 <div class='box'>
-    <h4>Contains SQL</h4>
-    <p>Implements interface <code>IHasSQL</code>.</p>
+    <h4><?= t('Contains SQL') ?></h4>
+    <p><?= t('Implements interface') ?> <code>IHasSQL</code>.</p>
     <ul>
         <?php foreach ($modules as $module): ?>
             <?php if ($module['hasSQL']): ?>
@@ -87,8 +87,8 @@
 
 
 <div class='box'>
-    <h4>More modules</h4>
-    <p>Modules that does not implement any specific Siteshop interface.</p>
+    <h4><?= t('More modules') ?></h4>
+    <p><?= t('Modules that does not implement any specific Siteshop interface.') ?></p>
     <ul>
         <?php foreach ($modules as $module): ?>
             <?php if (!($module['isController'] || $module['isSiteshopCore'] || $module['isSiteshopCMF'])): ?>

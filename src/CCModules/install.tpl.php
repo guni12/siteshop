@@ -1,11 +1,11 @@
-<h1>Install modules</h1>
+<h1><?= t('Install modules') ?></h1>
 
-<p>The following modules were affected by this action.</p>
+<p><?= t('The following modules were affected by this action.') ?></p>
 
 <table>
-    <caption>Results from installing modules.</caption>
+    <caption><?= t('Results from installing modules.') ?></caption>
     <thead>
-        <tr><th>Module</th><th>Result</th></tr>
+        <tr><th><?= t('Module') ?></th><th><?= t('Result') ?></th></tr>
     </thead>
     <tbody>
         <?php foreach ($modules as $module): ?>

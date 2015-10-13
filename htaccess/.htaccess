@@ -1,0 +1,61 @@
+<IfModule mod_rewrite.c>
+  RewriteEngine on 
+  # Must use RewriteBase on www.student.bth.se, Rewritebase for url /~mos/test is /~mos/test/
+  
+  #some tried examples that doesn't work:
+
+  #RewriteBase /customers/7/1/2/behovsbo.se/httpd.www/siteshop/ #No input file specified. 
+
+  #RewriteBase /~customers/7/1/2/behovsbo.se/httpd.www/siteshop/
+    #requested URL /~customers/7/1/2/behovsbo.se/httpd.www/siteshop/index.php/startup was not found on this server.
+
+  #RewriteBase /customers/7/1/2/~behovsbo.se/httpd.www/siteshop/
+    #The requested URL w/siteshop/index.php/startup was not found on this server.
+
+  #RewriteBase /customers/7/1/2/behovsbo.se/httpd.www/~siteshop/
+    #The requested URL /~siteshop/index.php/startup was not found on this server.
+
+  #RewriteBase /~customers/7/1/2/behovsbo.se/siteshop/
+    #The requested URL /~customers/7/1/2/behovsbo.se/siteshop/index.php/startup was not found on this server.
+
+  #RewriteBase /customers/7/1/2/~behovsbo.se/siteshop/
+    #The requested URL /index.php/startup was not found on this server.
+
+  #RewriteBase /customers/7/1/2/behovsbo.se/~siteshop/
+    #The requested URL /index.php/startup was not found on this server.
+  
+  #RewriteBase /siteshop/
+    #No input file specified. 
+
+  #RewriteBase /~siteshop/
+    #The requested URL /~siteshop/index.php/startup was not found on this server.
+
+  #RewriteBase /www.behovsbo.se/siteshop/
+    #The requested URL /www.behovsbo.se/siteshop/index.php/startup was not found on this server.
+
+  #RewriteBase /~www.behovsbo.se/siteshop/
+    #The requested URL /~www.behovsbo.se/siteshop/index.php/startup was not found on this server.
+
+  #RewriteBase /~behovsbo.se/siteshop/
+    #The requested URL /~behovsbo.se/siteshop/index.php/startup was not found on this server.
+
+  #RewriteBase /behovsbo.se/siteshop/
+    #The requested URL /behovsbo.se/siteshop/index.php/startup was not found on this server.
+
+  #RewriteBase /behovsbo/siteshop/
+    The requested URL /behovsbo/siteshop/index.php/startup was not found on this server.
+
+  #RewriteBase /~behovsbo/siteshop/
+    Internal Server Error
+  
+  #RewriteBase /customers/7/1/2/behovsbo.se/siteshop/ 
+    #Internal Server Error
+
+#Nothing #"NetworkError: 500 Internal Server Error - http://www.behovsbo.se/siteshop/startup"
+ 
+ #RewriteBase /customers/7/1/2/www.behovsbo.se/siteshop/  
+  
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteRule (.*) index.php/$1 [NC,L]
+</IfModule>

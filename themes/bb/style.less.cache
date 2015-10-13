@@ -1,4 +1,4 @@
-a:4:{s:4:"root";s:10:"style.less";s:8:"compiled";s:14340:"html,
+a:4:{s:4:"root";s:10:"style.less";s:8:"compiled";s:14927:"html,
 body,
 div,
 span,
@@ -355,6 +355,19 @@ textarea {
 }
 .admin-edit input[type=password] {
   width: 20em;
+  float: right;
+}
+.login-edit .layout {
+  font-size: smaller;
+  width: 10em;
+}
+.login-edit #form-element-acronym {
+  width: 20em;
+}
+.login-edit #form-element-password {
+  width: 20em;
+}
+.login-edit .submitLayout {
   float: right;
 }
 html {
@@ -841,7 +854,16 @@ a:focus {
   color: #999;
 }
 .smaller-text-up {
-  font-size: 0.5em;
+  font-size: 0.9em;
+}
+.like-h6 {
+  font-weight: normal;
+  color: #111;
+  margin-bottom: 22px;
+  font-family: Calibri, Frutiger, "Frutiger Linotype", Univers, "Gill Sans", "Gill Sans MT", "Myriad Pro", Myriad, "DejaVu Sans Condensed", "Liberation Sans", "Nimbus Sans L", Tahoma, Geneva, "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 1em;
+  font-weight: bold;
+  margin-bottom: 0;
 }
 .well {
   background-color: #f6f6f6;
@@ -878,4 +900,4 @@ a:focus {
   color: purple;
   text-decoration: underline;
 }
-";s:5:"files";a:2:{s:41:"C:\wamp\www\siteshop\themes\bb\style.less";i:1389617822;s:69:"C:\wamp\www\siteshop\themes\bb\semantic.gs\stylesheets\less\grid.less";i:1387269861;}s:7:"updated";i:1389617828;}
+";s:5:"files";a:2:{s:43:"C:\wamp\www\p\siteshop\themes\bb\style.less";i:1444753943;s:71:"C:\wamp\www\p\siteshop\themes\bb\semantic.gs\stylesheets\less\grid.less";i:1387269861;}s:7:"updated";i:1444753950;}

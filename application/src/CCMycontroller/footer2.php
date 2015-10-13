@@ -1,6 +1,6 @@
-<?php if ($footer2['id'] != null): ?>
+<?php if ($the2 != null): ?>
 
-    <p><?= filter_data($footer2['data'], $footer2['filter']) ?></p>
+    <p><?= $the2 ?></p>
 
 <?php else: ?>
     <p>No byline exists.</p>

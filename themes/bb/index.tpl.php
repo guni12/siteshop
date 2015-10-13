@@ -12,7 +12,9 @@
         <div id='outer-wrap-header'>
             <div id='inner-wrap-header'>
                 <div id='header'>
-                    <div id='login-menu'><?= login_menu() ?></div>
+                    <?php if (file_exists('application/data/installed.txt')): ?>
+                        <div id='login-menu'><?= login_menu() ?></div>
+                    <?php endif; ?>
                     <div id='banner'>
                         <a href='<?= base_url() ?>'><img id='site-logo' src='<?= theme_url($logo) ?>' title = 'Index' alt='logo' width='<?= $logo_width ?>' height='<?= $logo_height ?>' /></a>
                         <span id='site-title'><a href='<?= base_url() ?>'><?= $header ?></a></span>
@@ -21,7 +23,9 @@
                     <div id='outer-wrap-navbar'>
                         <div id='inner-wrap-navbar'>
                             <?php if(region_has_content('my-navbar')): ?>
-                                <div id='my-navbar'><?=render_views('my-navbar')?></div>
+                                <?php if (file_exists('application/data/installed.txt')): ?>
+                                    <div id='my-navbar'><?=render_views('my-navbar')?></div>
+                                <?php endif; ?>
                             <?php endif; ?>
                         </div>
                     </div>

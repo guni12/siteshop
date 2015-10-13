@@ -18,6 +18,7 @@ class CCContent extends CObject implements IController {
      * Show a listing of all content.
      */
     public function Index() {
+
         $content = new CMContent();
         $this->views->SetTitle('Content Controller')
                 ->AddInclude(__DIR__ . '/index.tpl.php', array(

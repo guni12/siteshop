@@ -12,7 +12,7 @@ if ($guestbook != null):
 <?php if ($secret1 != null): ?>
 <ul class ='noBullet noStyle'>
     <?php foreach ($secret1 as $val): ?>
-    <li><?= $val['id'] ?>. <b><?= esc($val['title']) ?></b> by <?= $val['owner'] ?> <a href='<?= create_url("acp/createcontent/{$val['id']}") ?>'>edit</a> <a href='<?= create_url("my/oneblog/{$val['id']}") ?>'>view</a></li>
+    <li><?= $val['id'] ?>. <b><?= esc($val['title']) ?></b> <?= t('by') . ' ' . $val['owner'] ?> <a href='<?= create_url("acp/createcontent/{$val['id']}") ?>'>edit</a> <a href='<?= create_url("my/oneblog/{$val['id']}") ?>'>view</a></li>
         <?php endforeach; ?>
 </ul>
 <?php else: ?>
@@ -21,7 +21,7 @@ if ($guestbook != null):
 <?php if ($secret2 != null): ?>
 <ul class ='noBullet noStyle'>
     <?php foreach ($secret2 as $val): ?>
-    <li><?= $val['id'] ?>. <b><?= esc($val['title']) ?></b> by <?= $val['owner'] ?> <a href='<?= create_url("acp/createcontent/{$val['id']}") ?>'>edit</a> <a href='<?= create_url("my/oneblog/{$val['id']}") ?>'>view</a></li>
+    <li><?= $val['id'] ?>. <b><?= esc($val['title']) ?></b> <?= t('by') . ' ' . $val['owner'] ?> <a href='<?= create_url("acp/createcontent/{$val['id']}") ?>'>edit</a> <a href='<?= create_url("my/oneblog/{$val['id']}") ?>'>view</a></li>
         <?php endforeach; ?>
 </ul>
 <?php else: ?>
@@ -30,7 +30,7 @@ if ($guestbook != null):
 <?php if ($footers != null): ?>
 <ul class ='noBullet noStyle'>
     <?php foreach ($footers as $val): ?>
-    <li><?= $val['id'] ?>. <b><?= esc($val['title']) ?></b> by <?= $val['owner'] ?> <a href='<?= create_url("acp/createcontent/{$val['id']}") ?>'>edit</a> <a href='<?= create_url("my/oneblog/{$val['id']}") ?>'>view</a></li>
+    <li><?= $val['id'] ?>. <b><?= esc($val['title']) ?></b> <?= t('by') . ' ' . $val['owner'] ?> <a href='<?= create_url("acp/createcontent/{$val['id']}") ?>'>edit</a> <a href='<?= create_url("my/oneblog/{$val['id']}") ?>'>view</a></li>
         <?php endforeach; ?>
 </ul>
 <?php else: ?>

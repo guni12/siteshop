@@ -23,13 +23,13 @@ You can download Siteshop from github.
 
 and you can review its source directly on 
 
-	github: <a href='https://github.com/guni12/siteshop'>https://github.com/guni12/siteshop</a>
+	github: https://github.com/guni12/siteshop
 	
 
 Installation
 ======================================================
 
-You have downloaded Siteshop from github and you now upload it on your server.
+You have downloaded Siteshop from github and you have uploaded it on your server.
 
 The data-directory must be writable, as Siteshop writes and creates files.
 
@@ -40,6 +40,8 @@ Depending on where you place Siteshop, relative to root in your server, you migh
 	RewriteBase /<correct server-path>/siteshop/
 	
 You can ask for help at your server-provider if you don't know the path.
+
+You also need to enable short tags for Siteshop to work. Find short_open_tag in your php.ini-file and make shore it is enabled.
 
 	
 Now it's time to start your browser and go to Siteshop's indexpage and follow instructions from there. You will get information about your php-version and extensions that you

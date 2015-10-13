@@ -6,7 +6,7 @@
 <?php if ($blogs != null): ?>
 <ul>
     <?php foreach ($blogs as $val): ?>
-    <li><?= $val['id'] ?>. <b><?= esc($val['title']) ?></b> by <?= $val['owner'] ?> <a href='<?= create_url("acp/createcontent/{$val['id']}") ?>'>edit</a> <a href='<?= create_url("my/blog/{$val['id']}") ?>'>view</a></li>
+    <li><?= $val['id'] ?>. <b><?= esc($val['title']) ?></b> <?= t('by') . ' ' . $val['owner'] ?> <a href='<?= create_url("acp/createcontent/{$val['id']}") ?>'>edit</a> <a href='<?= create_url("my/blog/{$val['id']}") ?>'>view</a></li>
         <?php endforeach; ?>
 </ul>
 <?php else: ?>
@@ -17,7 +17,7 @@
 <?php if ($home != null): ?>
 <ul class ='noBullet'>
     <?php foreach ($home as $val): ?>
-    <li><?= $val['id'] ?>. <b><?= esc($val['title']) ?></b> by <?= $val['owner'] ?> <a href='<?= create_url("acp/createcontent/{$val['id']}") ?>'>edit</a> <a href='<?= create_url("my/oneblog/{$val['id']}") ?>'>view</a></li>
+    <li><?= $val['id'] ?>. <b><?= esc($val['title']) ?></b> <?= t('by') . ' ' . $val['owner'] ?> <a href='<?= create_url("acp/createcontent/{$val['id']}") ?>'>edit</a> <a href='<?= create_url("my/oneblog/{$val['id']}") ?>'>view</a></li>
         <?php endforeach; ?>
 </ul>
 <?php else: ?>
@@ -26,7 +26,7 @@
 <?php if ($byline != null): ?>
 <ul class ='noBullet'>
     <?php foreach ($byline as $val): ?>
-    <li><?= $val['id'] ?>. <b><?= esc($val['title']) ?></b> by <?= $val['owner'] ?> <a href='<?= create_url("acp/createcontent/{$val['id']}") ?>'>edit</a> <a href='<?= create_url("my/oneblog/{$val['id']}") ?>'>view</a></li>
+    <li><?= $val['id'] ?>. <b><?= esc($val['title']) ?></b> <?= t('by') . ' ' . $val['owner'] ?> <a href='<?= create_url("acp/createcontent/{$val['id']}") ?>'>edit</a> <a href='<?= create_url("my/oneblog/{$val['id']}") ?>'>view</a></li>
         <?php endforeach; ?>
 </ul>
 <?php else: ?>

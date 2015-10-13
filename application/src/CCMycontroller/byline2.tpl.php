@@ -1,6 +1,6 @@
-<?php if ($byline2['id']): ?>
+<?php if ($byl2 != null): ?>
 
-        <p><?= filter_data($byline2['data'], $byline2['filter']) ?></p>
+        <p><?= $byl2 ?></p>
 
 <?php else: ?>
     <p>No byline exists.</p>

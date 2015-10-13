@@ -141,8 +141,8 @@ $ss->config['menus'] = array(
         'id' => 'login-menu',
         'class' => '',
         'items' => array(
-            'login' => array('label' => 'login', 'url' => 'user/login', 'title' => t('Login')),
-            'logout' => array('label' => 'logout', 'url' => 'user/logout', 'title' => t('Logout')),
+            'login' => array('label' => t('login'), 'url' => 'user/login', 'title' => t('Login')),
+            'logout' => array('label' => t('logout'), 'url' => 'user/logout', 'title' => t('Logout')),
             'ucp' => array('label' => 'ucp', 'url' => 'user', 'title' => t('User control panel')),
             'acp' => array('label' => 'acp', 'url' => 'acp', 'title' => t('Admin control panel')),
         ),
@@ -185,6 +185,7 @@ $ss->config['menus'] = array(
  */
 $ss->config['theme'] = array(
     'path' => 'application/themes/mytheme',  //You can change code in 'style.css' in this path if you want to go from bb theme to grid theme
+    //'path' => 'themes/bb',
     'parent' => 'themes/bb', // change this if you want to go to the grid theme
     //'path' => 'themes/grid', 
     //'parent' => 'themes/grid',
@@ -203,6 +204,7 @@ $ss->config['theme'] = array(
         'logo' => 'pig.jpg',
         'logo_width' => 88,
         'logo_height' => 88,
+        //'stylesheet' => 'style.php',
         'footer' => t('<p>Siteshop &copy; by Gunvor Nilsson (student at BTH)</p>'),
     ),
 );

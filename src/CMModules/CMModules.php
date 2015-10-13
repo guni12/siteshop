@@ -89,6 +89,12 @@ class CMModules extends CObject {
             }
         }
         //ksort($installed, SORT_LOCALE_STRING);
+
+        $file = fopen('application/data/installed.txt', 'w');
+        $data = "Installation OK";
+        fwrite($file,$data);
+        fclose($file);
+    
         return $installed;
     }
 
