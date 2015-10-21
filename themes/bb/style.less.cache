@@ -857,7 +857,7 @@ a:focus {
 .smaller-text-up {
   font-size: 0.9em;
 }
-.like-h6 {
+.like_h6 {
   font-weight: normal;
   color: #111;
   margin-bottom: 22px;
@@ -901,4 +901,4 @@ a:focus {
   color: purple;
   text-decoration: underline;
 }
-";s:5:"files";a:2:{s:43:"C:\wamp\www\p\siteshop\themes\bb\style.less";i:1445074469;s:71:"C:\wamp\www\p\siteshop\themes\bb\semantic.gs\stylesheets\less\grid.less";i:1387269861;}s:7:"updated";i:1445074474;}
+";s:5:"files";a:2:{s:43:"C:\wamp\www\p\siteshop\themes\bb\style.less";i:1445438806;s:71:"C:\wamp\www\p\siteshop\themes\bb\semantic.gs\stylesheets\less\grid.less";i:1387269861;}s:7:"updated";i:1445438815;}

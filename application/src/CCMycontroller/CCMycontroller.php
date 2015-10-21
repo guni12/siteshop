@@ -39,7 +39,7 @@ class CCMycontroller extends CObject implements IController {
             }
         }
 
-		$text1 = t("Daddys workshop");
+		$text1 = t("Daddys_workshop");
 		$text2 = t("My daddys workshop before he passed away");
 
         $by1 = $content->Filter($byline1['data'], $byline1['filter']);
