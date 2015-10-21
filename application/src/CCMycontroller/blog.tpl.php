@@ -9,9 +9,9 @@
     <p><span class='smaller-text-up'><em> Posted on <?= $content['created'] ?> by <?= $content['owner'] ?></em></span><p>
     
     <?php if ($thePost != null): ?>
-        <span class = like_h6><?= $thePost ?></span>
+        <div class = like_h6><?= $thePost ?></div>
     	   <?php else: ?>
-        <span class = like_h6><?= $content['data'] ?></span>
+        <div class = like_h6><?= $content['data'] ?></div>
     <?php endif; ?>
 <?php else: ?>
     <p>404: No such page exists.</p>
