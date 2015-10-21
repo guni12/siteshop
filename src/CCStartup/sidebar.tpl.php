@@ -4,9 +4,15 @@
 <code><?= SITESHOP_APPLICATION_PATH . '/data' ?></code></p>
 <p class ='smaller-text'><?= t('(this is defined in') ?> <code>index.php</code>)</p>
 
-<p><?= t('First you have to make the data-directory writable. This is the place where Siteshop needs to be able to write and create files.') ?></p>
+<p><?= t('First you might have to make the data-directory writable. This is the place where Siteshop needs to be able to write and create files.') ?></p>
 <?php
 $is_directory = is_dir(SITESHOP_APPLICATION_PATH . '/data');
+ if (chmod(SITESHOP_APPLICATION_PATH . '/data', 0755) ) {
+    chmod(SITESHOP_APPLICATION_PATH . '/data', 0777);
+}else{
+    chmod(SITESHOP_APPLICATION_PATH . '/data', 0777);
+}
+
 $is_writable = is_writable(SITESHOP_APPLICATION_PATH . '/data');
 ?> 
 

@@ -21,10 +21,16 @@
         <h2><?= t('Welcome to Siteshop framework.') ?></h2>
     </div>
 <? endif; ?>
+<p><?= t('If your server is apache - these modules are enabled:') ?></p>
 <pre>
 <?php
-print_r(apache_get_modules());
+if (!function_exists('apache_get_modules')){
+    print_r('Your server is not apache');
+    }else{
+    print_r(apache_get_modules());
     $modules = apache_get_modules();
     echo in_array('mod_rewrite', $modules) ? "mod_rewrite module is enabled" : "mod_rewrite module is not enabled";
+
+}
 ?>
 </pre>

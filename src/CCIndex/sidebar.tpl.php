@@ -11,16 +11,19 @@
             <li><a href='<?= create_url($key) ?>'><?= $key ?></a></li>
 
             <?php if (!empty($val)): ?>
+            <li>
                 <ul class ="noBullet">
                     <?php foreach ($val as $method): ?>
                         <li><a href='<?= create_url($key, $method) ?>'><?= $method ?></a></li> 
                     <?php endforeach; ?>		
                 </ul>
+            </li>
             <?php endif; ?>
 
         <?php endforeach; ?>		
     </ul>
 </div>
+
 <? else: ?>
 <h2><?= t('To get the framework nice and going...') ?></h2>
 <p><?= t('you need to do some installations.') ?> 

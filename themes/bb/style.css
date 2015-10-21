@@ -515,6 +515,7 @@ body {
 }
 #my-navbar ul.menu li a.selected {
   color: #6ca428;
+  background-color: #5b5743;
   border: 3px solid #333;
   font-weight: bold;
 }

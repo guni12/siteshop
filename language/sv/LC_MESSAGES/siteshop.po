@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: siteshop\n"
-"POT-Creation-Date: 2015-10-05 16:55+0200\n"
+"POT-Creation-Date: 2015-10-21 16:12+0200\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Gunvor Nilsson <nilsson.gunvor@bredband.net>\n"
 "Language-Team: Gunvor Nilsson <gunvor@behovsbo.se>\n"
@@ -53,7 +53,7 @@ msgid "login"
 msgstr "Logga in"
 
 #: application/config.php:144 src/CCUser/CCUser.php:316
-#: src/CCUser/login.tpl.php:1
+#: src/CCUser/login.tpl.php:2
 msgid "Login"
 msgstr "Logga in"
 
@@ -95,11 +95,11 @@ msgstr "Email"
 msgid "Password"
 msgstr "Lösenord"
 
-#: application/config.php:201
+#: application/config.php:202
 msgid "A PHP-based MVC-inspired CMF"
 msgstr "Ett PHP-baserat MVC-inspirerat CMF"
 
-#: application/config.php:206
+#: application/config.php:208
 msgid "<p>Siteshop &copy; by Gunvor Nilsson (student at BTH)</p>"
 msgstr "<p>Siteshop &copy; av Gunvor Nilsson (student vid BTH)</p>"
 
@@ -108,7 +108,7 @@ msgid "Daddys workshop"
 msgstr "Pappas snickarbod"
 
 #: application/src/CCMycontroller/CCMycontroller.php:43
-msgid "My dad's workshop before he passed away"
+msgid "My daddys workshop before he passed away"
 msgstr "Min pappas hobbyverkstad efter ett väl levt liv."
 
 #: application/src/CCMycontroller/CCMycontroller.php:55
@@ -292,7 +292,7 @@ msgstr "Släng&nbsp;gästboken"
 #: src/CCAdminControlPanel/CCAdminControlPanel.php:116
 #: src/CCAdminControlPanel/CCAdminControlPanel.php:177
 #: src/CCAdminControlPanel/CCAdminControlPanel.php:182
-#: src/CCUser/login.tpl.php:9
+#: src/CCUser/login.tpl.php:10
 msgid "Create user"
 msgstr "Skapa användare"
 
@@ -724,6 +724,10 @@ msgstr ""
 msgid "Welcome to Siteshop framework."
 msgstr "Välkommen till ramverket Sitehop."
 
+#: src/CCIndex/index.tpl.php:24
+msgid "If your server is apache - these modules are enabled:"
+msgstr "Om servern är apache - så är dessa moduler aktiverade:"
+
 #: src/CCIndex/sidebar.tpl.php:4
 msgid "Controllers and methods"
 msgstr "Kontroller och metoder"
@@ -931,58 +935,58 @@ msgstr "(den finns definierad i "
 
 #: src/CCStartup/sidebar.tpl.php:7
 msgid ""
-"First you have to make the data-directory writable. This is the place where "
-"Siteshop needs to be able to write and create files."
+"First you might have to make the data-directory writable. This is the place "
+"where Siteshop needs to be able to write and create files."
 msgstr ""
 "Först måste du göra databasens katalog skrivbar. Detta gör att Siteshop kan "
 "skriva och skapa filer."
 
-#: src/CCStartup/sidebar.tpl.php:15
+#: src/CCStartup/sidebar.tpl.php:21
 msgid "Success. The data directory exists and is writable."
 msgstr "Succé! Datakatalogen finns och är skrivbar."
 
-#: src/CCStartup/sidebar.tpl.php:20
+#: src/CCStartup/sidebar.tpl.php:26
 msgid "Failed. The data directory exists but it is NOT writable."
 msgstr "Fel. Datakatalogen finns, men är inte skrivbar."
 
-#: src/CCStartup/sidebar.tpl.php:22
+#: src/CCStartup/sidebar.tpl.php:28
 msgid "Correct this by changing the permissions on the directory."
 msgstr "Åtgärda det genom att ändra rättigheterna för katalogen."
 
-#: src/CCStartup/sidebar.tpl.php:30
+#: src/CCStartup/sidebar.tpl.php:36
 msgid "Failed. The data directory does NOT exist."
 msgstr "Fel. Datakatalogen finns inte."
 
-#: src/CCStartup/sidebar.tpl.php:32
+#: src/CCStartup/sidebar.tpl.php:38
 msgid ""
 "Are you sure that you have the correct SITESHOP_APPLICATION_PATH set in "
 msgstr "Är du säker på att du har satt korrekt SITESHOP_APPLICATION_PATH i  "
 
-#: src/CCStartup/sidebar.tpl.php:32
+#: src/CCStartup/sidebar.tpl.php:38
 msgid "? It is currently set to:"
 msgstr "? Den är nu satt till: "
 
-#: src/CCStartup/sidebar.tpl.php:36
+#: src/CCStartup/sidebar.tpl.php:42
 msgid "Try to create the directory."
 msgstr "Försök skapa katalogen. "
 
-#: src/CCStartup/sidebar.tpl.php:45
+#: src/CCStartup/sidebar.tpl.php:51
 msgid "Verify that the default database is available"
 msgstr "Verifiera att en förvald databas är aktiverad."
 
-#: src/CCStartup/sidebar.tpl.php:48
+#: src/CCStartup/sidebar.tpl.php:54
 msgid "Lets check to see if we can connect to the default database."
 msgstr "Låt oss se om vi kan koppla till denna databas."
 
-#: src/CCStartup/sidebar.tpl.php:50
+#: src/CCStartup/sidebar.tpl.php:56
 msgid "Your default database is (change this in "
 msgstr "Din förvalda databas är (ändra i "
 
-#: src/CCStartup/sidebar.tpl.php:61
+#: src/CCStartup/sidebar.tpl.php:67
 msgid "Great, I can connect to the database!"
 msgstr "Toppen, jag kan ansluta till databasen!"
 
-#: src/CCStartup/sidebar.tpl.php:66
+#: src/CCStartup/sidebar.tpl.php:72
 msgid ""
 "Failed. I can not connect to the database. Review your database connection "
 "settings."
@@ -990,11 +994,11 @@ msgstr ""
 "Fel. Jag kan inte ansluta till databasen. Kontrollera dina inställningar för "
 "databasens anslutningar. "
 
-#: src/CCStartup/sidebar.tpl.php:71
+#: src/CCStartup/sidebar.tpl.php:77
 msgid "Second, Siteshop has some modules that need to be initialized."
 msgstr "Därefter måste du initiera några av Siteshops moduler. "
 
-#: src/CCStartup/sidebar.tpl.php:73
+#: src/CCStartup/sidebar.tpl.php:79
 msgid ""
 "When you have done that you can login as root/root for the administrator. At "
 "the acp page you can make the changes you prefer."
@@ -1002,7 +1006,7 @@ msgstr ""
 "När det är gjort kan du logga in som administratör med root/root. På  acp-"
 "sidan kan du göra alla ändringar du behöver."
 
-#: src/CCStartup/sidebar.tpl.php:74
+#: src/CCStartup/sidebar.tpl.php:80
 msgid ""
 "Go back to the index page and start to get to know Siteshop, but first - "
 "point your browser to the following link. Enjoy!"
@@ -1129,7 +1133,7 @@ msgstr "Du kan se den hemliga sidan här:"
 msgid "The secret page"
 msgstr "Hemliga sidan"
 
-#: src/CCUser/login.tpl.php:2
+#: src/CCUser/login.tpl.php:3
 msgid "Login using your acronym or email."
 msgstr "Logga in med din användare eller epost."
 

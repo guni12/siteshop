@@ -184,6 +184,7 @@ class CFormElement implements ArrayAccess {
         $value = isset($this['value']) ? " value='{$onlyValue}'" : null;
         $title = $this['name'];
         $size = isset($this['size']) ? " size={$this['size']}" : null;
+        $rows = isset($this['rows']) ? " rows={$this['rows']}" : null;
 
         $messages = null;
         if (isset($this['validation_messages'])) {
@@ -199,7 +200,7 @@ class CFormElement implements ArrayAccess {
         } else if ($type && $this['type'] == 'button') {
             return "<input id='$id'{$type}{$class}{$name}{$value}{$autofocus}{$readonly}{$placeholder} />";
         } else if ($type && $this['type'] == 'textarea') {
-            return "<label for = '$id'>$label</label><textarea id = '$id'{$type}{$class}{$size}{$name}{$autofocus}{$readonly}>{$onlyValue}</textarea>";
+            return "<label for = '$id'>$label</label><textarea id = '$id'{$rows}{$class}{$size}{$name}{$autofocus}{$readonly}>{$onlyValue}</textarea>";
         } else if ($type && $this['type'] == 'hidden') {
             return "<input id = '$id'{$type}{$class}{$name}{$value} />";
         } else {
@@ -337,9 +338,9 @@ class CFormElementTextarea extends CFormElement {
     public function __construct($name, $attributes = array()) {
         parent::__construct($name, $attributes);
         $this['type'] = 'textarea';
+        $this['rows'] = 6;
         $this->UseNameAsDefaultLabel();
     }
-
 }
 
 /**

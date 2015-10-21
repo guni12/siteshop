@@ -1,7 +1,7 @@
 Siteshop, the theme directory
 =========================
 
-Here is the themes. A theme is a collection of PHP-code, CSS and HTML that creates the resulting 
+Here are the themes. A theme is a collection of PHP-code, CSS and HTML that creates the resulting 
 webpage. A minimal theme shall consist of three files.
 
 * `style.css`, here is a regular stylesheet.

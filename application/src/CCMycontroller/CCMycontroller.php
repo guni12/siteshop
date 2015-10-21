@@ -40,7 +40,7 @@ class CCMycontroller extends CObject implements IController {
         }
 
 		$text1 = t("Daddys workshop");
-		$text2 = t("My dad's workshop before he passed away");
+		$text2 = t("My daddys workshop before he passed away");
 
         $by1 = $content->Filter($byline1['data'], $byline1['filter']);
         $by2 = $content->Filter($byline2['data'], $byline1['filter']);
@@ -50,7 +50,7 @@ class CCMycontroller extends CObject implements IController {
         $byl2 = t($by2);
         $byl3 = t($by3);
         $byl4 = t($by4);
-        $img = array('title' => $text1, 'source' => '/img/snickarboden.JPG', 'alt' => $text2, 'width' => '336', 'height' => '397');
+        $img = array('title' => '"' . $text1 . '"', 'source' => '/img/snickarboden.JPG', 'alt' => '"' . $text2 . '"', 'width' => '336', 'height' => '397');
 
         $this->views->SetTitle(t('About me') . htmlEnt($content['title']))
                 ->AddInclude(__DIR__ . '/page.tpl.php', array('contents' => $content->ListAll(array('type' => 'home'))), 'primary')

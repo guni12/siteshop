@@ -2,6 +2,7 @@
   RewriteEngine on
   # Must use RewriteBase on www.student.bth.se, Rewritebase for url /~mos/test is /~mos/test/
   #RewriteBase /~guni12/phpmvc/siteshop/
+  # RewriteBase /customers/7/1/2/behovsbo.se/httpd.www/siteshop/
   # if the request is not a file/directory, redirect to index.php
   RewriteCond %{REQUEST_FILENAME} !-f
   RewriteCond %{REQUEST_FILENAME} !-d

@@ -1,4 +1,4 @@
-a:4:{s:4:"root";s:10:"style.less";s:8:"compiled";s:14927:"html,
+a:4:{s:4:"root";s:10:"style.less";s:8:"compiled";s:14956:"html,
 body,
 div,
 span,
@@ -515,6 +515,7 @@ body {
 }
 #my-navbar ul.menu li a.selected {
   color: #6ca428;
+  background-color: #5b5743;
   border: 3px solid #333;
   font-weight: bold;
 }
@@ -900,4 +901,4 @@ a:focus {
   color: purple;
   text-decoration: underline;
 }
-";s:5:"files";a:2:{s:43:"C:\wamp\www\p\siteshop\themes\bb\style.less";i:1444753943;s:71:"C:\wamp\www\p\siteshop\themes\bb\semantic.gs\stylesheets\less\grid.less";i:1387269861;}s:7:"updated";i:1444753950;}
+";s:5:"files";a:2:{s:43:"C:\wamp\www\p\siteshop\themes\bb\style.less";i:1445074469;s:71:"C:\wamp\www\p\siteshop\themes\bb\semantic.gs\stylesheets\less\grid.less";i:1387269861;}s:7:"updated";i:1445074474;}

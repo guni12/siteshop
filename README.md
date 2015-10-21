@@ -31,7 +31,7 @@ Installation
 
 You have downloaded Siteshop from github and you have uploaded it on your server.
 
-The data-directory must be writable, as Siteshop writes and creates files.
+The data-directory must be writable, as Siteshop writes and creates files. It should happen automaticly, but if not:
 
 	cd siteshop; chmod 777 application/data
 
@@ -44,15 +44,18 @@ You can ask for help at your server-provider if you don't know the path.
 You also need to enable short tags for Siteshop to work. Find short_open_tag in your php.ini-file and make shore it is enabled.
 
 	
-Now it's time to start your browser and go to Siteshop's indexpage and follow instructions from there. You will get information about your php-version and extensions that you
-might need to have installed. If everything works out, you now get access to all the controllers in Siteshop via the index-page. You can only reach some of the content if you are
-logged in as administrator, otherwise permission is denied. 
+Now it's time to start your browser and go to Siteshop's indexpage and follow instructions from there. You will get information about your php-version and extensions that you might need to have installed. 
+Remember to click on the link 'modules/install'. This initiates some database-content and shows navigation-tabs etc.
+If everything works out, you now get access to all the controllers in Siteshop via the index-page. You can only reach all of the content if you are
+logged in as administrator, otherwise permission is denied for some of the content. 
 
-Login
+Login, create, edit
 =======================================================
 
 You can login with root/root as the administrator or with doe/doe, helga/helga or bb/bb for fun. As the administrator you can go to the acp page and create or make changes of stuff
-saved in the database, such as usernames, blogcontent, group-belongings etc. If the users are members of the third group, 'Järngänget', they have access to a secret page which they 
+saved in the database, such as usernames, blogcontent, group-belongings etc. You get further instructions
+at the create/edit page.
+If the users are members of the third group, 'Järngänget', they have access to a secret page which they 
 reach from siteshop/user. This can also be edited by the administrator.
 
 Startup-class
@@ -66,7 +69,7 @@ enabled = false as you see here. This means that only the administrator can inst
 Change the sites appearance
 ========================================================
 
-In order to change logo, the website-title, footer and navmenu - go to the config.php file in the application folder. 
+In order to change navmenu, theme, logo, the website-title and footer - go to the config.php file in the application folder. 
 You find for instance this:
 
 	$ss->config['menus'] = array(
@@ -77,7 +80,7 @@ You find for instance this:
     ),
 	
 Here you can alter the label-names from Home, Modules etc. to something else. Beware - you will lose the translation to Swedish via the .mo-file then, unless you learn to 
-edit this file with an editer as Poedit. You can add more labels if you follow the exact same pattern. An array in the config-file shows you which controllers you can use:
+edit this file with an editer as Poedit. You can add more labels if you follow the exact same pattern. An array in the config-file shows which controllers you can use:
 $ss->config['controllers'] = array(...
 
 I have chosen to only include the my-navbar in the bb theme and both navbar and my-navbar in the grid theme. But you can go to the bb-folder, find and uncomment this code, 
@@ -127,6 +130,13 @@ You need to have gettext installed and enabled to make the translations into Swe
 Poedit, and prepare it with the exact paths to the folders where your texts lie - the ones that you want to make translatons of. You can also make a new folder with 
 another language, German for instance, and place it in the language folder. 
 You cannot translate texts from the database with Poedit.
+
+TODO
+====================================================
+
+Translations of texts in a database-table to be distributed around the framework.This will work without gettext 
+and be more safe. It will be handled with the same function as now: t('text to be translated');. 
+
 
 v0.1.3 (2014-01-15)
 
@@ -184,13 +194,3 @@ by Tyler Tate/TwigKit to get grid layout through LESS.
 * License: Apache License
 * Siteshop path: `themes/grid/semantic.gs`, `themes/bb/semantic.gs` 
 * Used by: `themes/grid/style.less`, `themes/bb/style.less`,
-
-
-TODO
-====================================================
-
-Translations of texts in the database needs to be situated in another database-table and be distributed around the framework.
-
-
-
-

@@ -155,7 +155,7 @@ $html2 = <<<EOD
 
 Leksak.
 
-![tankfull][1]
+![leksak][1]
 
 Och en spansk jul.
 
@@ -357,7 +357,7 @@ EOD;
                 break;
             //case 'htmlpurify': $data = nl2br(CTextFilter::Purify($data)); break;
             //case 'htmlpurify': $data = nl2br(CHTMLPurifier::Purify($data)); break;
-            //case 'bbcode': $data = nl2br(bbcode2html(htmlEnt($data))); break;
+            //case 'bbcode': $data = nl2br(bbcode2html(htmlEnt($data))); break; 
             case 'bbcode': $data = nl2br(CTextFilter::Bbcode2HTML(htmlEnt($data)));
                 break;
             case 'htmlpurify': $data = nl2br(CTextFilter::Purify(CHTMLPurifier::Purify($data)));

@@ -9,14 +9,15 @@
 */
 function get_tools() {
   global $ss;
+  $current = CSiteshop::Instance()->request->current_url;
   return <<<EOD
 <p>Tools:
 <a href="http://validator.w3.org/check/referer">html5</a>
 <a href="http://jigsaw.w3.org/css-validator/check/referer?profile=css3">css3</a>
 <a href="http://jigsaw.w3.org/css-validator/check/referer?profile=css21">css21</a>
 <a href="http://validator.w3.org/unicorn/check?ucn_uri=referer&amp;ucn_task=conformance">unicorn</a>
-<a href="http://validator.w3.org/checklink?uri={CSiteshop::Instance()->request->current_url}">links</a>
-<a href="http://qa-dev.w3.org/i18n-checker/index?async=false&amp;docAddr={CSiteshop::Instance()->request->current_url}">i18n</a>
+<a href="http://validator.w3.org/checklink?uri={$current}">links</a>
+<a href="http://qa-dev.w3.org/i18n-checker/index?async=false&amp;docAddr={$current}">i18n</a>
 <!-- <a href="link?">http-header</a> -->
 <a href="http://csslint.net/">css-lint</a>
 <a href="http://jslint.com/">js-lint</a>

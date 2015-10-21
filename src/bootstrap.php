@@ -88,7 +88,7 @@ function makeClickable($text) {
         '<strong>$1</strong>',
         '<em>$1</em>',
         '<u>$1</u>',
-        '<img src="$1" />',
+        '<img title="Bild" src="$1" alt="bild"/>',
         '<a href="$1">$1</a>',
         '<a href="$1">$2</a>'
         );     
